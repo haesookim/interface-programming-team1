@@ -15,6 +15,8 @@
 		2C916A1C237B953A00341F5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C916A1A237B953A00341F5D /* LaunchScreen.storyboard */; };
 		2C916A27237B953A00341F5D /* MeetingCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A26237B953A00341F5D /* MeetingCalendarTests.swift */; };
 		2C916A32237B953A00341F5D /* MeetingCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A31237B953A00341F5D /* MeetingCalendarUITests.swift */; };
+		2C916A40237B9A3F00341F5D /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A3F237B9A3F00341F5D /* Plan.swift */; };
+		2C916A42237B9F6800341F5D /* PlanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A41237B9F6800341F5D /* PlanList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		2C916A2D237B953A00341F5D /* MeetingCalendarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetingCalendarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C916A31237B953A00341F5D /* MeetingCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCalendarUITests.swift; sourceTree = "<group>"; };
 		2C916A33237B953A00341F5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C916A3F237B9A3F00341F5D /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
+		2C916A41237B9F6800341F5D /* PlanList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				2C916A11237B953900341F5D /* SceneDelegate.swift */,
 				2C916A13237B953900341F5D /* ViewController.swift */,
 				2C916A15237B953900341F5D /* Main.storyboard */,
+				2C916A3F237B9A3F00341F5D /* Plan.swift */,
+				2C916A41237B9F6800341F5D /* PlanList.swift */,
 				2C916A18237B953A00341F5D /* Assets.xcassets */,
 				2C916A1A237B953A00341F5D /* LaunchScreen.storyboard */,
 				2C916A1D237B953A00341F5D /* Info.plist */,
@@ -259,7 +265,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C916A40237B9A3F00341F5D /* Plan.swift in Sources */,
 				2C916A14237B953900341F5D /* ViewController.swift in Sources */,
+				2C916A42237B9F6800341F5D /* PlanList.swift in Sources */,
 				2C916A10237B953900341F5D /* AppDelegate.swift in Sources */,
 				2C916A12237B953900341F5D /* SceneDelegate.swift in Sources */,
 			);
