@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+class PlanList {
+    var planList: [Plan] = [] // Init as empty array
+    
+    init(){
+        // TODO: Load items in from database and append to planList
+    }
+    
+    func addNewPlan(date: String, time: String, category: Category, peopleCount: Int, meetingWith: String?, notes: String?) -> Plan {
+        
+        //init new Item
+        let item = Plan(date: date, time: time, category: category, peopleCount: peopleCount, meetingWith: meetingWith, notes: notes);
+        
+        planList.append(item!); // force-unwrap
+        return item!;
+    }
+}
