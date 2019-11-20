@@ -20,16 +20,18 @@ enum Category : Equatable{
 }
 
 class Plan{
-    var date: String; //dataType may change
+    var date: Date; //Parse date information from viewcontroller
     var time: String; //dataType may change
     var category: Category;
     var peopleCount: Int;
     var meetingWith: String;
     var notes: String;
     
-    init!(date: String, time: String, category: Category, peopleCount: Int, meetingWith: String?, notes: String?){
-        if date.isEmpty || time.isEmpty || category == Category.Undefined || peopleCount < 0{
-            return nil //fail init when the above required fields are empty
+    init!(date: Date, time: String, category: Category, peopleCount: Int, meetingWith: String?, notes: String?){
+        if date == nil || time.isEmpty || category == Category.Undefined || peopleCount < 0{
+            return nil
+            // fail init when the above required fields are empty
+            // We may forego this data validation step by adding a client-side prevention
         }
         
         self.date = date;
@@ -42,6 +44,10 @@ class Plan{
     }
     
     func editPlan(){
+        
+    }
+    
+    func seeDetail(){
         
     }
 }
