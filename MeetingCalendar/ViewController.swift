@@ -164,7 +164,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func configureColor(for cell: UITableViewCell, with item: Plan) {
         //cell.accessoryType = item.checked ? .checkmark : .none
-        if let categoryIndicator = cell.viewWithTag(1) as UIView{
+        if let categoryIndicator = cell.viewWithTag(1) as? UIView{
             switch (item.category){
             case Category.Friend:
                 categoryIndicator.backgroundColor = UIColor.red
