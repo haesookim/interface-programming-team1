@@ -9,7 +9,7 @@
 import Foundation
 
 class PlanList {
-    var list : [String: [String:[String: Array]]] = [:] as! [String : [String : [String : Array<Any>]]]
+    var list : [String: [String:[String: [Plan]]]] = [:]
     
     func addNewPlan() -> Plan{
         let planItem = new Plan()
