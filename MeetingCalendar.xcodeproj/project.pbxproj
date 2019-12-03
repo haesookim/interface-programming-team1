@@ -10,14 +10,13 @@
 		2C916A10237B953900341F5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A0F237B953900341F5D /* AppDelegate.swift */; };
 		2C916A12237B953900341F5D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A11237B953900341F5D /* SceneDelegate.swift */; };
 		2C916A14237B953900341F5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A13237B953900341F5D /* ViewController.swift */; };
-		2C916A17237B953900341F5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C916A15237B953900341F5D /* Main.storyboard */; };
 		2C916A19237B953A00341F5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C916A18237B953A00341F5D /* Assets.xcassets */; };
 		2C916A1C237B953A00341F5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C916A1A237B953A00341F5D /* LaunchScreen.storyboard */; };
 		2C916A27237B953A00341F5D /* MeetingCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A26237B953A00341F5D /* MeetingCalendarTests.swift */; };
 		2C916A32237B953A00341F5D /* MeetingCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A31237B953A00341F5D /* MeetingCalendarUITests.swift */; };
 		2C916A40237B9A3F00341F5D /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A3F237B9A3F00341F5D /* Plan.swift */; };
 		2C916A42237B9F6800341F5D /* PlanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A41237B9F6800341F5D /* PlanList.swift */; };
-		36706A3C238C23520084BE82 /* Storyboard_Soom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36706A3B238C23520084BE82 /* Storyboard_Soom.storyboard */; };
+		36706A3C238C23520084BE82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36706A3B238C23520084BE82 /* Main.storyboard */; };
 		3680AC1523964B03001EFDD7 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680AC1423964B03001EFDD7 /* SelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +42,6 @@
 		2C916A0F237B953900341F5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C916A11237B953900341F5D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C916A13237B953900341F5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2C916A16237B953900341F5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C916A18237B953A00341F5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C916A1B237B953A00341F5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C916A1D237B953A00341F5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,7 +53,7 @@
 		2C916A33237B953A00341F5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C916A3F237B9A3F00341F5D /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		2C916A41237B9F6800341F5D /* PlanList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanList.swift; sourceTree = "<group>"; };
-		36706A3B238C23520084BE82 /* Storyboard_Soom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard_Soom.storyboard; sourceTree = "<group>"; };
+		36706A3B238C23520084BE82 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3680AC1423964B03001EFDD7 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,12 +105,13 @@
 		2C916A0E237B953900341F5D /* MeetingCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				2CD089F623967E13005E806D /* Images */,
+				2CD089F523967E07005E806D /* Fonts */,
 				2C916A0F237B953900341F5D /* AppDelegate.swift */,
 				2C916A11237B953900341F5D /* SceneDelegate.swift */,
 				2C916A13237B953900341F5D /* ViewController.swift */,
-				36706A3B238C23520084BE82 /* Storyboard_Soom.storyboard */,
+				36706A3B238C23520084BE82 /* Main.storyboard */,
 				3680AC1423964B03001EFDD7 /* SelectionViewController.swift */,
-				2C916A15237B953900341F5D /* Main.storyboard */,
 				2C916A3F237B9A3F00341F5D /* Plan.swift */,
 				2C916A41237B9F6800341F5D /* PlanList.swift */,
 				2C916A18237B953A00341F5D /* Assets.xcassets */,
@@ -138,6 +137,20 @@
 				2C916A33237B953A00341F5D /* Info.plist */,
 			);
 			path = MeetingCalendarUITests;
+			sourceTree = "<group>";
+		};
+		2CD089F523967E07005E806D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2CD089F623967E13005E806D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,8 +259,7 @@
 			files = (
 				2C916A1C237B953A00341F5D /* LaunchScreen.storyboard in Resources */,
 				2C916A19237B953A00341F5D /* Assets.xcassets in Resources */,
-				2C916A17237B953900341F5D /* Main.storyboard in Resources */,
-				36706A3C238C23520084BE82 /* Storyboard_Soom.storyboard in Resources */,
+				36706A3C238C23520084BE82 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,14 +325,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2C916A15237B953900341F5D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2C916A16237B953900341F5D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2C916A1A237B953A00341F5D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

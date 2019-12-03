@@ -109,7 +109,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             let item = listofPlanLists[indexPath.row].planList[indexPath.row]
             
             //cell.textLabel?.text = tableViewData[indexPath.section].plans[indexPath.row]
-            cell.textLabel?.text = item.date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            
+            let dateValue = dateFormatter.string(from: item.date)
+            cell.textLabel?.text = dateValue
             
             //do other stuff such as visualization for PlanItem cells
             
