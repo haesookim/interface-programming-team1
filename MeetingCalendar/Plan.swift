@@ -28,7 +28,7 @@ class Plan{
     var notes: String;
     
     init!(date: Date, time: String, category: Category, peopleCount: Int, meetingWith: String?, notes: String?){
-        if date == nil || time.isEmpty || category == Category.Undefined || peopleCount < 0{
+        if (time.isEmpty || category == Category.Undefined || peopleCount < 0) {
             return nil
             // fail init when the above required fields are empty
             // We may forego this data validation step by adding a client-side prevention
