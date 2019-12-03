@@ -17,6 +17,8 @@
 		2C916A32237B953A00341F5D /* MeetingCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A31237B953A00341F5D /* MeetingCalendarUITests.swift */; };
 		2C916A40237B9A3F00341F5D /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A3F237B9A3F00341F5D /* Plan.swift */; };
 		2C916A42237B9F6800341F5D /* PlanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A41237B9F6800341F5D /* PlanList.swift */; };
+		36706A3C238C23520084BE82 /* Storyboard_Soom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36706A3B238C23520084BE82 /* Storyboard_Soom.storyboard */; };
+		3680AC1523964B03001EFDD7 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680AC1423964B03001EFDD7 /* SelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		2C916A33237B953A00341F5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C916A3F237B9A3F00341F5D /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		2C916A41237B9F6800341F5D /* PlanList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanList.swift; sourceTree = "<group>"; };
+		36706A3B238C23520084BE82 /* Storyboard_Soom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard_Soom.storyboard; sourceTree = "<group>"; };
+		3680AC1423964B03001EFDD7 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				2C916A0F237B953900341F5D /* AppDelegate.swift */,
 				2C916A11237B953900341F5D /* SceneDelegate.swift */,
 				2C916A13237B953900341F5D /* ViewController.swift */,
+				36706A3B238C23520084BE82 /* Storyboard_Soom.storyboard */,
+				3680AC1423964B03001EFDD7 /* SelectionViewController.swift */,
 				2C916A15237B953900341F5D /* Main.storyboard */,
 				2C916A3F237B9A3F00341F5D /* Plan.swift */,
 				2C916A41237B9F6800341F5D /* PlanList.swift */,
@@ -241,6 +247,7 @@
 				2C916A1C237B953A00341F5D /* LaunchScreen.storyboard in Resources */,
 				2C916A19237B953A00341F5D /* Assets.xcassets in Resources */,
 				2C916A17237B953900341F5D /* Main.storyboard in Resources */,
+				36706A3C238C23520084BE82 /* Storyboard_Soom.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C916A40237B9A3F00341F5D /* Plan.swift in Sources */,
+				3680AC1523964B03001EFDD7 /* SelectionViewController.swift in Sources */,
 				2C916A14237B953900341F5D /* ViewController.swift in Sources */,
 				2C916A42237B9F6800341F5D /* PlanList.swift in Sources */,
 				2C916A10237B953900341F5D /* AppDelegate.swift in Sources */,
