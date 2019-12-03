@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C36DBEA23967F7A00986C2B /* batang.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36DBE923967F7A00986C2B /* batang.otf */; };
 		2C916A10237B953900341F5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A0F237B953900341F5D /* AppDelegate.swift */; };
 		2C916A12237B953900341F5D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A11237B953900341F5D /* SceneDelegate.swift */; };
 		2C916A14237B953900341F5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A13237B953900341F5D /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C36DBE923967F7A00986C2B /* batang.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = batang.otf; path = ../../../batang.otf; sourceTree = "<group>"; };
 		2C916A0C237B953900341F5D /* MeetingCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C916A0F237B953900341F5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C916A11237B953900341F5D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		2CD089F523967E07005E806D /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				2C36DBE923967F7A00986C2B /* batang.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			files = (
 				2C916A1C237B953A00341F5D /* LaunchScreen.storyboard in Resources */,
 				2C916A19237B953A00341F5D /* Assets.xcassets in Resources */,
+				2C36DBEA23967F7A00986C2B /* batang.otf in Resources */,
 				36706A3C238C23520084BE82 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
