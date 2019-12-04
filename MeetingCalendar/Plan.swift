@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Category : Equatable{
+enum WhoCategory : Equatable{
     case Friend
     case SignificantOther
     case Family
@@ -19,27 +19,58 @@ enum Category : Equatable{
     case Undefined // Initial state
 }
 
-class Plan{
-    var date: Date; //Parse date information from viewcontroller
-    var time: String; //dataType may change
-    var category: Category;
-    var peopleCount: Int;
-    var meetingWith: String;
-    var notes: String;
+enum WhatCategory : Equatable{
+    case Work
+    case Other
+    case Undefined //Initial state
     
-    init!(date: Date, time: String, category: Category, peopleCount: Int, meetingWith: String?, notes: String?){
-        if (time.isEmpty || category == Category.Undefined || peopleCount < 0) {
+}
+
+
+class Plan{
+    
+    //PLAN HOLDS ONLY THE REFINED DATA - ALL THE REFINING PROCESS WILL BE DONE IN PLANLIST
+    
+    
+    //time
+    var date: String; //Parse date information from viewcontroller
+    var time: String; //dataType may change
+    
+    //who
+    var whoCategory : WhoCategory
+    var withWho : [String]?
+    var withWhoCount: Int?
+    
+    //what
+    var whatCategory : WhatCategory?
+    var doWhat : String?
+    
+    //where
+    var place : String?
+    
+    init!(date: String,
+          time: String?,
+          whoCategory: WhoCategory,
+          withWho: [String]?,
+          whatCategory: WhatCategory?,
+          doWhat: String?,
+          place : String?        ){
+        
+        if (date.isEmpty || whoCategory == WhoCategory.Undefined ) {
             return nil
             // fail init when the above required fields are empty
             // We may forego this data validation step by adding a client-side prevention
+            // this I agree.
         }
         
-        self.date = date;
-        self.time = time;
-        self.category = category;
-        self.peopleCount = peopleCount;
-        self.meetingWith = meetingWith ?? ""; // default to empty string
-        self.notes = notes ?? ""; // default to empty string
+        self.date = date
+        self.time = time ?? ""
+        self.whoCategory = whoCategory
+        self.withWho = withWho ?? [""]
+        self.withWhoCount = withWho?.count ?? 0
+        self.whatCategory = whatCategory ?? WhatCategory.Other
+        self.doWhat = doWhat ?? ""
+        self.place = place ?? ""
         
     }
     

@@ -9,12 +9,9 @@
 import Foundation
 
 
-struct cellData{ //this shall be merged into planlist in order to be coherent
-    var dates : String //using string for test - need to adjust suitable format - date?
-    var plans : [String]//[Plan] //using string for test
-}
-
 class PlanList {
+    
+    //the actual complete list of data
     var completePlanList : [String: [String:[Plan]]] = [:]
 
     var planDate : String = "" // will be used as section data, which are dates (may use string?)
@@ -23,26 +20,52 @@ class PlanList {
     init(){
         // TODO: Load items in from database and append to planList
         
-        // need default initializing
-        // if section for plandate already exist, addNewPlan shall be ran, not init.
-        // if section for plandate does not exist, init and addNewPlan there.
-        // in conclusion, only consider case where new planlist for a certain date is needed
-        planDate = "19/12/24"
-//        planList = [Plan(date: planDate, time: "19:00", category: Category.Friend, peopleCount: 1, meetingWith: "", notes: "")]
+        // if there is no previous data, generate an example plan in completelist
+        
+        completePlanList = ["2019/12" : ["25" : [Plan(date: "25",
+                                                      time: "19:00",
+                                                      whoCategory: WhoCategory.Family,
+                                                      withWho: ["Parents"],
+                                                      whatCategory: WhatCategory.Other,
+                                                      doWhat: "House Party",
+                                                      place: "Home")]]]
+        
     }
     
-    func addNewPlan(date: Date, time: String, category: Category, peopleCount: Int, meetingWith: String?, notes: String?) -> Plan {
+    func addNewPlan(rawDate: Date,
+                    time: String?,
+                    whoCategory: WhoCategory,
+                    withWhoString : String?,
+                    whatCategory: WhatCategory?,
+                    doWhat: String?,
+                    place : String?) -> Plan {
         
-        //init new Item
-        let item = Plan(date: date, time: time, category: category, peopleCount: peopleCount, meetingWith: meetingWith, notes: notes);
         
+        
+        //format date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        let dateValue = dateFormatter.string(from: date).components(separatedBy: "-")
+        let dateValue = dateFormatter.string(from: rawDate).components(separatedBy: "-")
         let yearMonthKey = dateValue[0]+"/"+dateValue[1]
         let dayKey = dateValue[2]
         
+        
+        //format withWho
+        let withWho = withWhoString?.components(separatedBy: ",")
+        
+        
+        //init new Item
+        let item = Plan(date: dayKey,
+                        time: time,
+                        whoCategory: whoCategory,
+                        withWho: withWho,
+                        whatCategory: whatCategory,
+                        doWhat: doWhat,
+                        place: place)
+        
+        
+        //add it to the completPlanlist
         if(completePlanList[yearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
             completePlanList[yearMonthKey] = [:]
         }
@@ -54,6 +77,8 @@ class PlanList {
         
         return item!;
     }
+    
+    
     
     func deletePlan(date: Date, index: Int){
         

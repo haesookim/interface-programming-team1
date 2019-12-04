@@ -8,15 +8,21 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var listTableView: UITableView!
     
-    //var planList : PlanList
     
-    var tableViewData : [cellData]
-    var listofPlanLists : [PlanList]
+    //full plan list
+    var myPlanList : PlanList
     
+    //for current month
+    var currentMonthString : String
+    var currentMonthPlans : [[String:[Plan]]] //needs to be refreshed in every monthchange action, ordered too
+    
+    //sorted array of dictionary keys, that will be used as sections
+    var sortedDatesofMonth : [String]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +37,17 @@ class ViewController: UIViewController {
         //planList = PlanList()
         
         //test initialization of celldata
-        tableViewData = [cellData(dates: "19/12/24", plans: ["plan1","plan2"]),
-                         cellData(dates: "19/12/25", plans: ["plan1"])]
+        
         
         //test initialization of listofPlanLists
-        listofPlanLists = [PlanList(date: "19/12/24")]
+        
+        currentMonthString = "2019/12"
+        
+        currentMonthPlans = [[:]]
+        for (key, value) in myPlanList.completePlanList[currentMonthString]!{
+            currentMonthPlans.append([key : value])
+            
+        }
         
         super.init(coder: coder)
     }
@@ -73,32 +85,36 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     //function that returns the number of sections,
     //which actually affects the indexpath of the followed functions so be aware
     func numberOfSections(in tableView: UITableView) -> Int {
-        //return tableViewData.count
-        return listofPlanLists.count
+        return currentMonthPlans.count
     }
     
     
     //function that returns the number of rows in certain section
     //referencing the tableviewdata for number of plans
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+    //func tableView(_ tableView: UITableView,
+    //               numberOfRowsInSection section: Int) -> Int {
         //return tableViewData[section].plans.count + 1 //compensating for the header cell
-        return listofPlanLists[section].planList.count + 1
+        //return listofPlanLists[section].planList.count + 1
+    //}
+    
+    //wonder if this works
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currentMonthPlans[section].values.count + 1
+        //return myPlanList.completePlanList.index(after: section).count
     }
+    
     
     //function that generates cell in a certain indexpath
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //currently there is no difference in details between the cells
-        //will be altered when the data to be shown in cell are decided
         if(indexPath.row) == 0{ // this cell will be used for showing the section(date)
             let cell = tableView.dequeueReusableCell(withIdentifier: "DateHeader", for: indexPath)
-            let header = listofPlanLists[indexPath.section]
+            let header = currentMonthPlans[indexPath.section]
             
             //use guard to be precise
             //cell.textLabel?.text = tableViewData[indexPath.section].dates
-            cell.textLabel?.text = header.planDate
+            cell.textLabel?.text = header.keys.description
             
             //do other stuff such as visualization for DateHeader cells
             
@@ -106,7 +122,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
         }else{ //these cells will be used for showing the actual PlanItems
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlanItem", for: indexPath)
-            let item = listofPlanLists[indexPath.row].planList[indexPath.row]
+            //let item = listofPlanLists[indexPath.row].planList[indexPath.row]
+            let item = currentMonthPlans[indexPath.section].values[indexPath.row]
+            
+            let temp = item[indexPath.row]
             
             //cell.textLabel?.text = tableViewData[indexPath.section].plans[indexPath.row]
             let dateFormatter = DateFormatter()
@@ -133,11 +152,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             //from matching item...
             //let item = planList.planList[indexPath.row]
             
-            //modify checkmark
-            //item.toggleChecked()
             
-            //re-run the configurecheckmark to update data
-            //configureCheckmark(for: cell, with: item)
             
             //ends the function by deselecting the row selected by this function
             tableView.deselectRow(at: indexPath, animated: true)
