@@ -29,18 +29,24 @@ class ViewController: UIViewController {
     var indexPathforEditing : IndexPath
     var planforEditing : Plan
     
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         
+        //print(currentMonthPlans["2019/12"]![0].date)
+        print("initialize in viewcontroller")
+        
     }
     
     required init?(coder: NSCoder) {
         
         //is required if initializing is needed
-        //planList = PlanList()
+        myPlanList = PlanList()
+        
+        sortedDatesofMonth = [""]
         
         //test initialization of celldata
         
@@ -55,6 +61,11 @@ class ViewController: UIViewController {
             
         }
         
+        
+        indexPathforEditing = IndexPath(row: 1, section: 1)
+        
+        planforEditing = Plan(date: "2019/12", time: "", whoCategory: WhoCategory.Other, withWho: [""], whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
+        
         super.init(coder: coder)
     }
 
@@ -65,6 +76,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     //function that returns the number of sections
     //this case, number of date entries in month
     func numberOfSections(in tableView: UITableView) -> Int {
+
+        print("generate no of sections \(currentMonthPlans.count) ")
+        
         return currentMonthPlans.count
     }
     
@@ -74,6 +88,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         
         //generate key array and sort
         sortedDatesofMonth = Array(currentMonthPlans.keys).sorted(by : <)
+        
+        print("generate no of rows \(currentMonthPlans[ sortedDatesofMonth[section] ]!.count) ")
         
         return currentMonthPlans[ sortedDatesofMonth[section] ]!.count + 1
     }
@@ -92,12 +108,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             cell.textLabel?.text = header
             //sticker selection is further behind priority
             
+            print("generate header cell \(header)")
+            
             return cell
             
         }else{ //these cells will be used for showing the actual PlanItems
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlanItem", for: indexPath)
             //let item = listofPlanLists[indexPath.row].planList[indexPath.row]
-            let item = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row] //is a Plan object
+            let item = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ] //is a Plan object
             
             //following process will be unnecessary
 //            let dateFormatter = DateFormatter()
@@ -108,6 +126,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
             //cell.textLabel?.text = tableViewData[indexPath.section].plans[indexPath.row]
             
+            print("generate plan cell")
             
             //tag 1 : time(label)
             if let label = cell.viewWithTag(1) as? UILabel{
@@ -172,7 +191,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 //data to be sent
                 indexPathforEditing = indexPath
                 
-                planforEditing = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row]
+                planforEditing = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row -1 ]
                 
                 //perform Segue
                 performSegue(withIdentifier: "EnterEditing" , sender: self)

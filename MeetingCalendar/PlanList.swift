@@ -12,7 +12,7 @@ import Foundation
 class PlanList {
     
     //the actual complete list of data
-    var completePlanList : [String: [String:[Plan]]] = [:]
+    var completePlanList : [String: [String:[Plan]]]
 
     var planDate : String = "" // will be used as section data, which are dates (may use string?)
     

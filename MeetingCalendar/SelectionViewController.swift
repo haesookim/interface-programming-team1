@@ -15,8 +15,11 @@ class SelectionViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         
+        selectedPlan = Plan(date: "2019/12", time: "", whoCategory: WhoCategory.Undefined, withWho: [""], whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
+        
+        selectedIndexPath = IndexPath(row: 1, section: 1)
+        
         super.init(coder: coder)
-        selectedPlan = Plan(date: "", time: <#T##String?#>, whoCategory: WhoCategory.Undefined, withWho: <#T##[String]?#>, whatCategory: <#T##WhatCategory?#>, doWhat: <#T##String?#>, place: <#T##String?#>)
 //        selectedIndexPath =
         
     }
