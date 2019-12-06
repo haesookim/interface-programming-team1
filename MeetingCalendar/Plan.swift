@@ -34,7 +34,7 @@ class Plan{
     
     //time
     var date: String; //Parse date information from viewcontroller
-    var time: String; //dataType may change
+    var time: String?; //dataType may change
     
     //who
     var whoCategory : WhoCategory
