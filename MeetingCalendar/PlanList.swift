@@ -25,10 +25,18 @@ class PlanList {
         completePlanList = ["2019/12" : ["25" : [Plan(date: "25",
                                                       time: "19:00",
                                                       whoCategory: WhoCategory.Family,
-                                                      withWho: ["Parents"],
+                                                      withWho: ["Parents", "Mr.Santa"],
                                                       whatCategory: WhatCategory.Other,
                                                       doWhat: "House Party",
-                                                      place: "Home")]]]
+                                                      place: "Home")],
+                                        "31" : [Plan(date: "31",
+                                                        time: "23:55",
+                                                        whoCategory: WhoCategory.Family,
+                                                        withWho: ["Parents"],
+                                                        whatCategory: WhatCategory.Other,
+                                                        doWhat: "Ready for Countdown",
+                                                        place: "Home")]]    ]
+        
         
     }
     

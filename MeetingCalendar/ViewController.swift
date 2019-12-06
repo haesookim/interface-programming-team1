@@ -60,7 +60,7 @@ class ViewController: UIViewController {
             currentMonthPlans[key] = value
             
         }
-        
+        currentMonthPlans.removeValue(forKey: "")
         
         indexPathforEditing = IndexPath(row: 1, section: 1)
         
@@ -101,14 +101,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         
         if(indexPath.row) == 0{ // this cell will be used for showing the section(date)
             let cell = tableView.dequeueReusableCell(withIdentifier: "DateHeader", for: indexPath)
-            let header = sortedDatesofMonth[indexPath.section]
+            //let header = sortedDatesofMonth[indexPath.section]
             
             //use guard to be precise
-            
-            cell.textLabel?.text = header
+            let header = cell.viewWithTag(10) as? UILabel
+            header?.text = sortedDatesofMonth[indexPath.section]
+            //cell.textLabel?.text = header
             //sticker selection is further behind priority
             
-            print("generate header cell \(header)")
+            print("generate header cell \(String(describing: header))")
             
             return cell
             
@@ -129,18 +130,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             print("generate plan cell")
             
             //tag 1 : time(label)
-            if let label = cell.viewWithTag(1) as? UILabel{
-                label.text = item.time
+            if let timeLabel = cell.viewWithTag(1) as? UILabel{
+                print("this should work?")
+                timeLabel.text = item.time
             }
             
+            
+            
             //tag 2 : whoCategory sticker(image)
-            if let sticker = cell.viewWithTag(2) as? UIImageView{
+            if let whoSticker = cell.viewWithTag(2) as? UIImageView{
                 
                 
             }
             
             //tag 3 : specifics(label)
-            if let label = cell.viewWithTag(3) as? UILabel{
+            if let specLabel = cell.viewWithTag(3) as? UILabel{
                 if(item.withWho != [""]){
                     var str = ""
                     
@@ -153,20 +157,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                         }
                     }
                     
-                    label.text = str
+                    specLabel.text = str
                     
                 }else{
                     
                     //when there is no entry for withWho, apply whoCategory
-                    label.text = "\(item.whoCategory)"
+                    specLabel.text = "\(item.whoCategory)"
                 }
                 
                 
-                label.text = item.time
             }
             
             //tag 4 : comprehensive sticker(image)
-            if let sticker = cell.viewWithTag(1) as? UIImageView{
+            if let compSticker = cell.viewWithTag(4) as? UIImageView{
                 //sticker.image = [UIImage imageNamed: @ ""]
             }
             
@@ -191,7 +194,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 //data to be sent
                 indexPathforEditing = indexPath
                 
-                planforEditing = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row -1 ]
+                planforEditing = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ]
                 
                 //perform Segue
                 performSegue(withIdentifier: "EnterEditing" , sender: self)
@@ -207,7 +210,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var editVC = segue.destination as! SelectionViewController
+        let editVC = segue.destination as! SelectionViewController
         //transfer!
         editVC.selectedPlan = planforEditing
         editVC.selectedIndexPath = indexPathforEditing
@@ -218,20 +221,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     //function that removes a cell from the table and the list (the swipe-delete)
-    //will this be needed?
-    func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
-        
-        //remove from the todos list
-        //planList.planList.remove(at: indexPath.row)
-        
-        //tableView.reloadData()
-        
-        //remove from the table, by referencein the indexPath
-        let indexPaths = [indexPath]
-        tableView.deleteRows(at: indexPaths, with: .automatic)
-    }
+    //will this be needed? not for now
+//    func tableView(_ tableView: UITableView,
+//                   commit editingStyle: UITableViewCell.EditingStyle,
+//                   forRowAt indexPath: IndexPath) {
+//
+//        //remove from the todos list
+//        //planList.planList.remove(at: indexPath.row)
+//
+//        //tableView.reloadData()
+//
+//        //remove from the table, by referencein the indexPath
+//        let indexPaths = [indexPath]
+//        tableView.deleteRows(at: indexPaths, with: .automatic)
+//    }
     
     
 //    func configureColor(for cell: UITableViewCell, with item: Plan) {
