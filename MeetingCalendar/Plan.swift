@@ -40,6 +40,7 @@ class Plan{
     var whoCategory : WhoCategory
     var withWho : [String]?
     var withWhoCount: Int?
+    var withWhoString : String? //for convenience purpose
     
     //what
     var whatCategory : WhatCategory?
@@ -47,6 +48,7 @@ class Plan{
     
     //where
     var place : String?
+
     
     init!(date: String,
           time: String?,
@@ -68,9 +70,29 @@ class Plan{
         self.whoCategory = whoCategory
         self.withWho = withWho ?? [""]
         self.withWhoCount = withWho?.count ?? 0
-        self.whatCategory = whatCategory ?? WhatCategory.Other
+        self.whatCategory = whatCategory ?? WhatCategory.Undefined
         self.doWhat = doWhat ?? ""
         self.place = place ?? ""
+        
+        
+        
+        if(withWho!.count > 1){
+                           var str = ""
+                           
+                           //re-generate withWhoString
+                           for e in (withWho)!{
+                               if(str == ""){
+                                   str = e
+                               }else{
+                                   str += ( ", " + e )
+                               }
+                           }
+                           
+                           withWhoString = str
+        }else{
+            withWhoString = withWho![0]
+            
+        }
         
     }
     

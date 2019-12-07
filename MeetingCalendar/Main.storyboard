@@ -367,98 +367,152 @@
                                 <rect key="frame" x="42" y="224" width="353" height="238"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wO1-M8-ckO">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wO1-M8-ckO">
                                 <rect key="frame" x="39" y="224" width="353" height="238"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjQ-8b-Iam" userLabel="TimeInput">
-                                        <rect key="frame" x="243" y="11" width="69" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di7-Es-lpC" userLabel="DateLabel">
+                                        <rect key="frame" x="52" y="23" width="59" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWT-CC-YhF" userLabel="DateLabel">
+                                        <rect key="frame" x="132" y="23" width="49" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUD-Es-ZYY" userLabel="DateLabel">
+                                        <rect key="frame" x="191" y="23" width="49" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjQ-8b-Iam" userLabel="TimeInput">
+                                        <rect key="frame" x="250" y="23" width="89" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="23" id="8Qj-e3-2k3"/>
+                                            <constraint firstAttribute="width" constant="89" id="rGi-xK-3h8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di7-Es-lpC" userLabel="DateLabel">
-                                        <rect key="frame" x="52" y="15" width="59" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWT-CC-YhF" userLabel="DateLabel">
-                                        <rect key="frame" x="132" y="15" width="49" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUD-Es-ZYY" userLabel="DateLabel">
-                                        <rect key="frame" x="191" y="15" width="49" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="누구와" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bww-EY-cNv">
-                                        <rect key="frame" x="64" y="64" width="46" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="With Whom?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xta-Nl-qPI" userLabel="WithTextField2">
+                                    <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="With Whom?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xta-Nl-qPI" userLabel="WithTextField2">
                                         <rect key="frame" x="136" y="58" width="171" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="171" id="In3-EL-Rp6"/>
+                                            <constraint firstAttribute="height" constant="34" id="cy6-d0-Gxi"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="누구와" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQY-Ao-6eQ">
-                                        <rect key="frame" x="64" y="108" width="46" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Do What?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQS-Rm-BHj" userLabel="WhatTextField2">
-                                        <rect key="frame" x="136" y="101" width="171" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textField opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Do What?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQS-Rm-BHj" userLabel="WhatTextField2">
+                                        <rect key="frame" x="136" y="108" width="171" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7iI-nc-3oK"/>
+                                            <constraint firstAttribute="width" constant="171" id="iLm-lD-Uoq"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="At Where?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oB1-zZ-IWO" userLabel="WhereTextField1">
-                                        <rect key="frame" x="77" y="150" width="230" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textField opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="At Where?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oB1-zZ-IWO" userLabel="WhereTextField1">
+                                        <rect key="frame" x="77" y="154" width="230" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="W0Y-zD-Jny"/>
+                                            <constraint firstAttribute="width" constant="230" id="ucg-Jp-Gs8"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wb6-sh-iah" userLabel="DeleteButton">
-                                        <rect key="frame" x="315" y="193" width="40" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wb6-sh-iah" userLabel="DeleteButton">
+                                        <rect key="frame" x="341" y="211" width="14" height="22"/>
                                         <state key="normal" image="page2_2trash-1">
                                             <attributedString key="attributedTitle"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbI-xQ-ojU" userLabel="DateInput">
-                                        <rect key="frame" x="52" y="9" width="183" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbI-xQ-ojU" userLabel="DateInput">
+                                        <rect key="frame" x="41" y="16" width="204" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="UVC-tF-6hP"/>
+                                            <constraint firstAttribute="width" constant="204" id="r42-fM-2mB"/>
+                                        </constraints>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="에" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2t-2I-6Yw">
-                                        <rect key="frame" x="309" y="10" width="222" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="에" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2t-2I-6Yw">
+                                        <rect key="frame" x="309" y="23" width="36" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="23" id="0TV-bY-Soi"/>
+                                            <constraint firstAttribute="width" constant="36" id="tbJ-z7-fTs"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oa-ib-okQ" userLabel="whoCat">
+                                        <rect key="frame" x="64" y="64" width="58" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="58" id="7oo-KD-FlK"/>
+                                            <constraint firstAttribute="height" constant="23" id="WoX-pU-DWe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXy-pM-QAf" userLabel="whatCat">
+                                        <rect key="frame" x="64" y="111" width="58" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="58" id="Kco-q3-T8z"/>
+                                            <constraint firstAttribute="height" constant="23" id="dsU-6j-lVm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sticker2_1" translatesAutoresizingMaskIntoConstraints="NO" id="FAA-fy-Lj5">
+                                        <rect key="frame" x="-16" y="14" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Nxv-3T-ICb"/>
+                                            <constraint firstAttribute="width" constant="40" id="gsR-c7-cAh"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Wb6-sh-iah" secondAttribute="bottom" constant="5" id="1jj-BO-50F"/>
+                                    <constraint firstItem="7oa-ib-okQ" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="64" id="4Jr-iA-5Eu"/>
+                                    <constraint firstItem="FAA-fy-Lj5" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="14" id="7bQ-4e-CdZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="D2t-2I-6Yw" secondAttribute="trailing" constant="8" id="8tg-Om-lit"/>
+                                    <constraint firstItem="kbI-xQ-ojU" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="41" id="9Nu-TY-txo"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wb6-sh-iah" secondAttribute="trailing" constant="-2" id="Id5-ue-MJO"/>
+                                    <constraint firstItem="FjQ-8b-Iam" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="23" id="Pow-Gq-wAc"/>
+                                    <constraint firstItem="xta-Nl-qPI" firstAttribute="top" secondItem="kbI-xQ-ojU" secondAttribute="bottom" constant="7" id="QLH-be-zev"/>
+                                    <constraint firstItem="kbI-xQ-ojU" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="16" id="SIs-FP-LrS"/>
+                                    <constraint firstItem="FAA-fy-Lj5" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="-16" id="UVq-f2-NCM"/>
+                                    <constraint firstAttribute="width" constant="353" id="XP9-r0-Ytd"/>
+                                    <constraint firstAttribute="trailing" secondItem="xta-Nl-qPI" secondAttribute="trailing" constant="46" id="ZBx-cN-N5w"/>
+                                    <constraint firstAttribute="height" constant="238" id="cEy-Nm-PDE"/>
+                                    <constraint firstAttribute="trailing" secondItem="MQS-Rm-BHj" secondAttribute="trailing" constant="46" id="gll-Qz-ad5"/>
+                                    <constraint firstItem="D2t-2I-6Yw" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="23" id="kbq-HF-Ztf"/>
+                                    <constraint firstItem="MQS-Rm-BHj" firstAttribute="top" secondItem="xta-Nl-qPI" secondAttribute="bottom" constant="16" id="kl0-MS-Fre"/>
+                                    <constraint firstAttribute="trailing" secondItem="FjQ-8b-Iam" secondAttribute="trailing" constant="14" id="nDM-VJ-ylu"/>
+                                    <constraint firstItem="7oa-ib-okQ" firstAttribute="top" secondItem="kbI-xQ-ojU" secondAttribute="bottom" constant="13" id="oBM-7R-t0N"/>
+                                    <constraint firstItem="oB1-zZ-IWO" firstAttribute="top" secondItem="MQS-Rm-BHj" secondAttribute="bottom" constant="16" id="q83-hK-vES"/>
+                                    <constraint firstItem="YXy-pM-QAf" firstAttribute="top" secondItem="7oa-ib-okQ" secondAttribute="bottom" constant="24" id="qMw-vZ-RXS"/>
+                                    <constraint firstItem="YXy-pM-QAf" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="64" id="sFE-Ei-X4f"/>
+                                    <constraint firstAttribute="trailing" secondItem="oB1-zZ-IWO" secondAttribute="trailing" constant="46" id="v60-1w-9jf"/>
+                                </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sticker2_1" translatesAutoresizingMaskIntoConstraints="NO" id="FAA-fy-Lj5">
-                                <rect key="frame" x="20" y="235" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yob-Mv-yrH" userLabel="CloseButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yob-Mv-yrH" userLabel="CloseButton">
                                 <rect key="frame" x="364" y="176" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="W0t-6g-kem"/>
+                                    <constraint firstAttribute="width" constant="40" id="eJZ-fs-2sX"/>
+                                </constraints>
                                 <state key="normal" image="page2_2_x">
                                     <attributedString key="attributedTitle"/>
                                 </state>
@@ -468,8 +522,25 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wO1-M8-ckO" firstAttribute="leading" secondItem="Pfl-kk-XQY" secondAttribute="leading" constant="39" id="8CO-fY-2NF"/>
+                            <constraint firstItem="Pfl-kk-XQY" firstAttribute="trailing" secondItem="Yob-Mv-yrH" secondAttribute="trailing" constant="10" id="Cqf-HB-My1"/>
+                            <constraint firstItem="Yob-Mv-yrH" firstAttribute="top" secondItem="Pfl-kk-XQY" secondAttribute="top" constant="176" id="Pe6-qN-xyW"/>
+                            <constraint firstItem="wO1-M8-ckO" firstAttribute="top" secondItem="Yob-Mv-yrH" secondAttribute="bottom" constant="8" id="tYx-qR-e5Z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Pfl-kk-XQY"/>
                     </view>
+                    <connections>
+                        <outlet property="dayLabel" destination="fUD-Es-ZYY" id="Q1c-DD-ktd"/>
+                        <outlet property="monthLabel" destination="SWT-CC-YhF" id="goR-e5-e8g"/>
+                        <outlet property="placeTF" destination="oB1-zZ-IWO" id="K3Z-IW-ObP"/>
+                        <outlet property="timeButton" destination="FjQ-8b-Iam" id="GYw-je-ALr"/>
+                        <outlet property="whatButton" destination="YXy-pM-QAf" id="xZG-SR-x4m"/>
+                        <outlet property="whatTF" destination="MQS-Rm-BHj" id="ENv-3F-sc3"/>
+                        <outlet property="whoButton" destination="7oa-ib-okQ" id="mN3-jQ-YN1"/>
+                        <outlet property="whoTF" destination="xta-Nl-qPI" id="MMc-qj-3Wx"/>
+                        <outlet property="yearLabel" destination="Di7-Es-lpC" id="WqX-bo-22b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQF-B9-kHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

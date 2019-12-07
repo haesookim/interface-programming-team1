@@ -131,7 +131,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
             //tag 1 : time(label)
             if let timeLabel = cell.viewWithTag(1) as? UILabel{
-                print("this should work?")
                 timeLabel.text = item.time
             }
             
@@ -146,18 +145,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             //tag 3 : specifics(label)
             if let specLabel = cell.viewWithTag(3) as? UILabel{
                 if(item.withWho != [""]){
-                    var str = ""
-                    
-                    //re-generate withWhoString
-                    for e in (item.withWho)!{
-                        if(str == ""){
-                            str = e
-                        }else{
-                            str += ( ", " + e )
-                        }
-                    }
-                    
-                    specLabel.text = str
+//                    var str = ""
+//
+//                    //re-generate withWhoString
+//                    for e in (item.withWho)!{
+//                        if(str == ""){
+//                            str = e
+//                        }else{
+//                            str += ( ", " + e )
+//                        }
+//                    }
+//
+//                    specLabel.text = str
+                    specLabel.text = item.withWhoString
                     
                 }else{
                     
@@ -186,7 +186,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     //more sophisticated codes will come
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
+        //if let cell = tableView.cellForRow(at: indexPath) {
             
             
             if(indexPath.row != 0){//not header
@@ -206,12 +206,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             //ends the function by deselecting the row selected by this function
             tableView.deselectRow(at: indexPath, animated: true)
             
-        }
+        //}
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let editVC = segue.destination as! SelectionViewController
-        //transfer!
+        print("transfer!")
         editVC.selectedPlan = planforEditing
         editVC.selectedIndexPath = indexPathforEditing
     }

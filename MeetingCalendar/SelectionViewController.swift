@@ -13,9 +13,37 @@ class SelectionViewController: UIViewController {
     var selectedPlan : Plan
     var selectedIndexPath : IndexPath
     
+    
+    //OUTLETS : labels
+    
+    @IBOutlet weak var yearLabel: UILabel!
+    
+    @IBOutlet weak var monthLabel: UILabel!
+    
+    @IBOutlet weak var dayLabel: UILabel!
+    
+    
+    //OUTLETS : buttons
+    @IBOutlet weak var timeButton: UIButton!
+    
+    @IBOutlet weak var whoButton: UIButton!
+    
+    @IBOutlet weak var whatButton: UIButton!
+    
+    
+    //OUTLETS : TextFields
+    
+    @IBOutlet weak var whoTF: UITextField!
+    
+    @IBOutlet weak var whatTF: UITextField!
+    
+    @IBOutlet weak var placeTF: UITextField!
+    
+    
+    
     required init?(coder: NSCoder) {
         
-        selectedPlan = Plan(date: "2019/12", time: "", whoCategory: WhoCategory.Undefined, withWho: [""], whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
+        selectedPlan = Plan(date: "2019/12", time: "", whoCategory: WhoCategory.Other, withWho: [""], whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
         
         selectedIndexPath = IndexPath(row: 1, section: 1)
         
@@ -32,18 +60,48 @@ class SelectionViewController: UIViewController {
     }
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
+        //all defaults of labels, buttons and textfields
+        
+        yearLabel.text = selectedPlan.date
+        monthLabel.text = selectedPlan.date
+        dayLabel.text = selectedPlan.date
+        
+        timeButton.setTitle( selectedPlan.time, for: .normal)
+        whoButton.setTitle( "\(selectedPlan.whoCategory)", for: .normal)
+        if (selectedPlan.whatCategory != WhatCategory.Undefined){
+            whatButton.setTitle( "\(String(describing: selectedPlan.whatCategory))", for: .normal)
+        }
+        
+        if !(selectedPlan.withWho?.isEmpty ?? true){
+            whoTF.text = selectedPlan.withWhoString
+        }
+        if !(selectedPlan.doWhat?.isEmpty ?? true){
+            whatTF.text = selectedPlan.doWhat
+        }
+        if !(selectedPlan.place?.isEmpty ?? true){
+            placeTF.text = selectedPlan.place
+        }
+        
+        
+    }
+    
+    
+    
     @IBAction func doneEditing(_ sender : Any){
         
         //apply all the changes
         
         //perform segue
-        performSegue(withIdentifier: "" , sender: self)
+        dismiss(animated: true, completion: nil)
     }
     
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var listVC = segue.destination as! ViewController
+        let listVC = segue.destination as! ViewController
         listVC.currentMonthPlans[ listVC.sortedDatesofMonth[selectedIndexPath.section] ]![selectedIndexPath.row] = selectedPlan
     }
     
