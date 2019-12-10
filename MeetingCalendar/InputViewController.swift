@@ -23,6 +23,13 @@ class InputViewController: UIViewController {
     
     @IBOutlet weak var whereTF: UITextField!
     
+    @IBOutlet weak var timePickerTF: UITextField!
+    
+    var datePicker : UIDatePicker?
+    var timePicker : UIDatePicker?
+    
+    var whoCatPicker : UIPickerView?
+    var whatCatPicker : UIPickerView?
     
     
     
@@ -39,8 +46,17 @@ class InputViewController: UIViewController {
         configureDelegates()
         configureTapGesture()
         
+        datePicker = UIDatePicker()
+        datePicker?.datePickerMode = .date
+        
+        
+        timePicker = UIDatePicker()
+        timePicker!.datePickerMode = .time
+        timePicker!.minuteInterval = 5
+        timePicker!.addTarget(self, action: #selector(InputViewController.timePickerInputChanged), for: .valueChanged) //currently set to valueChanged, but need better trigger
+        timePickerTF.inputView = timePicker
 
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading  the view.
     }
     
     
@@ -70,7 +86,7 @@ extension InputViewController : UITextFieldDelegate {
     }
     
     private func configureTapGesture(){
-        let tapGuesture = UITapGestureRecognizer(target: self, action: #selector(SelectionViewController.tapAction))
+        let tapGuesture = UITapGestureRecognizer(target: self, action: #selector(InputViewController.tapAction))
         view.addGestureRecognizer(tapGuesture)
     }
     
@@ -85,8 +101,32 @@ extension InputViewController : UITextFieldDelegate {
     
     
     @objc func tapAction(){
+        
         view.endEditing(true)
     }
+    
+    
+    @objc func timePickerInputChanged(){
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        timePickerTF.text = timeFormatter.string(from: timePicker!.date)
+        view.endEditing(true)
+        
+    }
+    
+    @objc func datePickerInputChanged(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var dateString = dateFormatter.string(from: datePicker!.date).components(separatedBy: "-")
+        
+        let yearString = dateString[0]
+        let monthString = dateString[1]
+        let dayString = dateString[2]
+        
+        
+        
+    }
+    
     
     
     
