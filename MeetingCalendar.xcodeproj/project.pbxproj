@@ -18,6 +18,7 @@
 		2C916A40237B9A3F00341F5D /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A3F237B9A3F00341F5D /* Plan.swift */; };
 		2C916A42237B9F6800341F5D /* PlanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A41237B9F6800341F5D /* PlanList.swift */; };
 		36706A3C238C23520084BE82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36706A3B238C23520084BE82 /* Main.storyboard */; };
+		3679464E239F842D003EAD3A /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679464D239F842D003EAD3A /* InputViewController.swift */; };
 		3680AC1523964B03001EFDD7 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680AC1423964B03001EFDD7 /* SelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		2C916A3F237B9A3F00341F5D /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		2C916A41237B9F6800341F5D /* PlanList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanList.swift; sourceTree = "<group>"; };
 		36706A3B238C23520084BE82 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		3679464D239F842D003EAD3A /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		3680AC1423964B03001EFDD7 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 				2C916A11237B953900341F5D /* SceneDelegate.swift */,
 				2C916A13237B953900341F5D /* ViewController.swift */,
 				36706A3B238C23520084BE82 /* Main.storyboard */,
+				3679464D239F842D003EAD3A /* InputViewController.swift */,
 				3680AC1423964B03001EFDD7 /* SelectionViewController.swift */,
 				2C916A3F237B9A3F00341F5D /* Plan.swift */,
 				2C916A41237B9F6800341F5D /* PlanList.swift */,
@@ -291,6 +294,7 @@
 				2C916A40237B9A3F00341F5D /* Plan.swift in Sources */,
 				3680AC1523964B03001EFDD7 /* SelectionViewController.swift in Sources */,
 				2C916A14237B953900341F5D /* ViewController.swift in Sources */,
+				3679464E239F842D003EAD3A /* InputViewController.swift in Sources */,
 				2C916A42237B9F6800341F5D /* PlanList.swift in Sources */,
 				2C916A10237B953900341F5D /* AppDelegate.swift in Sources */,
 				2C916A12237B953900341F5D /* SceneDelegate.swift in Sources */,

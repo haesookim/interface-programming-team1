@@ -250,7 +250,15 @@ extension ViewController : editPlanDelegate{
     
     func editPlan(plan: Plan, indexPath : IndexPath) {
         self.dismiss(animated: true) {
-            self.currentMonthPlans[ self.sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ]  = plan
+            
+            
+            //IMPORTANT : the data should be stored in original myPlanList, not temporary currentMonthPlans
+            //self.currentMonthPlans[ self.sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ]  = plan
+            
+            //Assumption : we are only able to edit the plans that are on current month
+            // --> sounds legit
+            self.myPlanList.completePlanList[self.currentMonthString]?[ self.sortedDatesofMonth[indexPath.section] ]?[indexPath.row - 1 ] = plan
+            
             
             //how to update the data
             self.tableView.reloadData()
