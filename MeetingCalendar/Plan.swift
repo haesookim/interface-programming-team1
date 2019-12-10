@@ -8,21 +8,21 @@
 
 import Foundation
 
-enum WhoCategory : Equatable{
-    case Friend
-    case SignificantOther
-    case Family
-    case Work
-    case Club
-    case Religion
-    case Other
-    case Undefined // Initial state
+enum WhoCategory : String{
+    case Friend = "친구"
+    case SignificantOther = "연인"
+    case Family = "가족"
+    case Work = "동료"
+    case Club = "동아리"
+    case Religion = "종교"
+    case Other = "기타"
+    case Undefined = "" // Initial state
 }
 
-enum WhatCategory : Equatable{
-    case Work
-    case Other
-    case Undefined //Initial state
+enum WhatCategory : String{
+    case Work = "일"
+    case Other = "기타"
+    case Undefined = "" //Initial state
     
 }
 
@@ -59,6 +59,7 @@ class Plan{
           place : String?        ){
         
         if (date.isEmpty || whoCategory == WhoCategory.Undefined ) {
+            print("plan went wrong")
             return nil
             // fail init when the above required fields are empty
             // We may forego this data validation step by adding a client-side prevention
@@ -103,4 +104,35 @@ class Plan{
     func seeDetail(){
         
     }
+    
+    
+    func withWhoStringToArray(_ newWithWhoString : String){
+        withWhoString = newWithWhoString
+        let newString = withWhoString?.replacingOccurrences(of: ", ", with: ",")
+        withWho = newString?.components(separatedBy: ",")
+      
+        
+    }
+    
+    func withWhoArrayToString(_ newWithWhoArray : [String]){
+        withWho = newWithWhoArray
+        if(withWho!.count > 1){
+                                  var str = ""
+                                  
+                                  //re-generate withWhoString
+                                  for e in (withWho)!{
+                                      if(str == ""){
+                                          str = e
+                                      }else{
+                                          str += ( ", " + e )
+                                      }
+                                  }
+                                  
+                                  withWhoString = str
+               }else{
+                   withWhoString = withWho![0]
+        }
+        
+    }
+    
 }

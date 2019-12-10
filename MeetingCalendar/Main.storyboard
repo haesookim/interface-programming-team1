@@ -70,7 +70,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sticker1" translatesAutoresizingMaskIntoConstraints="NO" id="bPB-DT-rEL">
-                                                    <rect key="frame" x="5" y="7" width="97.5" height="22.5"/>
+                                                    <rect key="frame" x="5" y="7" width="192" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="bPB-DT-rEL" secondAttribute="height" multiplier="48:11" id="DHD-ZU-ODx"/>
                                                     </constraints>
@@ -192,6 +192,7 @@
                     <tabBarItem key="tabBarItem" title="List" id="VLg-dd-RSR"/>
                     <navigationItem key="navigationItem" id="ClM-si-n6P"/>
                     <connections>
+                        <outlet property="tableView" destination="JWd-4o-JfW" id="PHc-NV-Exs"/>
                         <segue destination="W4t-XU-YlE" kind="presentation" identifier="EnterEditing" id="ICW-XW-tRI"/>
                     </connections>
                 </viewController>
@@ -430,7 +431,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wb6-sh-iah" userLabel="DeleteButton">
-                                        <rect key="frame" x="341" y="211" width="14" height="22"/>
+                                        <rect key="frame" x="327" y="193" width="28" height="40"/>
                                         <state key="normal" image="page2_2trash-1">
                                             <attributedString key="attributedTitle"/>
                                         </state>
@@ -481,6 +482,14 @@
                                             <constraint firstAttribute="width" constant="40" id="gsR-c7-cAh"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOM-f1-7w1" userLabel="ConfrimButton">
+                                        <rect key="frame" x="153" y="200" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="confirmEditing:" destination="W4t-XU-YlE" eventType="touchUpInside" id="jvH-3b-Bxn"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Wb6-sh-iah" secondAttribute="bottom" constant="5" id="1jj-BO-50F"/>
@@ -517,7 +526,7 @@
                                     <attributedString key="attributedTitle"/>
                                 </state>
                                 <connections>
-                                    <action selector="doneEditing:" destination="W4t-XU-YlE" eventType="touchUpInside" id="WZp-4r-09R"/>
+                                    <action selector="cancelEditing:" destination="W4t-XU-YlE" eventType="touchUpInside" id="s4M-HU-6JV"/>
                                 </connections>
                             </button>
                         </subviews>

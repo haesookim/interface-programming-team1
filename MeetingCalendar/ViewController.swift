@@ -11,6 +11,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //im guessing this outlet has no purpose
     @IBOutlet weak var listTableView: UITableView!
     
     
@@ -36,10 +37,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
-        //print(currentMonthPlans["2019/12"]![0].date)
-        print("initialize in viewcontroller")
         
     }
+    
+    
     
     required init?(coder: NSCoder) {
         
@@ -47,11 +48,6 @@ class ViewController: UIViewController {
         myPlanList = PlanList()
         
         sortedDatesofMonth = [""]
-        
-        //test initialization of celldata
-        
-        
-        //test initialization of listofPlanLists
         
         currentMonthString = "2019/12"
         
@@ -77,8 +73,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     //this case, number of date entries in month
     func numberOfSections(in tableView: UITableView) -> Int {
 
-        print("generate no of sections \(currentMonthPlans.count) ")
-        
         return currentMonthPlans.count
     }
     
@@ -88,8 +82,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         
         //generate key array and sort
         sortedDatesofMonth = Array(currentMonthPlans.keys).sorted(by : <)
-        
-        print("generate no of rows \(currentMonthPlans[ sortedDatesofMonth[section] ]!.count) ")
         
         return currentMonthPlans[ sortedDatesofMonth[section] ]!.count + 1
     }
@@ -101,15 +93,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         
         if(indexPath.row) == 0{ // this cell will be used for showing the section(date)
             let cell = tableView.dequeueReusableCell(withIdentifier: "DateHeader", for: indexPath)
-            //let header = sortedDatesofMonth[indexPath.section]
             
             //use guard to be precise
             let header = cell.viewWithTag(10) as? UILabel
             header?.text = sortedDatesofMonth[indexPath.section]
-            //cell.textLabel?.text = header
-            //sticker selection is further behind priority
             
-            print("generate header cell \(String(describing: header))")
+            print("generate header cell")
             
             return cell
             
@@ -145,18 +134,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             //tag 3 : specifics(label)
             if let specLabel = cell.viewWithTag(3) as? UILabel{
                 if(item.withWho != [""]){
-//                    var str = ""
-//
-//                    //re-generate withWhoString
-//                    for e in (item.withWho)!{
-//                        if(str == ""){
-//                            str = e
-//                        }else{
-//                            str += ( ", " + e )
-//                        }
-//                    }
-//
-//                    specLabel.text = str
                     specLabel.text = item.withWhoString
                     
                 }else{
@@ -190,14 +167,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
             
             if(indexPath.row != 0){//not header
+            tableView.reloadData()
                 
                 //data to be sent
                 indexPathforEditing = indexPath
                 
                 planforEditing = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ]
                 
+                
+                
                 //perform Segue
                 performSegue(withIdentifier: "EnterEditing" , sender: self)
+                
                 
                 //inter-VC data transfer will be ran in prepare segue
                 
@@ -205,13 +186,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
             //ends the function by deselecting the row selected by this function
             tableView.deselectRow(at: indexPath, animated: true)
-            
+        
         //}
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let editVC = segue.destination as! SelectionViewController
         print("transfer!")
+        editVC.editDelegate = self
         editVC.selectedPlan = planforEditing
         editVC.selectedIndexPath = indexPathforEditing
     }
@@ -237,54 +219,41 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 //    }
     
     
-//    func configureColor(for cell: UITableViewCell, with item: Plan) {
-//        //cell.accessoryType = item.checked ? .checkmark : .none
-//        if let categoryIndicator = cell.viewWithTag(1) as? UIView{
-//            switch (item.category){
-//            case Category.Friend:
-//                categoryIndicator.backgroundColor = UIColor.red
-//
-//            default:
-//                categoryIndicator.backgroundColor = UIColor.black
-//            }
-//        }
-//    }
-//
-//    //function that changes the cell's text to match the text in the item
-//    func configureText(for cell: UITableViewCell, with item: Plan) {
-//
-//        //check for the view in the cell with the tag1000, which is the label in the cell
-//        // also check wheather it is a UIlabel by as?
-//        if let label = cell.viewWithTag(2) as? UILabel {
-//            //label.text = item.meetingWith
-//        }
-//    }
 
 
 
     //function of adding an item into the row of the table, action sent by add button(the sender)
-        @IBAction func addNewPlaninTable(_ sender: Any) {
+        func addNewPlaninTable() {
             
             //get count of the todolist = the new index
-//            let newRowIndex = to doList.todos.count
+            //let newRowIndex = currentMonthPlans[ self.sortedDatesofMonth[ indexPath.section ] ].count
             
             //newTodo() returns the item - but the returned item will not be used anyway
             //so _ is used and just the initializing is done
             //newTodo() has embedded process of automatically adding the new item into the todo list
-//            _ = todoList.newTodo()
-    //        tableView.reloadData()
+            //_ = todoList.newTodo()
+            tableView.reloadData()
             
             
-            //not sure of what the "section" here is,
             //but anyway, IndexPath generates a direct(?) path that leads to the newRowIndex generated
-//            let indexPath = IndexPath(row: newRowIndex, section: 0)
-//            let indexPaths = [indexPath]
+            //let indexPath = IndexPath(row: newRowIndex, section: 0)
+            //let indexPaths = [indexPath]
             
             //actual row is added to the tableview (+ with animation)
-            //my guess is that now the row in the tableview holds the indexpath data of that cell
-            //meaning that each rows in the tableview has its own indexpaths
-            //which then can be referenced when the cell is selected on the screen(storyboard)
-//            tableView.insertRows(at: indexPaths, with: .automatic)
+            //tableView.insertRows(at: indexPaths, with: .automatic)
         }
     
+}
+
+
+extension ViewController : editPlanDelegate{
+    
+    func editPlan(plan: Plan, indexPath : IndexPath) {
+        self.dismiss(animated: true) {
+            self.currentMonthPlans[ self.sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ]  = plan
+            
+            //how to update the data
+            self.tableView.reloadData()
+        }
+    }
 }
