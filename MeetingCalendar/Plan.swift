@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum WhoCategory : String{
+enum WhoCategory : String, CaseIterable{
     case Friend = "친구"
     case SignificantOther = "연인"
     case Family = "가족"
@@ -19,7 +19,7 @@ enum WhoCategory : String{
     case Undefined = "" // Initial state
 }
 
-enum WhatCategory : String{
+enum WhatCategory : String, CaseIterable{
     case Work = "일"
     case Other = "기타"
     case Undefined = "" //Initial state
