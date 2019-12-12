@@ -48,6 +48,7 @@ class InputViewController: UIViewController {
     
     var selectedWhoCat : WhoCategory?
     var selectedWhatCat : WhatCategory?
+    var enteredDate : Date?
     
     
     
@@ -113,8 +114,32 @@ class InputViewController: UIViewController {
         //apply the settings and pass it to the list view controller
         
         
+        
+        //navigate into list view?
+        
+        
+        
+        //else
+        clearInputData()
+        
     }
     
+    
+    func clearInputData(){
+
+        whoCatTF.text = ""
+        withWhoTF.text = ""
+        whatCatTF.text = ""
+        doWhatTF.text = ""
+        whereTF.text = ""
+        timePickerTF.text = ""
+        datePickerTFDummy.text = ""
+        yearTFDummy.text = ""
+        monthTFDummy.text = ""
+        dayTFDummy.text = ""
+        
+        
+    }
 
 }
 
@@ -159,6 +184,9 @@ extension InputViewController : UITextFieldDelegate {
     }
     
     @objc func datePickerInputChanged(){
+        
+        enteredDate = datePicker!.date
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: datePicker!.date).components(separatedBy: "-")

@@ -8,12 +8,16 @@
 
 import UIKit
 
+enum Month : Int{
+    
+    case Jan = 1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
+    
+}
+
+
+
 
 class ViewController: UIViewController {
-    
-    //im guessing this outlet has no purpose
-    @IBOutlet weak var listTableView: UITableView!
-    
     
     //full plan list
     var myPlanList : PlanList
@@ -26,11 +30,47 @@ class ViewController: UIViewController {
     //sorted array of dictionary keys, that will be used as sections
     var sortedDatesofMonth : [String]
     
+    var yearMonthPair : [Int]
+    
     
     var indexPathforEditing : IndexPath
     var planforEditing : Plan
     
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    @IBAction func toPreviousMonth(_ sender: Any) {
+        
+        if (yearMonthPair[1] <= 1 ) {
+            yearMonthPair[1] = 12
+            yearMonthPair[0] -= 1
+            
+        } else {
+            yearMonthPair[1] -= 1
+            
+        }
+        
+        //re-calculate currentmonth
+        
+    }
+    
+    
+    @IBAction func toNextMonth(_ sender: Any) {
+        
+        if (yearMonthPair[1] >= 12 ) {
+            yearMonthPair[1] = 1
+            yearMonthPair[0] += 1
+            
+        } else {
+            yearMonthPair[1] += 1
+            
+        }
+        
+        
+    }
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +97,8 @@ class ViewController: UIViewController {
             
         }
         currentMonthPlans.removeValue(forKey: "")
+        
+        yearMonthPair = [2019, 12]
         
         indexPathforEditing = IndexPath(row: 1, section: 1)
         
@@ -107,15 +149,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             //let item = listofPlanLists[indexPath.row].planList[indexPath.row]
             let item = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ] //is a Plan object
             
-            //following process will be unnecessary
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "yyyy-MM-dd"
-//
-//            let dateValue = dateFormatter.string(from: item.date)
-//            cell.textLabel?.text = dateValue
-            
-            //cell.textLabel?.text = tableViewData[indexPath.section].plans[indexPath.row]
-            
             print("generate plan cell")
             
             //tag 1 : time(label)
@@ -126,7 +159,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
             
             //tag 2 : whoCategory sticker(image)
-            if let whoSticker = cell.viewWithTag(2) as? UIImageView{
+            if let colorSticker = cell.viewWithTag(2) as? UIImageView{
                 
                 
             }
@@ -145,8 +178,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 
             }
             
-            //tag 4 : comprehensive sticker(image)
-            if let compSticker = cell.viewWithTag(4) as? UIImageView{
+            //tag 4 : character sticker(image)
+            if let characterSticker = cell.viewWithTag(4) as? UIImageView{
+                //sticker.image = [UIImage imageNamed: @ ""]
+            }
+            
+            //tag 5 : hat sticker(image)
+            if let hatSticker = cell.viewWithTag(5) as? UIImageView{
                 //sticker.image = [UIImage imageNamed: @ ""]
             }
             
@@ -222,26 +260,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 
 
 
-    //function of adding an item into the row of the table, action sent by add button(the sender)
-        func addNewPlaninTable() {
-            
-            //get count of the todolist = the new index
-            //let newRowIndex = currentMonthPlans[ self.sortedDatesofMonth[ indexPath.section ] ].count
-            
-            //newTodo() returns the item - but the returned item will not be used anyway
-            //so _ is used and just the initializing is done
-            //newTodo() has embedded process of automatically adding the new item into the todo list
-            //_ = todoList.newTodo()
-            tableView.reloadData()
-            
-            
-            //but anyway, IndexPath generates a direct(?) path that leads to the newRowIndex generated
-            //let indexPath = IndexPath(row: newRowIndex, section: 0)
-            //let indexPaths = [indexPath]
-            
-            //actual row is added to the tableview (+ with animation)
-            //tableView.insertRows(at: indexPaths, with: .automatic)
-        }
     
 }
 
