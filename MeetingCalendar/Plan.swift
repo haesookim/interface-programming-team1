@@ -26,6 +26,9 @@ enum WhatCategory : String, CaseIterable{
     
 }
 
+// TODO : input type of Dates should be confirmed
+// TODO : customizing catogories needed...?
+
 
 class Plan{
     
@@ -34,6 +37,10 @@ class Plan{
     
     //time
     var date: String; //Parse date information from viewcontroller
+    var year: String
+    var month : String
+    var day : String
+    
     var time: String?; //dataType may change
     
     //who
@@ -50,7 +57,7 @@ class Plan{
     var place : String?
 
     
-    init!(date: String,
+    init!(date: String, // yyyy/MM/dd format
           time: String?,
           whoCategory: WhoCategory,
           withWho: [String]?,
@@ -58,7 +65,13 @@ class Plan{
           doWhat: String?,
           place : String?        ){
         
-        if (date.isEmpty || whoCategory == WhoCategory.Undefined ) {
+        let dateArray = date.components(separatedBy: "/")
+               
+        
+        //much more precise approach?
+        //level 0 : if input data for initializing is not enough, return nil
+        if (dateArray[0].isEmpty || dateArray[1].isEmpty || dateArray[2].isEmpty || dateArray.count != 3
+            || whoCategory == WhoCategory.Undefined ) {
             print("plan went wrong")
             return nil
             // fail init when the above required fields are empty
@@ -67,6 +80,11 @@ class Plan{
         }
         
         self.date = date
+        
+        self.year = dateArray[0]
+        self.month = dateArray[1]
+        self.day = dateArray[2]
+        
         self.time = time ?? ""
         self.whoCategory = whoCategory
         self.withWho = withWho ?? [""]
@@ -74,7 +92,6 @@ class Plan{
         self.whatCategory = whatCategory ?? WhatCategory.Undefined
         self.doWhat = doWhat ?? ""
         self.place = place ?? ""
-        
         
         
         if(withWho!.count > 1){
@@ -97,11 +114,24 @@ class Plan{
         
     }
     
-    func editPlan(){
-        
-    }
     
-    func seeDetail(){
+    //for editing the plan, without change in dates(key)
+    func editPlan( time: String?,
+                 whoCategory: WhoCategory,
+                 withWhoString : String?,
+                 whatCategory: WhatCategory?,
+                 doWhat: String?,
+                 place : String?){
+        
+        self.time = time ?? ""
+        self.whoCategory = whoCategory
+        //self.withWho = withWho ?? [""]
+        self.withWhoStringToArray(withWhoString ?? "")
+        self.withWhoCount = withWho?.count ?? 0
+        self.whatCategory = whatCategory ?? WhatCategory.Undefined
+        self.doWhat = doWhat ?? ""
+        self.place = place ?? ""
+        
         
     }
     
@@ -110,12 +140,14 @@ class Plan{
         withWhoString = newWithWhoString
         let newString = withWhoString?.replacingOccurrences(of: ", ", with: ",")
         withWho = newString?.components(separatedBy: ",")
+        withWhoCount = withWho?.count
       
         
     }
     
     func withWhoArrayToString(_ newWithWhoArray : [String]){
         withWho = newWithWhoArray
+        withWhoCount = withWho?.count
         if(withWho!.count > 1){
                                   var str = ""
                                   
@@ -132,6 +164,11 @@ class Plan{
                }else{
                    withWhoString = withWho![0]
         }
+        
+    }
+    
+    func printforDebug(){
+        print("date : \(date)\n time : \(time)\n whoCat : \(whoCategory.rawValue)\n withWhoString : \(withWhoString)\n whatCategory : \(whatCategory?.rawValue)\n doWhat : \(doWhat)\n where : \(place)")
         
     }
     

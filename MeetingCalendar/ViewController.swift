@@ -20,7 +20,8 @@ enum Month : Int{
 class ViewController: UIViewController {
     
     //full plan list
-    var myPlanList : PlanList
+    //var myPlanList : PlanList
+    //now uses singleton
     
     //for current month
     var currentMonthString : String //key for the completeDict
@@ -33,11 +34,15 @@ class ViewController: UIViewController {
     var yearMonthPair : [Int]
     
     
+    
+    //parameters for data transfer
     var indexPathforEditing : IndexPath
     var planforEditing : Plan
+    var monthStringforEditing : String
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var monthIcon : UIButton!
     
     @IBAction func toPreviousMonth(_ sender: Any) {
         
@@ -50,7 +55,7 @@ class ViewController: UIViewController {
             
         }
         
-        //re-calculate currentmonth
+        applyMonthChange()
         
     }
     
@@ -66,33 +71,70 @@ class ViewController: UIViewController {
             
         }
         
+        applyMonthChange()
         
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        applyMonthChange()
+    }
+    
+    
+    func applyMonthChange(){
+        
+        //re-calculate currentmonth and extract currentMonthPlans
+        currentMonthString = String(yearMonthPair[0]) + "/" + String(yearMonthPair[1])
+        
+        monthStringforEditing = currentMonthString
+        
+        currentMonthPlans = [ "":[] ]
+        
+        //use if let in case of months with no plans
+        if let monthList = PlanList.shared.completePlanList[currentMonthString] {
+            for (key, value) in monthList{
+                currentMonthPlans[key] = value
+            }
+        } else {print("No plans in current month!")}
+        
+        
+        //debug purposes
+        print("current year/month = " + "\(currentMonthString)")
+        
+        
+        
+        // TODO : update the month icon according to change made
+        
+        
+        //update the table
+        currentMonthPlans.removeValue(forKey: "")
+        
+        tableView.reloadData()
+        
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
-        
     }
+    
+    
     
     
     
     required init?(coder: NSCoder) {
         
         //is required if initializing is needed
-        myPlanList = PlanList()
+        //myPlanList = PlanList()
         
         sortedDatesofMonth = [""]
         
         currentMonthString = "2019/12"
         
         currentMonthPlans = [ "":[] ]
-        for (key, value) in myPlanList.completePlanList[currentMonthString]!{
+        for (key, value) in PlanList.shared.completePlanList[currentMonthString]!{
             currentMonthPlans[key] = value
             
         }
@@ -100,9 +142,12 @@ class ViewController: UIViewController {
         
         yearMonthPair = [2019, 12]
         
-        indexPathforEditing = IndexPath(row: 1, section: 1)
         
-        planforEditing = Plan(date: "2019/12", time: "", whoCategory: WhoCategory.Other, withWho: [""], whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
+        
+        
+        indexPathforEditing = IndexPath(row: 1, section: 1)
+        planforEditing = Plan(date: "2019/12/25", time: "", whoCategory: WhoCategory.Other, withWho: [""], whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
+        monthStringforEditing = "2019/12"
         
         super.init(coder: coder)
     }
@@ -130,6 +175,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     //function that generates cell in a certain indexpath
+    //and applies changes within the cells
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -146,7 +192,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
         }else{ //these cells will be used for showing the actual PlanItems
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlanItem", for: indexPath)
-            //let item = listofPlanLists[indexPath.row].planList[indexPath.row]
+            
             let item = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ] //is a Plan object
             
             print("generate plan cell")
@@ -161,6 +207,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             //tag 2 : whoCategory sticker(image)
             if let colorSticker = cell.viewWithTag(2) as? UIImageView{
                 
+                // TODO : Update color stickers according to whoCat
+                //sticker.image = [UIImage imageNamed: @ ""]
                 
             }
             
@@ -172,7 +220,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 }else{
                     
                     //when there is no entry for withWho, apply whoCategory
-                    specLabel.text = "\(item.whoCategory)"
+                    specLabel.text = item.whoCategory.rawValue
                 }
                 
                 
@@ -180,15 +228,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
             //tag 4 : character sticker(image)
             if let characterSticker = cell.viewWithTag(4) as? UIImageView{
+                
+                // TODO : Update character stickers according to whoCat
                 //sticker.image = [UIImage imageNamed: @ ""]
             }
             
             //tag 5 : hat sticker(image)
             if let hatSticker = cell.viewWithTag(5) as? UIImageView{
+                
+                // TODO : Update hat stickers according to whatCat
                 //sticker.image = [UIImage imageNamed: @ ""]
             }
-            
-            //do other stuff such as visualization for PlanItem cells
             
             return cell
         }
@@ -198,42 +248,39 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     //function that enters to edit mode when selected
-    //more sophisticated codes will come
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        //if let cell = tableView.cellForRow(at: indexPath) {
             
-            
-            if(indexPath.row != 0){//not header
+        if(indexPath.row != 0){//not header
             tableView.reloadData()
-                
-                //data to be sent
-                indexPathforEditing = indexPath
-                
-                planforEditing = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ]
-                
-                
-                
-                //perform Segue
-                performSegue(withIdentifier: "EnterEditing" , sender: self)
-                
-                
-                //inter-VC data transfer will be ran in prepare segue
-                
-            }
             
-            //ends the function by deselecting the row selected by this function
-            tableView.deselectRow(at: indexPath, animated: true)
+            //data to be sent
+            indexPathforEditing = indexPath
+            
+            planforEditing = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ]
+            
+            
+            //perform Segue
+            performSegue(withIdentifier: "EnterEditing" , sender: self)
+            
+            
+            //inter-VC data transfer will be ran in prepare segue
+            
+        }
         
-        //}
+        //ends the function by deselecting the row selected by this function
+        tableView.deselectRow(at: indexPath, animated: true)
+    
     }
     
+    //function that does the actual data transfer
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let editVC = segue.destination as! SelectionViewController
         print("transfer!")
         editVC.editDelegate = self
         editVC.selectedPlan = planforEditing
         editVC.selectedIndexPath = indexPathforEditing
+        editVC.selectedYearMonth = monthStringforEditing
     }
     
     
@@ -266,7 +313,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 
 extension ViewController : editPlanDelegate{
     
-    func editPlan(plan: Plan, indexPath : IndexPath) {
+    func editPlan(plan: Plan, indexPath : IndexPath, yearMonthKey : String) {
         self.dismiss(animated: true) {
             
             
@@ -275,7 +322,18 @@ extension ViewController : editPlanDelegate{
             
             //Assumption : we are only able to edit the plans that are on current month
             // --> sounds legit
-            self.myPlanList.completePlanList[self.currentMonthString]?[ self.sortedDatesofMonth[indexPath.section] ]?[indexPath.row - 1 ] = plan
+            //PlanList.shared.completePlanList[self.currentMonthString]?[ self.sortedDatesofMonth[indexPath.section] ]?[indexPath.row - 1 ] = plan
+            
+            //use new editplan
+            PlanList.shared.editPlan(originalIndexPath: indexPath,
+                                     yearMonthKey: yearMonthKey,
+                                     date: plan.date,
+                                     time: plan.time,
+                                     whoCategory: plan.whoCategory,
+                                     withWhoString: plan.withWhoString,
+                                     whatCategory: plan.whatCategory,
+                                     doWhat: plan.doWhat,
+                                     place: plan.place)
             
             
             //how to update the data

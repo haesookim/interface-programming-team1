@@ -38,7 +38,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="logo"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uba-q0-X9U" userLabel="CurrentMonth">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uba-q0-X9U" userLabel="CurrentMonth">
                                 <rect key="frame" x="164" y="121" width="68" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="font_nov">
@@ -141,7 +141,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hSD-SD-K94" userLabel="hatSticker">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hSD-SD-K94" userLabel="hatSticker">
                                                     <rect key="frame" x="302" y="27" width="29" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -211,6 +211,7 @@
                     <navigationItem key="navigationItem" id="ClM-si-n6P"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="monthIcon" destination="uba-q0-X9U" id="nS1-Re-tXN"/>
                         <outlet property="tableView" destination="JWd-4o-JfW" id="PHc-NV-Exs"/>
                         <segue destination="W4t-XU-YlE" kind="presentation" identifier="EnterEditing" id="ICW-XW-tRI"/>
                     </connections>
@@ -397,38 +398,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="238"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di7-Es-lpC" userLabel="DateLabel">
-                                        <rect key="frame" x="52" y="23" width="59" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWT-CC-YhF" userLabel="DateLabel">
-                                        <rect key="frame" x="132" y="23" width="49" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUD-Es-ZYY" userLabel="DateLabel">
-                                        <rect key="frame" x="191" y="23" width="49" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjQ-8b-Iam" userLabel="TimeInput">
-                                        <rect key="frame" x="250" y="23" width="89" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="23" id="8Qj-e3-2k3"/>
-                                            <constraint firstAttribute="width" constant="89" id="rGi-xK-3h8"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                    </button>
                                     <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="With Whom?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xta-Nl-qPI" userLabel="WithTextField2">
                                         <rect key="frame" x="136" y="58" width="171" height="34"/>
                                         <constraints>
@@ -456,13 +425,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbI-xQ-ojU" userLabel="DateInput">
-                                        <rect key="frame" x="41" y="16" width="204" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="UVC-tF-6hP"/>
-                                            <constraint firstAttribute="width" constant="204" id="r42-fM-2mB"/>
-                                        </constraints>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="에" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2t-2I-6Yw">
                                         <rect key="frame" x="309" y="23" width="36" height="23"/>
                                         <constraints>
@@ -473,28 +435,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oa-ib-okQ" userLabel="whoCat">
-                                        <rect key="frame" x="64" y="64" width="58" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="58" id="7oo-KD-FlK"/>
-                                            <constraint firstAttribute="height" constant="23" id="WoX-pU-DWe"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXy-pM-QAf" userLabel="whatCat">
-                                        <rect key="frame" x="64" y="111" width="58" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="58" id="Kco-q3-T8z"/>
-                                            <constraint firstAttribute="height" constant="23" id="dsU-6j-lVm"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                    </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sticker2_1" translatesAutoresizingMaskIntoConstraints="NO" id="FAA-fy-Lj5">
                                         <rect key="frame" x="-16" y="14" width="40" height="40"/>
                                         <constraints>
@@ -516,30 +456,113 @@
                                             <attributedString key="attributedTitle"/>
                                         </state>
                                     </button>
+                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="무엇을 하나요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-dA-BOu" userLabel="WhatTextField1">
+                                        <rect key="frame" x="61" y="108" width="49" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="49" id="Gam-d7-K7v"/>
+                                            <constraint firstAttribute="height" constant="30" id="p0j-vH-9GV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="어떤 사람들과? (필수)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKb-Pu-uoh" userLabel="WithTextField1">
+                                        <rect key="frame" x="61" y="58" width="49" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="49" id="W2r-va-idE"/>
+                                            <constraint firstAttribute="height" constant="34" id="dQJ-ad-Lqn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="일" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ycH-Cz-56k" userLabel="DummyDayTF">
+                                        <rect key="frame" x="190" y="25" width="46" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="VYh-2e-ZZP"/>
+                                            <constraint firstAttribute="height" constant="21" id="cFM-gW-Fyk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="연" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ogj-QJ-NBF" userLabel="DummyYearTF">
+                                        <rect key="frame" x="48" y="25" width="72" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="72" id="Bgf-Xh-xAg"/>
+                                            <constraint firstAttribute="height" constant="21" id="dLb-vh-oKh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="월" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzP-IV-DTV" userLabel="DummyMonthTF">
+                                        <rect key="frame" x="132" y="24" width="47" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="47" id="Cf1-T9-Kyd"/>
+                                            <constraint firstAttribute="height" constant="21" id="s6L-9k-ZEl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TT:MM" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uU5-Jx-0CR" userLabel="TimePickerTF">
+                                        <rect key="frame" x="247" y="25" width="60" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="4Gk-BP-Y3s"/>
+                                            <constraint firstAttribute="height" constant="21" id="qXB-kM-5NF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C6n-so-sdn" userLabel="DummyDateTF">
+                                        <rect key="frame" x="45" y="16" width="191" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="ITR-Ee-CXL"/>
+                                            <constraint firstAttribute="width" constant="191" id="n6L-YN-YDd"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Wb6-sh-iah" secondAttribute="bottom" constant="8" id="0pm-rM-Niq"/>
-                                    <constraint firstItem="7oa-ib-okQ" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="64" id="4Jr-iA-5Eu"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="21" id="3SB-Kh-TzK"/>
                                     <constraint firstItem="FAA-fy-Lj5" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="14" id="7bQ-4e-CdZ"/>
                                     <constraint firstAttribute="trailing" secondItem="D2t-2I-6Yw" secondAttribute="trailing" constant="8" id="8tg-Om-lit"/>
-                                    <constraint firstItem="kbI-xQ-ojU" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="41" id="9Nu-TY-txo"/>
-                                    <constraint firstItem="FjQ-8b-Iam" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="23" id="Pow-Gq-wAc"/>
-                                    <constraint firstItem="xta-Nl-qPI" firstAttribute="top" secondItem="kbI-xQ-ojU" secondAttribute="bottom" constant="7" id="QLH-be-zev"/>
-                                    <constraint firstItem="kbI-xQ-ojU" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="16" id="SIs-FP-LrS"/>
+                                    <constraint firstItem="EzP-IV-DTV" firstAttribute="leading" secondItem="ogj-QJ-NBF" secondAttribute="trailing" constant="12" id="8uv-Ie-muH"/>
+                                    <constraint firstItem="ogj-QJ-NBF" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="25" id="DlC-Qj-FTF"/>
+                                    <constraint firstItem="YKb-Pu-uoh" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="61" id="Ec3-WJ-Aja"/>
+                                    <constraint firstItem="dSg-dA-BOu" firstAttribute="top" secondItem="YKb-Pu-uoh" secondAttribute="bottom" constant="16" id="Gge-jy-0wV"/>
+                                    <constraint firstItem="YKb-Pu-uoh" firstAttribute="top" secondItem="C6n-so-sdn" secondAttribute="bottom" constant="8" id="KVH-XL-ats"/>
+                                    <constraint firstItem="ogj-QJ-NBF" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="24" id="Kkn-Bd-nJX"/>
+                                    <constraint firstItem="EzP-IV-DTV" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="24" id="RmN-he-bS8"/>
                                     <constraint firstItem="FAA-fy-Lj5" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="-16" id="UVq-f2-NCM"/>
                                     <constraint firstAttribute="width" constant="353" id="XP9-r0-Ytd"/>
                                     <constraint firstAttribute="trailing" secondItem="xta-Nl-qPI" secondAttribute="trailing" constant="46" id="ZBx-cN-N5w"/>
+                                    <constraint firstItem="ycH-Cz-56k" firstAttribute="leading" secondItem="EzP-IV-DTV" secondAttribute="trailing" constant="11" id="aXo-ic-qit"/>
                                     <constraint firstAttribute="height" constant="238" id="cEy-Nm-PDE"/>
+                                    <constraint firstItem="ycH-Cz-56k" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="25" id="eEr-1q-aX3"/>
+                                    <constraint firstItem="uU5-Jx-0CR" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="25" id="fIZ-eK-Mhx"/>
+                                    <constraint firstItem="dSg-dA-BOu" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="61" id="g3Q-A1-Yco"/>
                                     <constraint firstAttribute="trailing" secondItem="MQS-Rm-BHj" secondAttribute="trailing" constant="46" id="gll-Qz-ad5"/>
                                     <constraint firstAttribute="trailing" secondItem="Wb6-sh-iah" secondAttribute="trailing" constant="8" id="hPE-4I-BaY"/>
+                                    <constraint firstAttribute="trailing" secondItem="xta-Nl-qPI" secondAttribute="trailing" constant="46" id="inZ-40-GDj"/>
                                     <constraint firstItem="D2t-2I-6Yw" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="23" id="kbq-HF-Ztf"/>
+                                    <constraint firstItem="xta-Nl-qPI" firstAttribute="top" secondItem="C6n-so-sdn" secondAttribute="bottom" constant="8" id="kce-dq-j0L"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="16" id="keP-mp-qNx"/>
                                     <constraint firstItem="MQS-Rm-BHj" firstAttribute="top" secondItem="xta-Nl-qPI" secondAttribute="bottom" constant="16" id="kl0-MS-Fre"/>
-                                    <constraint firstAttribute="trailing" secondItem="FjQ-8b-Iam" secondAttribute="trailing" constant="14" id="nDM-VJ-ylu"/>
-                                    <constraint firstItem="7oa-ib-okQ" firstAttribute="top" secondItem="kbI-xQ-ojU" secondAttribute="bottom" constant="13" id="oBM-7R-t0N"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="21" id="oNa-vc-m5D"/>
                                     <constraint firstItem="oB1-zZ-IWO" firstAttribute="top" secondItem="MQS-Rm-BHj" secondAttribute="bottom" constant="16" id="q83-hK-vES"/>
-                                    <constraint firstItem="YXy-pM-QAf" firstAttribute="top" secondItem="7oa-ib-okQ" secondAttribute="bottom" constant="24" id="qMw-vZ-RXS"/>
-                                    <constraint firstItem="YXy-pM-QAf" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="64" id="sFE-Ei-X4f"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="16" id="r1J-WA-AIB"/>
                                     <constraint firstAttribute="trailing" secondItem="oB1-zZ-IWO" secondAttribute="trailing" constant="46" id="v60-1w-9jf"/>
+                                    <constraint firstItem="D2t-2I-6Yw" firstAttribute="leading" secondItem="uU5-Jx-0CR" secondAttribute="trailing" constant="2" id="xcH-3y-26o"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yob-Mv-yrH" userLabel="CloseButton">
@@ -566,15 +589,16 @@
                         <viewLayoutGuide key="safeArea" id="Pfl-kk-XQY"/>
                     </view>
                     <connections>
-                        <outlet property="dayLabel" destination="fUD-Es-ZYY" id="Q1c-DD-ktd"/>
-                        <outlet property="monthLabel" destination="SWT-CC-YhF" id="goR-e5-e8g"/>
-                        <outlet property="placeTF" destination="oB1-zZ-IWO" id="K3Z-IW-ObP"/>
-                        <outlet property="timeButton" destination="FjQ-8b-Iam" id="GYw-je-ALr"/>
-                        <outlet property="whatButton" destination="YXy-pM-QAf" id="xZG-SR-x4m"/>
-                        <outlet property="whatTF" destination="MQS-Rm-BHj" id="ENv-3F-sc3"/>
-                        <outlet property="whoButton" destination="7oa-ib-okQ" id="mN3-jQ-YN1"/>
-                        <outlet property="whoTF" destination="xta-Nl-qPI" id="MMc-qj-3Wx"/>
-                        <outlet property="yearLabel" destination="Di7-Es-lpC" id="WqX-bo-22b"/>
+                        <outlet property="datePickerTFDummy" destination="C6n-so-sdn" id="VhZ-uw-owP"/>
+                        <outlet property="dayTFDummy" destination="ycH-Cz-56k" id="FAK-vX-LAG"/>
+                        <outlet property="doWhatTF" destination="MQS-Rm-BHj" id="pdm-U9-bVh"/>
+                        <outlet property="monthTFDummy" destination="EzP-IV-DTV" id="u7D-Z9-SBn"/>
+                        <outlet property="timePickerTF" destination="uU5-Jx-0CR" id="c6K-3j-NW9"/>
+                        <outlet property="whatCatTF" destination="dSg-dA-BOu" id="imE-2g-eLt"/>
+                        <outlet property="whereTF" destination="oB1-zZ-IWO" id="v2S-kh-mXq"/>
+                        <outlet property="whoCatTF" destination="YKb-Pu-uoh" id="Yf2-V2-dBz"/>
+                        <outlet property="withWhoTF" destination="xta-Nl-qPI" id="0dM-R8-UEx"/>
+                        <outlet property="yearTFDummy" destination="ogj-QJ-NBF" id="7kM-pk-4Mx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQF-B9-kHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

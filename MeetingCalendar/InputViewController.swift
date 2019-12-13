@@ -46,18 +46,10 @@ class InputViewController: UIViewController {
     var whoCatArray : [WhoCategory] = []
     var whatCatArray : [WhatCategory] = []
     
-    var selectedWhoCat : WhoCategory?
+    var selectedWhoCat : WhoCategory = WhoCategory.Undefined
     var selectedWhatCat : WhatCategory?
     var enteredDate : Date?
-    
-    
-    
-    
-    
-    //for Plans
-    var newPlan : Plan?
-    
-    
+    var fullDateString : String = ""
     
     
     override func viewDidLoad() {
@@ -111,16 +103,34 @@ class InputViewController: UIViewController {
     //IB action
     
     @IBAction func ConfirmInput(_ sender: Any) {
+        
+        //TODO : Check for errors
+        
         //apply the settings and pass it to the list view controller
+        //try addNewPlan
+        //if successful, clear the input data in the storyboard
+        //if fails( level 1, returning nil) send error message and leave the data in the storyboard for further process
+        if PlanList.shared.addNewPlan(Date: fullDateString,
+                                      time: timePickerTF.text,
+                                      whoCategory: selectedWhoCat,
+                                      withWhoString: withWhoTF.text,
+                                      whatCategory: selectedWhatCat,
+                                      doWhat: doWhatTF.text,
+                                      place: whereTF.text) != nil {
+            
+             //navigate into list view?
+             //not yet
+            
+                 
+             //else
+             clearInputData()
+             
+        }else{
+            
+            //maybe error message here?
+            print("not enough data")
+        }
         
-        
-        
-        //navigate into list view?
-        
-        
-        
-        //else
-        clearInputData()
         
     }
     
@@ -176,6 +186,10 @@ extension InputViewController : UITextFieldDelegate {
     }
     
     
+    // MARK: - Time/Date Picker Related
+    
+    
+    // TODO: - need cancel input
     @objc func timePickerInputChanged(){
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH:mm"
@@ -188,8 +202,9 @@ extension InputViewController : UITextFieldDelegate {
         enteredDate = datePicker!.date
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateString = dateFormatter.string(from: datePicker!.date).components(separatedBy: "-")
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        fullDateString = dateFormatter.string(from: datePicker!.date)
+        let dateString = fullDateString.components(separatedBy: "/")
         
         yearTFDummy.text = dateString[0] + "년"
         monthTFDummy.text = dateString[1] + "월"
@@ -218,6 +233,8 @@ extension InputViewController : UITextFieldDelegate {
 
 
 extension InputViewController : UIPickerViewDelegate, UIPickerViewDataSource{
+    
+    // MARK: - Pickers Related
     
     //need to implement two pickers
     //use tags to distinguish the two
@@ -255,7 +272,7 @@ extension InputViewController : UIPickerViewDelegate, UIPickerViewDataSource{
         if(pickerView.tag == 1){ //who
             
             selectedWhoCat = whoCatArray[row]
-            whoCatTF.text = selectedWhoCat?.rawValue
+            whoCatTF.text = selectedWhoCat.rawValue
         }else{//what
             
             selectedWhatCat = whatCatArray[row]
