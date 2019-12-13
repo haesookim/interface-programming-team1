@@ -40,7 +40,11 @@ class PlanList {
                                                         whatCategory: WhatCategory.Other,
                                                         doWhat: "NewYears",
                                                         place: "Home")]]
+            
         ]
+
+        
+        var targetPlan = completePlanList["2019/12"]["25"][0]
         
     }
     
@@ -114,9 +118,48 @@ class PlanList {
         var planArray = completePlanList[yearMonthKey]?[dayKey]
         planArray?.remove(at: index) // remove item at specified index value
         completePlanList[yearMonthKey]?[dayKey] = planArray
+        
+        if(completePlanList[yearMonthKey]?[dayKey]?.count == 0){
+            completePlanList[yearMonthKey]?.removeValue(forKey: dayKey)
+            print("empty plan removed")
+        }
+        
+    }
+    
+    func editTargetPlan(targetPlan : Plan, newDate : String){
+        //minor changes will have been directly edited already
+        //zb.withwhostringtoarray
+        // except the dates
+        
+        //need to re-calculate position in the completeplanlist
+        let newDateArray = newDate.components(separatedBy: "/")
+        let newyearMonthKey = newDateArray[0]+"/"+newDateArray[1]
+        let newdayKey = newDateArray[2]
+        
+        //add it to the completPlanlist
+        if(PlanList.shared.completePlanList[newyearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
+            PlanList.shared.completePlanList[newyearMonthKey] = [:]
+        }
+        if (PlanList.shared.completePlanList[newyearMonthKey]![newdayKey] == nil){
+            PlanList.shared.completePlanList[newyearMonthKey]![newdayKey] = [targetPlan]
+        } else{
+            PlanList.shared.completePlanList[newyearMonthKey]![newdayKey]?.append(targetPlan)
+        }
+        
+        //delete original
+        let yearMonthKey = targetPlan.year+"/"+targetPlan.month
+        let dayKey = targetPlan.day
+        
+        
+        var planArray = completePlanList[yearMonthKey]?[dayKey]
+        //planArray?.remove(at: index) // remove item at specified index value
+        completePlanList[yearMonthKey]?[dayKey] = planArray
+        
     }
     
     
+    
+    //try not using this for now
     func editPlan(originalIndexPath : IndexPath, //information about secondary key
                     yearMonthKey : String,
                     date: String, //input as yyyy/MM/dd
@@ -140,26 +183,36 @@ class PlanList {
         
         let originalPlan = completePlanList[yearMonthKey]![dayKey ]![originalIndexPath.row - 1] //the actual plan
         
-        originalPlan.printforDebug()
-        print(date)
+        
+        //solved PROBLEM : original plan is altered immediately. why?
+        //im guessing the mechanism is call by reference, since planlist is a singlton
+        //so lets just do the blunt way of deleting and adding regardless
+        
+        print(dayKey)
+        
         
         //check for change in date
-        //PROBLEM : why are they still same?
-        if(originalPlan.date != date){
+        //if(originalPlan.date != date){
             //if so, addnewplan
-            _ = addNewPlan(Date: date, time: time, whoCategory: whoCategory, withWhoString: withWhoString, whatCategory: whatCategory, doWhat: doWhat, place: place)
+//            _ = addNewPlan(Date: date,
+//                                     time: time,
+//                                     whoCategory: whoCategory,
+//                                     withWhoString: withWhoString,
+//                                     whatCategory: whatCategory,
+//                                     doWhat: doWhat,
+//                                     place: place)
             
             //and delete original plan
-            deletePlan(date: originalPlan.date, index: originalIndexPath.row)
+            deletePlan(date: originalPlan.date, index: originalIndexPath.row-1)
             
-        }
-        
-        
-        //else, meaning that the date stays, just apply the other changes
-        else{
-            originalPlan.editPlan(time: time, whoCategory: whoCategory, withWhoString: withWhoString, whatCategory: whatCategory, doWhat: doWhat, place: place)
-            
-        }
+//        }
+//
+//
+//        //else, meaning that the date stays, just apply the other changes
+//        else{
+//            originalPlan.editPlan(time: time, whoCategory: whoCategory, withWhoString: withWhoString, whatCategory: whatCategory, doWhat: doWhat, place: place)
+//
+//        }
         
         
     }

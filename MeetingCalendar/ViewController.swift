@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         }
         
         applyMonthChange()
-        
+        tableView.reloadData()
     }
     
     
@@ -72,12 +72,14 @@ class ViewController: UIViewController {
         }
         
         applyMonthChange()
+        tableView.reloadData()
         
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         applyMonthChange()
+        tableView.reloadData()
     }
     
     
@@ -86,9 +88,8 @@ class ViewController: UIViewController {
         //re-calculate currentmonth and extract currentMonthPlans
         currentMonthString = String(yearMonthPair[0]) + "/" + String(yearMonthPair[1])
         
-        monthStringforEditing = currentMonthString
         
-        currentMonthPlans = [ "":[] ]
+        currentMonthPlans.removeAll()
         
         //use if let in case of months with no plans
         if let monthList = PlanList.shared.completePlanList[currentMonthString] {
@@ -97,9 +98,10 @@ class ViewController: UIViewController {
             }
         } else {print("No plans in current month!")}
         
+        //sortedDatesofMonth = Array(currentMonthPlans.keys).sorted(by : <)
         
         //debug purposes
-        print("current year/month = " + "\(currentMonthString)")
+        //print("current year/month = " + "\(currentMonthString)")
         
         
         
@@ -107,9 +109,7 @@ class ViewController: UIViewController {
         
         
         //update the table
-        currentMonthPlans.removeValue(forKey: "")
-        
-        tableView.reloadData()
+        //currentMonthPlans.removeValue(forKey: "")
         
     }
     
@@ -119,9 +119,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
     }
-    
-    
-    
     
     
     required init?(coder: NSCoder) {
@@ -170,7 +167,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         //generate key array and sort
         sortedDatesofMonth = Array(currentMonthPlans.keys).sorted(by : <)
         
-        return currentMonthPlans[ sortedDatesofMonth[section] ]!.count + 1
+        //if(currentMonthPlans[ sortedDatesofMonth[section] ]!.count == 0 ){
+        //    return 0
+        //}else {
+            return currentMonthPlans[ sortedDatesofMonth[section] ]!.count + 1
+            
+        //}
     }
     
     
@@ -178,6 +180,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     //and applies changes within the cells
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         
         if(indexPath.row) == 0{ // this cell will be used for showing the section(date)
             let cell = tableView.dequeueReusableCell(withIdentifier: "DateHeader", for: indexPath)
@@ -259,6 +262,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
             planforEditing = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ]
             
+            monthStringforEditing = currentMonthString
+            
+            
+            //ALT : using target plan
+            PlanList.shared.targetPlan = PlanList.shared.completePlanList[currentMonthString]![ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1]
+            
             
             //perform Segue
             performSegue(withIdentifier: "EnterEditing" , sender: self)
@@ -324,7 +333,8 @@ extension ViewController : editPlanDelegate{
             // --> sounds legit
             //PlanList.shared.completePlanList[self.currentMonthString]?[ self.sortedDatesofMonth[indexPath.section] ]?[indexPath.row - 1 ] = plan
             
-            //use new editplan
+            //try manually add new and delete old
+            
             PlanList.shared.editPlan(originalIndexPath: indexPath,
                                      yearMonthKey: yearMonthKey,
                                      date: plan.date,
@@ -334,10 +344,17 @@ extension ViewController : editPlanDelegate{
                                      whatCategory: plan.whatCategory,
                                      doWhat: plan.doWhat,
                                      place: plan.place)
+            self.applyMonthChange()
+            self.tableView.deleteRows(at: [indexPath], with: .none)
+            print("deleting done?")
+            
+            //self.tableView.deleteRows(at: [indexPath], with: .none)
+            
             
             
             //how to update the data
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
+            
         }
     }
 }
