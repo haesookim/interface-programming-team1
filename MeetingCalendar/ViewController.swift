@@ -266,7 +266,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
             
             //ALT : using target plan
-            PlanList.shared.targetPlan = PlanList.shared.completePlanList[currentMonthString]![ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1]
+            //PlanList.shared.targetPlan = PlanList.shared.completePlanList[currentMonthString]![ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1]
             
             
             //perform Segue

@@ -44,7 +44,7 @@ class PlanList {
         ]
 
         
-        var targetPlan = completePlanList["2019/12"]["25"][0]
+        //var targetPlan = completePlanList["2019/12"]["25"][0]
         
     }
     
