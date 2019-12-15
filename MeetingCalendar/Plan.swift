@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum WhoCategory : String, CaseIterable{
+enum WhoCategory : String, CaseIterable, Decodable{
     case Friend = "친구"
     case SignificantOther = "연인"
     case Family = "가족"
@@ -19,7 +19,7 @@ enum WhoCategory : String, CaseIterable{
     case Undefined = "" // Initial state
 }
 
-enum WhatCategory : String, CaseIterable{
+enum WhatCategory : String, CaseIterable, Decodable{
     case Work = "일"
     case Other = "기타"
     case Undefined = "" //Initial state
@@ -180,29 +180,12 @@ struct PlanData: Decodable, Comparable{
     enum DecodingError: Error {
         case missingFile
     }
-    
-    enum whoCat: String, Decodable{
-        case Friend
-        case SignificantOther
-        case Family
-        case Work
-        case Club
-        case Religion
-        case Other
-        case Undefined
-    }
-    
-    enum whatCat: String, Decodable{
-        case Work
-        case Other
-        case Undefined
-    }
 
     let date: String
     let time: String?
-    let whoCategory: whoCat //TODO: Check if this is the right value to recieve
-    let withWho: [String]?
-    let whatCategory: whatCat
+    let whoCategory: WhoCategory //TODO: Check if this is the right value to recieve
+    let withWho: String?
+    let whatCategory: WhatCategory
     let doWhat: String?
     let place: String?
 
