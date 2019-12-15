@@ -213,8 +213,4 @@ class PlanList {
         //
         //        }
     }
-    
-    func decodePlan(){}
-    
-    
 }
