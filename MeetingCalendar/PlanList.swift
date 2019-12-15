@@ -136,13 +136,13 @@ class PlanList {
         let newdayKey = newDateArray[2]
         
         //add it to the completPlanlist
-        if(PlanList.shared.completePlanList[newyearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
-            PlanList.shared.completePlanList[newyearMonthKey] = [:]
+        if(completePlanList[newyearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
+            completePlanList[newyearMonthKey] = [:]
         }
-        if (PlanList.shared.completePlanList[newyearMonthKey]?[newdayKey] == nil){
-            PlanList.shared.completePlanList[newyearMonthKey]?[newdayKey] = [targetPlan]
+        if (completePlanList[newyearMonthKey]?[newdayKey] == nil){
+            completePlanList[newyearMonthKey]?[newdayKey] = [targetPlan]
         } else{
-            PlanList.shared.completePlanList[newyearMonthKey]?[newdayKey]?.append(targetPlan)
+            completePlanList[newyearMonthKey]?[newdayKey]?.append(targetPlan)
         }
         
         //delete original
