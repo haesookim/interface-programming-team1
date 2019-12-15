@@ -172,12 +172,11 @@ class Plan{
         
     }
 
-
 }
 
 // For database entry
 
-struct PlanData: Decodable{
+struct PlanData: Decodable, Comparable{
     enum DecodingError: Error {
         case missingFile
     }
@@ -200,17 +199,43 @@ struct PlanData: Decodable{
     }
 
     let date: String
-    let time: String
+    let time: String?
     let whoCategory: whoCat //TODO: Check if this is the right value to recieve
-    let withWho: [String]
+    let withWho: [String]?
     let whatCategory: whatCat
-    let doWhat: String
-    let place: String
+    let doWhat: String?
+    let place: String?
 
     func save(directory: FileManager.SearchPathDirectory) throws {
         let kindDirectoryURL = URL(fileURLWithPath: "", relativeTo: FileManager.default.urls(for: directory, in: .userDomainMask)[0])
 
         try? FileManager.default.createDirectory(at: kindDirectoryURL, withIntermediateDirectories: true)
+    }
+    
+    // Comparable functions for sorting
+    static func ==(lhs: PlanData, rhs: PlanData) -> Bool {
+        return lhs.date == rhs.date && lhs.time == rhs.time
+    }
+
+    static func <(lhs: PlanData, rhs: PlanData) -> Bool {
+        let lhsDate = lhs.date
+        let rhsDate = rhs.date
+
+        
+        if (lhsDate != rhsDate){
+            return lhsDate < rhsDate
+        } else {
+            var lhsTime = ""
+            var rhsTime = ""
+            if lhs.time != nil{
+                lhsTime = lhs.time!
+            }
+            if rhs.time != nil{
+                rhsTime = rhs.time!
+            }
+
+            return lhsTime < rhsTime
+        }
     }
 }
 

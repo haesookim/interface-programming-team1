@@ -42,11 +42,20 @@ class PlanList {
                                                         place: "Home")]]
             
         ]
+        
+        // Retrieve raw plan data from database
         do{
             completePlanRawArray = try [PlanData](fileName: "PlanData")
         }catch{
             completePlanRawArray = []
         }
+        
+        print(completePlanRawArray.sorted())
+        //TODO: Decode the raw plans to the intended complex dictionary form
+        for plan in completePlanRawArray{
+            
+        }
+        
         
         //var targetPlan = completePlanList["2019/12"]["25"][0]
     }
@@ -218,9 +227,9 @@ class PlanList {
 //            originalPlan.editPlan(time: time, whoCategory: whoCategory, withWhoString: withWhoString, whatCategory: whatCategory, doWhat: doWhat, place: place)
 //
 //        }
-        
-        
     }
+    
+    func decodePlan(){}
     
     
 }
