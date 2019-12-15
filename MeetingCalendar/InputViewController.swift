@@ -123,7 +123,20 @@ class InputViewController: UIViewController {
             
                  
              //else
-             clearInputData()
+            let savetoDB = PlanData.init(date: fullDateString,
+                                         time: timePickerTF.text,
+                                         whoCategory: selectedWhoCat,
+                                         withWho: withWhoTF.text,
+                                         whatCategory: selectedWhatCat ?? WhatCategory.Undefined,
+                                         doWhat: doWhatTF.text,
+                                         place: whereTF.text)
+            print(savetoDB)
+            do{
+                try savetoDB.save(directory: .documentDirectory)
+            } catch {
+                print("save failed")
+            }
+            clearInputData()
              
         }else{
             

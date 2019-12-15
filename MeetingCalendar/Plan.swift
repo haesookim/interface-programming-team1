@@ -188,11 +188,24 @@ struct PlanData: Decodable, Comparable{
     let whatCategory: WhatCategory
     let doWhat: String?
     let place: String?
+    
 
     func save(directory: FileManager.SearchPathDirectory) throws {
-        let kindDirectoryURL = URL(fileURLWithPath: "", relativeTo: FileManager.default.urls(for: directory, in: .userDomainMask)[0])
+        let toJsonObject = [ "date": date, "time": time, "whoCategory": whoCategory.rawValue, "withWho": withWho, "whatCategory": whatCategory.rawValue, "doWhat": doWhat, "place": place]
+        let kindDirectoryURL = URL(fileURLWithPath: "PlanData.json", relativeTo: FileManager.default.urls(for: directory, in: .userDomainMask)[0])
+        print(kindDirectoryURL)
+        //let kindDirectoryURL = Bundle.main.url(forResource: "PlanData", withExtension: "json")
 
         try? FileManager.default.createDirectory(at: kindDirectoryURL, withIntermediateDirectories: true)
+        
+        if let encodedData = try? JSONEncoder().encode(toJsonObject) {
+            do {
+                try encodedData.write(to: kindDirectoryURL)
+            }
+            catch {
+                print("Failed to write JSON data: \(error.localizedDescription)")
+            }
+        }
     }
     
     // Comparable functions for sorting
@@ -227,7 +240,7 @@ extension Array where Element == PlanData {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
             throw PlanData.DecodingError.missingFile
         }
-    
+        
         let data = try Data(contentsOf: url)
         let decoder = JSONDecoder()
         self = try decoder.decode([PlanData].self, from: data)
