@@ -42,7 +42,6 @@ class PlanList {
         // Retrieve raw plan data from database
         do{
             completePlanRawArray = try [PlanData](fileName: "PlanData")
-             //Uncomment when append behavior works
             if completePlanRawArray.count > 1{
                 completePlanList = [String: [String:[Plan]]]()
             }
@@ -52,21 +51,9 @@ class PlanList {
         
         //Decode the raw plans to the intended complex dictionary form
         for plan in completePlanRawArray{
-//            let dateString = plan.date.components(separatedBy: "/")
-//            let yearMonth = dateString[0]+"/"+dateString[1]
-//            let withWhoArray = plan.withWho?.components(separatedBy: ",")
-//
-//            guard let newPlan = Plan(date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWho: withWhoArray, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place) else { return  }
-//
-//            print(newPlan)
-//            print(completePlanList[yearMonth]?["25"])
-//            completePlanList[yearMonth]?[dateString[2]]?.append(newPlan)
             _ = addNewPlan(Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWhoString: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place)
-
         }
-        print(completePlanList)
-        
-        
+  
         //var targetPlan = completePlanList["2019/12"]["25"][0]
     }
 
@@ -82,7 +69,6 @@ class PlanList {
         whatCategory: WhatCategory?,
         doWhat: String?,
         place : String?) -> Plan?{
-        
         
         //format withWho
         let newString = withWhoString?.replacingOccurrences(of: ", ", with: ",")
@@ -102,7 +88,6 @@ class PlanList {
             let dayKey = item.day
             //add it to the completPlanlist
             if(completePlanList[yearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
-                print("debug point")
                 completePlanList[yearMonthKey] = [:]
             }
             
@@ -113,7 +98,7 @@ class PlanList {
             }
             
             return item
-        }else {
+        } else {
             return nil
         }
     }

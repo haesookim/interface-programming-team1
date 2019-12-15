@@ -9,13 +9,8 @@
 import UIKit
 
 enum Month : Int{
-    
-    case Jan = 1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
-    
+    case jan = 1, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec
 }
-
-
-
 
 class ViewController: UIViewController {
     
@@ -33,8 +28,6 @@ class ViewController: UIViewController {
     
     var yearMonthPair : [Int]
     
-    
-    
     //parameters for data transfer
     var indexPathforEditing : IndexPath
     var planforEditing : Plan
@@ -43,6 +36,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var monthIcon : UIButton!
+    let MonthArray = ["jan","feb","mar","apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
     
     @IBAction func toPreviousMonth(_ sender: Any) {
         
@@ -87,8 +81,6 @@ class ViewController: UIViewController {
         
         //re-calculate currentmonth and extract currentMonthPlans
         currentMonthString = String(yearMonthPair[0]) + "/" + String(yearMonthPair[1])
-        
-        
         currentMonthPlans.removeAll()
         
         //use if let in case of months with no plans
@@ -98,15 +90,17 @@ class ViewController: UIViewController {
             }
         } else {print("No plans in current month!")}
         
+        print(yearMonthPair[1])
+        
         //sortedDatesofMonth = Array(currentMonthPlans.keys).sorted(by : <)
         
         //debug purposes
         //print("current year/month = " + "\(currentMonthString)")
         
-        
-        
         // TODO : update the month icon according to change made
-        
+        let imageName = "font_" + MonthArray[yearMonthPair[1]-1]
+        let monthImage = UIImage(named: "\(imageName).png")!
+        self.monthIcon.setImage(monthImage, for: .normal)
         
         //update the table
         //currentMonthPlans.removeValue(forKey: "")
@@ -204,8 +198,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             if let timeLabel = cell.viewWithTag(1) as? UILabel{
                 timeLabel.text = item.time
             }
-            
-            
             
             //tag 2 : whoCategory sticker(image)
             if let colorSticker = cell.viewWithTag(2) as? UIImageView{

@@ -82,11 +82,11 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Header" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3B-Cs-yov">
-                                                    <rect key="frame" x="7" y="7" width="306" height="21"/>
+                                                    <rect key="frame" x="7" y="7" width="291.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="V3B-Cs-yov" secondAttribute="height" multiplier="102:7" id="MaV-VG-0mu"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -565,8 +565,8 @@
                                     <constraint firstItem="D2t-2I-6Yw" firstAttribute="leading" secondItem="uU5-Jx-0CR" secondAttribute="trailing" constant="2" id="xcH-3y-26o"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yob-Mv-yrH" userLabel="CloseButton">
-                                <rect key="frame" x="343" y="220" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yob-Mv-yrH" userLabel="CloseButton">
+                                <rect key="frame" x="343" y="227" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="W0t-6g-kem"/>
                                     <constraint firstAttribute="width" constant="40" id="eJZ-fs-2sX"/>
@@ -580,6 +580,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.3458237833425678" green="0.34828955387748428" blue="0.35568686548223349" alpha="0.42674443493150682" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="wO1-M8-ckO" firstAttribute="centerX" secondItem="8Ex-Oe-6rD" secondAttribute="centerX" id="3YN-WE-Kh0"/>
                             <constraint firstItem="Pfl-kk-XQY" firstAttribute="trailing" secondItem="Yob-Mv-yrH" secondAttribute="trailing" constant="31" id="ALT-2P-QG9"/>
