@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C36DBEA23967F7A00986C2B /* batang.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36DBE923967F7A00986C2B /* batang.otf */; };
+		2C89F5EE23A615C200B5571D /* PlanData.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C89F5ED23A615C200B5571D /* PlanData.json */; };
 		2C916A10237B953900341F5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A0F237B953900341F5D /* AppDelegate.swift */; };
 		2C916A12237B953900341F5D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A11237B953900341F5D /* SceneDelegate.swift */; };
 		2C916A14237B953900341F5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A13237B953900341F5D /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		2C36DBE923967F7A00986C2B /* batang.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = batang.otf; path = ../../../batang.otf; sourceTree = "<group>"; };
+		2C89F5ED23A615C200B5571D /* PlanData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PlanData.json; path = ../../../../../PlanData.json; sourceTree = "<group>"; };
 		2C916A0C237B953900341F5D /* MeetingCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C916A0F237B953900341F5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C916A11237B953900341F5D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				3679464D239F842D003EAD3A /* InputViewController.swift */,
 				3680AC1423964B03001EFDD7 /* SelectionViewController.swift */,
 				2C916A3F237B9A3F00341F5D /* Plan.swift */,
+				2C89F5ED23A615C200B5571D /* PlanData.json */,
 				2C916A41237B9F6800341F5D /* PlanList.swift */,
 				2C916A18237B953A00341F5D /* Assets.xcassets */,
 				2C916A1A237B953A00341F5D /* LaunchScreen.storyboard */,
@@ -267,6 +270,7 @@
 				2C916A19237B953A00341F5D /* Assets.xcassets in Resources */,
 				2C36DBEA23967F7A00986C2B /* batang.otf in Resources */,
 				36706A3C238C23520084BE82 /* Main.storyboard in Resources */,
+				2C89F5EE23A615C200B5571D /* PlanData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

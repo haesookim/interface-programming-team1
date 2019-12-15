@@ -42,15 +42,20 @@ class PlanList {
                                                         place: "Home")]]
             
         ]
-
+        do{
+            completePlanRawArray = try [PlanData](fileName: "PlanData")
+        }catch{
+            completePlanRawArray = []
+        }
         
         //var targetPlan = completePlanList["2019/12"]["25"][0]
-        
     }
     
     //singleton
     static let shared = PlanList()
     
+    //Raw data retrieved from database
+    var completePlanRawArray : [PlanData]
     
     //the actual complete list of data
     var completePlanList : [String: [String:[Plan]]]

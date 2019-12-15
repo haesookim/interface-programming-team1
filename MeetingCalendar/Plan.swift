@@ -171,5 +171,58 @@ class Plan{
         print("date : \(date)\n time : \(time)\n whoCat : \(whoCategory.rawValue)\n withWhoString : \(withWhoString)\n whatCategory : \(whatCategory?.rawValue)\n doWhat : \(doWhat)\n where : \(place)")
         
     }
-    
+
+
 }
+
+// For database entry
+
+struct PlanData: Decodable{
+    enum DecodingError: Error {
+        case missingFile
+    }
+    
+    enum whoCat: String, Decodable{
+        case Friend
+        case SignificantOther
+        case Family
+        case Work
+        case Club
+        case Religion
+        case Other
+        case Undefined
+    }
+    
+    enum whatCat: String, Decodable{
+        case Work
+        case Other
+        case Undefined
+    }
+
+    let date: String
+    let time: String
+    let whoCategory: whoCat //TODO: Check if this is the right value to recieve
+    let withWho: [String]
+    let whatCategory: whatCat
+    let doWhat: String
+    let place: String
+
+    func save(directory: FileManager.SearchPathDirectory) throws {
+        let kindDirectoryURL = URL(fileURLWithPath: "", relativeTo: FileManager.default.urls(for: directory, in: .userDomainMask)[0])
+
+        try? FileManager.default.createDirectory(at: kindDirectoryURL, withIntermediateDirectories: true)
+    }
+}
+
+extension Array where Element == PlanData {
+    init(fileName: String) throws {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+            throw PlanData.DecodingError.missingFile
+        }
+    
+        let data = try Data(contentsOf: url)
+        let decoder = JSONDecoder()
+        self = try decoder.decode([PlanData].self, from: data)
+    }
+}
+
