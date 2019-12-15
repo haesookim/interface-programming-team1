@@ -12,48 +12,6 @@ import Foundation
 // TODO : PlanList should be set as singleton
 
 class PlanList {
-    
-    
-    private init?(){
-        // TODO: Load items in from database and append to planList
-        
-        // if there is no previous data, generate an example plan in completelist
-        
-        completePlanList = ["2019/12" : ["25" : [Plan(date: "2019/12/25",
-                                                      time: "19:00",
-                                                      whoCategory: WhoCategory.Family,
-                                                      withWho: ["Parents", "Mr.Santa"],
-                                                      whatCategory: WhatCategory.Other,
-                                                      doWhat: "House Party",
-                                                      place: "Home")],
-                                         ]
-            
-        ]
-        
-        // Retrieve raw plan data from database
-        do{
-            completePlanRawArray = try [PlanData](fileName: "PlanData")
-        }catch{
-            completePlanRawArray = []
-        }
-        
-        //Decode the raw plans to the intended complex dictionary form
-        for plan in completePlanRawArray{
-//            let dateString = plan.date.components(separatedBy: "/")
-//            let yearMonth = dateString[0]+"/"+dateString[1]
-//            var dictionaryBin = completePlanList[yearMonth]?[dateString[2]]
-//
-//            guard let newPlan = Plan(date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWho: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place) else { return nil }
-//
-//            dictionaryBin?.append(newPlan)
-            self.addNewPlan(Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWhoString: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place)
-
-        }
-        
-        
-        //var targetPlan = completePlanList["2019/12"]["25"][0]
-    }
-    
     //singleton
     static let shared = PlanList()
     
@@ -64,6 +22,54 @@ class PlanList {
     var completePlanList : [String: [String:[Plan]]]
     
     var planDate : String = "" // will be used as section data, which are dates (may use string?)
+
+    private init(){
+        // TODO: Load items in from database and append to planList
+        
+        // if there is no previous data, generate an example plan in completelist
+        
+        completePlanList = ["2019/12" : ["25" : [Plan(date: "2019/12/25",
+                                                      time: "19:00",
+                                                      whoCategory: WhoCategory.Family,
+                                                      withWho: ["Mr.Santa"],
+                                                      whatCategory: WhatCategory.Other,
+                                                      doWhat: "Christmas!",
+                                                      place: "Home")],
+                                         ]
+            
+        ]
+        
+        // Retrieve raw plan data from database
+        do{
+            completePlanRawArray = try [PlanData](fileName: "PlanData")
+             //Uncomment when append behavior works
+            if completePlanRawArray.count > 1{
+                completePlanList = [String: [String:[Plan]]]()
+            }
+        }catch{
+            completePlanRawArray = []
+        }
+        
+        //Decode the raw plans to the intended complex dictionary form
+        for plan in completePlanRawArray{
+//            let dateString = plan.date.components(separatedBy: "/")
+//            let yearMonth = dateString[0]+"/"+dateString[1]
+//            let withWhoArray = plan.withWho?.components(separatedBy: ",")
+//
+//            guard let newPlan = Plan(date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWho: withWhoArray, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place) else { return  }
+//
+//            print(newPlan)
+//            print(completePlanList[yearMonth]?["25"])
+//            completePlanList[yearMonth]?[dateString[2]]?.append(newPlan)
+            _ = addNewPlan(Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWhoString: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place)
+
+        }
+        print(completePlanList)
+        
+        
+        //var targetPlan = completePlanList["2019/12"]["25"][0]
+    }
+
     
     
     //level 1 : implement adding plan with addplan.
@@ -82,7 +88,6 @@ class PlanList {
         let newString = withWhoString?.replacingOccurrences(of: ", ", with: ",")
         let withWho = newString?.components(separatedBy: ",")
         
-        
         //init new Item
         //if let, in case of wrong input
         if let item = Plan(date: Date,
@@ -95,15 +100,16 @@ class PlanList {
             
             let yearMonthKey = item.year+"/"+item.month
             let dayKey = item.day
-            
             //add it to the completPlanlist
-            if(PlanList.shared.completePlanList[yearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
-                PlanList.shared.completePlanList[yearMonthKey] = [:]
+            if(completePlanList[yearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
+                print("debug point")
+                completePlanList[yearMonthKey] = [:]
             }
-            if (PlanList.shared.completePlanList[yearMonthKey]![dayKey] == nil){
-                PlanList.shared.completePlanList[yearMonthKey]![dayKey] = [item]
+            
+            if (completePlanList[yearMonthKey]![dayKey] == nil){
+                completePlanList[yearMonthKey]![dayKey] = [item]
             } else{
-                PlanList.shared.completePlanList[yearMonthKey]![dayKey]?.append(item)
+                completePlanList[yearMonthKey]![dayKey]!.append(item)
             }
             
             return item
@@ -123,12 +129,12 @@ class PlanList {
         let yearMonthKey = dateValue[0]+"/"+dateValue[1]
         let dayKey = dateValue[2]
         
-        var planArray = completePlanList[yearMonthKey]?[dayKey]
+        var planArray = completePlanList[yearMonthKey]![dayKey]
         planArray?.remove(at: index) // remove item at specified index value
-        completePlanList[yearMonthKey]?[dayKey] = planArray
+        completePlanList[yearMonthKey]![dayKey] = planArray
         
-        if(completePlanList[yearMonthKey]?[dayKey]?.count == 0){
-            completePlanList[yearMonthKey]?.removeValue(forKey: dayKey)
+        if(completePlanList[yearMonthKey]![dayKey]!.count == 0){
+            completePlanList[yearMonthKey]!.removeValue(forKey: dayKey)
             print("empty plan removed")
         }
         
@@ -148,10 +154,10 @@ class PlanList {
         if(PlanList.shared.completePlanList[newyearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
             PlanList.shared.completePlanList[newyearMonthKey] = [:]
         }
-        if (PlanList.shared.completePlanList[newyearMonthKey]![newdayKey] == nil){
-            PlanList.shared.completePlanList[newyearMonthKey]![newdayKey] = [targetPlan]
+        if (PlanList.shared.completePlanList[newyearMonthKey]?[newdayKey] == nil){
+            PlanList.shared.completePlanList[newyearMonthKey]?[newdayKey] = [targetPlan]
         } else{
-            PlanList.shared.completePlanList[newyearMonthKey]![newdayKey]?.append(targetPlan)
+            PlanList.shared.completePlanList[newyearMonthKey]?[newdayKey]?.append(targetPlan)
         }
         
         //delete original
@@ -189,7 +195,7 @@ class PlanList {
         
         //get the actual plan - which always exist
         
-        let originalPlan = completePlanList[yearMonthKey]![dayKey ]![originalIndexPath.row - 1] //the actual plan
+        let originalPlan = completePlanList[yearMonthKey]![dayKey]?[originalIndexPath.row - 1] //the actual plan
         
         
         //solved PROBLEM : original plan is altered immediately. why?
@@ -211,7 +217,7 @@ class PlanList {
         //                                     place: place)
         
         //and delete original plan
-        deletePlan(date: originalPlan.date, index: originalIndexPath.row-1)
+        deletePlan(date: originalPlan!.date, index: originalIndexPath.row-1)
         
         //        }
         //

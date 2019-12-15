@@ -398,7 +398,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="238"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="With Whom?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xta-Nl-qPI" userLabel="WithTextField2">
+                                    <textField opaque="NO" tag="6" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="어떤 사람들과? (필수)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xta-Nl-qPI" userLabel="WithTextField2">
                                         <rect key="frame" x="136" y="58" width="171" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="171" id="In3-EL-Rp6"/>
@@ -407,8 +407,8 @@
                                         <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Do What?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQS-Rm-BHj" userLabel="WhatTextField2">
-                                        <rect key="frame" x="136" y="108" width="171" height="30"/>
+                                    <textField opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="무엇을 하나요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQS-Rm-BHj" userLabel="WhatTextField2">
+                                        <rect key="frame" x="136" y="106" width="171" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7iI-nc-3oK"/>
                                             <constraint firstAttribute="width" constant="171" id="iLm-lD-Uoq"/>
@@ -416,8 +416,8 @@
                                         <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="At Where?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oB1-zZ-IWO" userLabel="WhereTextField1">
-                                        <rect key="frame" x="77" y="154" width="230" height="30"/>
+                                    <textField opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="어디서?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oB1-zZ-IWO" userLabel="WhereTextField1">
+                                        <rect key="frame" x="77" y="152" width="230" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="W0Y-zD-Jny"/>
                                             <constraint firstAttribute="width" constant="230" id="ucg-Jp-Gs8"/>
@@ -456,8 +456,8 @@
                                             <attributedString key="attributedTitle"/>
                                         </state>
                                     </button>
-                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="무엇을 하나요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-dA-BOu" userLabel="WhatTextField1">
-                                        <rect key="frame" x="61" y="108" width="49" height="30"/>
+                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="무엇" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-dA-BOu" userLabel="WhatTextField1">
+                                        <rect key="frame" x="61" y="100" width="70" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="49" id="Gam-d7-K7v"/>
                                             <constraint firstAttribute="height" constant="30" id="p0j-vH-9GV"/>
@@ -465,8 +465,8 @@
                                         <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="어떤 사람들과? (필수)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKb-Pu-uoh" userLabel="WithTextField1">
-                                        <rect key="frame" x="61" y="58" width="49" height="34"/>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="누구" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKb-Pu-uoh" userLabel="WithTextField1">
+                                        <rect key="frame" x="61" y="58" width="69" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="49" id="W2r-va-idE"/>
                                             <constraint firstAttribute="height" constant="34" id="dQJ-ad-Lqn"/>
@@ -485,7 +485,7 @@
                                             <constraint firstAttribute="width" constant="46" id="VYh-2e-ZZP"/>
                                             <constraint firstAttribute="height" constant="21" id="cFM-gW-Fyk"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="연" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ogj-QJ-NBF" userLabel="DummyYearTF">
@@ -494,7 +494,7 @@
                                             <constraint firstAttribute="width" constant="72" id="Bgf-Xh-xAg"/>
                                             <constraint firstAttribute="height" constant="21" id="dLb-vh-oKh"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="월" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzP-IV-DTV" userLabel="DummyMonthTF">
@@ -503,7 +503,7 @@
                                             <constraint firstAttribute="width" constant="47" id="Cf1-T9-Kyd"/>
                                             <constraint firstAttribute="height" constant="21" id="s6L-9k-ZEl"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TT:MM" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uU5-Jx-0CR" userLabel="TimePickerTF">
@@ -515,8 +515,8 @@
                                         <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C6n-so-sdn" userLabel="DummyDateTF">
-                                        <rect key="frame" x="45" y="16" width="191" height="34"/>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C6n-so-sdn" userLabel="DummyDateTF">
+                                        <rect key="frame" x="48" y="14" width="191" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="ITR-Ee-CXL"/>
                                             <constraint firstAttribute="width" constant="191" id="n6L-YN-YDd"/>
@@ -533,21 +533,25 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Wb6-sh-iah" secondAttribute="bottom" constant="8" id="0pm-rM-Niq"/>
-                                    <constraint firstItem="C6n-so-sdn" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="21" id="3SB-Kh-TzK"/>
+                                    <constraint firstItem="YKb-Pu-uoh" firstAttribute="top" secondItem="C6n-so-sdn" secondAttribute="bottom" constant="8" id="56n-VD-e2U"/>
                                     <constraint firstItem="FAA-fy-Lj5" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="14" id="7bQ-4e-CdZ"/>
                                     <constraint firstAttribute="trailing" secondItem="D2t-2I-6Yw" secondAttribute="trailing" constant="8" id="8tg-Om-lit"/>
                                     <constraint firstItem="EzP-IV-DTV" firstAttribute="leading" secondItem="ogj-QJ-NBF" secondAttribute="trailing" constant="12" id="8uv-Ie-muH"/>
                                     <constraint firstItem="ogj-QJ-NBF" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="25" id="DlC-Qj-FTF"/>
                                     <constraint firstItem="YKb-Pu-uoh" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="61" id="Ec3-WJ-Aja"/>
                                     <constraint firstItem="dSg-dA-BOu" firstAttribute="top" secondItem="YKb-Pu-uoh" secondAttribute="bottom" constant="16" id="Gge-jy-0wV"/>
-                                    <constraint firstItem="YKb-Pu-uoh" firstAttribute="top" secondItem="C6n-so-sdn" secondAttribute="bottom" constant="8" id="KVH-XL-ats"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="14" id="I01-TK-G6z"/>
                                     <constraint firstItem="ogj-QJ-NBF" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="24" id="Kkn-Bd-nJX"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="21" id="Pye-QJ-wIV"/>
                                     <constraint firstItem="EzP-IV-DTV" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="24" id="RmN-he-bS8"/>
                                     <constraint firstItem="FAA-fy-Lj5" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="-16" id="UVq-f2-NCM"/>
+                                    <constraint firstItem="xta-Nl-qPI" firstAttribute="top" secondItem="C6n-so-sdn" secondAttribute="bottom" constant="8" id="VIe-mk-nhf"/>
                                     <constraint firstAttribute="width" constant="353" id="XP9-r0-Ytd"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="21" id="YiW-aU-hHX"/>
                                     <constraint firstAttribute="trailing" secondItem="xta-Nl-qPI" secondAttribute="trailing" constant="46" id="ZBx-cN-N5w"/>
                                     <constraint firstItem="ycH-Cz-56k" firstAttribute="leading" secondItem="EzP-IV-DTV" secondAttribute="trailing" constant="11" id="aXo-ic-qit"/>
                                     <constraint firstAttribute="height" constant="238" id="cEy-Nm-PDE"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="14" id="dO7-48-NMQ"/>
                                     <constraint firstItem="ycH-Cz-56k" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="25" id="eEr-1q-aX3"/>
                                     <constraint firstItem="uU5-Jx-0CR" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="25" id="fIZ-eK-Mhx"/>
                                     <constraint firstItem="dSg-dA-BOu" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="61" id="g3Q-A1-Yco"/>
@@ -555,12 +559,8 @@
                                     <constraint firstAttribute="trailing" secondItem="Wb6-sh-iah" secondAttribute="trailing" constant="8" id="hPE-4I-BaY"/>
                                     <constraint firstAttribute="trailing" secondItem="xta-Nl-qPI" secondAttribute="trailing" constant="46" id="inZ-40-GDj"/>
                                     <constraint firstItem="D2t-2I-6Yw" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="23" id="kbq-HF-Ztf"/>
-                                    <constraint firstItem="xta-Nl-qPI" firstAttribute="top" secondItem="C6n-so-sdn" secondAttribute="bottom" constant="8" id="kce-dq-j0L"/>
-                                    <constraint firstItem="C6n-so-sdn" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="16" id="keP-mp-qNx"/>
                                     <constraint firstItem="MQS-Rm-BHj" firstAttribute="top" secondItem="xta-Nl-qPI" secondAttribute="bottom" constant="16" id="kl0-MS-Fre"/>
-                                    <constraint firstItem="C6n-so-sdn" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="21" id="oNa-vc-m5D"/>
                                     <constraint firstItem="oB1-zZ-IWO" firstAttribute="top" secondItem="MQS-Rm-BHj" secondAttribute="bottom" constant="16" id="q83-hK-vES"/>
-                                    <constraint firstItem="C6n-so-sdn" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="16" id="r1J-WA-AIB"/>
                                     <constraint firstAttribute="trailing" secondItem="oB1-zZ-IWO" secondAttribute="trailing" constant="46" id="v60-1w-9jf"/>
                                     <constraint firstItem="D2t-2I-6Yw" firstAttribute="leading" secondItem="uU5-Jx-0CR" secondAttribute="trailing" constant="2" id="xcH-3y-26o"/>
                                 </constraints>
