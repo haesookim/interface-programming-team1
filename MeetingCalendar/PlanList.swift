@@ -14,7 +14,7 @@ import Foundation
 class PlanList {
     
     
-    private init(){
+    private init?(){
         // TODO: Load items in from database and append to planList
         
         // if there is no previous data, generate an example plan in completelist
@@ -26,20 +26,7 @@ class PlanList {
                                                       whatCategory: WhatCategory.Other,
                                                       doWhat: "House Party",
                                                       place: "Home")],
-                                        "31" : [Plan(date: "2019/12/31",
-                                                        time: "23:55",
-                                                        whoCategory: WhoCategory.Family,
-                                                        withWho: ["Parents"],
-                                                        whatCategory: WhatCategory.Other,
-                                                        doWhat: "Ready for Countdown",
-                                                        place: "Home")]],
-                            "2020/1" : ["1" : [Plan(date: "2020/1/1",
-                                                        time: "00:00",
-                                                        whoCategory: WhoCategory.Family,
-                                                        withWho: ["Parents"],
-                                                        whatCategory: WhatCategory.Other,
-                                                        doWhat: "NewYears",
-                                                        place: "Home")]]
+                                         ]
             
         ]
         
@@ -50,10 +37,17 @@ class PlanList {
             completePlanRawArray = []
         }
         
-        print(completePlanRawArray.sorted())
-        //TODO: Decode the raw plans to the intended complex dictionary form
+        //Decode the raw plans to the intended complex dictionary form
         for plan in completePlanRawArray{
-            
+//            let dateString = plan.date.components(separatedBy: "/")
+//            let yearMonth = dateString[0]+"/"+dateString[1]
+//            var dictionaryBin = completePlanList[yearMonth]?[dateString[2]]
+//
+//            guard let newPlan = Plan(date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWho: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place) else { return nil }
+//
+//            dictionaryBin?.append(newPlan)
+            self.addNewPlan(Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWhoString: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place)
+
         }
         
         
@@ -68,7 +62,7 @@ class PlanList {
     
     //the actual complete list of data
     var completePlanList : [String: [String:[Plan]]]
-
+    
     var planDate : String = "" // will be used as section data, which are dates (may use string?)
     
     
@@ -76,12 +70,12 @@ class PlanList {
     // if a new plan is successfully done, return the plan
     // if initializing new plan fails(level 0, returning nil), return nil
     func addNewPlan(Date: String, //input as yyyy/MM/dd
-                    time: String?,
-                    whoCategory: WhoCategory,
-                    withWhoString : String?,
-                    whatCategory: WhatCategory?,
-                    doWhat: String?,
-                    place : String?) -> Plan?{
+        time: String?,
+        whoCategory: WhoCategory,
+        withWhoString : String?,
+        whatCategory: WhatCategory?,
+        doWhat: String?,
+        place : String?) -> Plan?{
         
         
         //format withWho
@@ -92,13 +86,13 @@ class PlanList {
         //init new Item
         //if let, in case of wrong input
         if let item = Plan(date: Date,
-                        time: time,
-                        whoCategory: whoCategory,
-                        withWho: withWho,
-                        whatCategory: whatCategory,
-                        doWhat: doWhat,
-                        place: place) {
-
+                           time: time,
+                           whoCategory: whoCategory,
+                           withWho: withWho,
+                           whatCategory: whatCategory,
+                           doWhat: doWhat,
+                           place: place) {
+            
             let yearMonthKey = item.year+"/"+item.month
             let dayKey = item.day
             
@@ -122,9 +116,9 @@ class PlanList {
     
     func deletePlan(date: String, index: Int){
         
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-       
+        //        let dateFormatter = DateFormatter()
+        //        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
         let dateValue = date.components(separatedBy: "/")
         let yearMonthKey = dateValue[0]+"/"+dateValue[1]
         let dayKey = dateValue[2]
@@ -175,14 +169,14 @@ class PlanList {
     
     //try not using this for now
     func editPlan(originalIndexPath : IndexPath, //information about secondary key
-                    yearMonthKey : String,
-                    date: String, //input as yyyy/MM/dd
-                    time: String?,
-                    whoCategory: WhoCategory,
-                    withWhoString : String?,
-                    whatCategory: WhatCategory?,
-                    doWhat: String?,
-                    place : String?){
+        yearMonthKey : String,
+        date: String, //input as yyyy/MM/dd
+        time: String?,
+        whoCategory: WhoCategory,
+        withWhoString : String?,
+        whatCategory: WhatCategory?,
+        doWhat: String?,
+        place : String?){
         
         //return the plan of the indexpath
         //get yearmonth key - the indexpath does not contain information about year
@@ -192,7 +186,7 @@ class PlanList {
         let sortedDatesofMonth = Array(completePlanList[yearMonthKey]!.keys).sorted(by : <)
         
         let dayKey = sortedDatesofMonth[originalIndexPath.section]
-
+        
         //get the actual plan - which always exist
         
         let originalPlan = completePlanList[yearMonthKey]![dayKey ]![originalIndexPath.row - 1] //the actual plan
@@ -207,26 +201,26 @@ class PlanList {
         
         //check for change in date
         //if(originalPlan.date != date){
-            //if so, addnewplan
-//            _ = addNewPlan(Date: date,
-//                                     time: time,
-//                                     whoCategory: whoCategory,
-//                                     withWhoString: withWhoString,
-//                                     whatCategory: whatCategory,
-//                                     doWhat: doWhat,
-//                                     place: place)
-            
-            //and delete original plan
-            deletePlan(date: originalPlan.date, index: originalIndexPath.row-1)
-            
-//        }
-//
-//
-//        //else, meaning that the date stays, just apply the other changes
-//        else{
-//            originalPlan.editPlan(time: time, whoCategory: whoCategory, withWhoString: withWhoString, whatCategory: whatCategory, doWhat: doWhat, place: place)
-//
-//        }
+        //if so, addnewplan
+        //            _ = addNewPlan(Date: date,
+        //                                     time: time,
+        //                                     whoCategory: whoCategory,
+        //                                     withWhoString: withWhoString,
+        //                                     whatCategory: whatCategory,
+        //                                     doWhat: doWhat,
+        //                                     place: place)
+        
+        //and delete original plan
+        deletePlan(date: originalPlan.date, index: originalIndexPath.row-1)
+        
+        //        }
+        //
+        //
+        //        //else, meaning that the date stays, just apply the other changes
+        //        else{
+        //            originalPlan.editPlan(time: time, whoCategory: whoCategory, withWhoString: withWhoString, whatCategory: whatCategory, doWhat: doWhat, place: place)
+        //
+        //        }
     }
     
     func decodePlan(){}
