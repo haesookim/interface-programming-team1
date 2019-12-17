@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var yearLabel : UILabel!
     @IBOutlet weak var monthIcon : UIButton!
     let MonthArray = ["jan","feb","mar","apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
     
@@ -95,6 +96,8 @@ class ViewController: UIViewController {
         let imageName = "font_" + MonthArray[yearMonthPair[1]-1]
         let monthImage = UIImage(named: "\(imageName).png")!
         self.monthIcon.setImage(monthImage, for: .normal)
+        
+        self.yearLabel.text = String(yearMonthPair[0])
         
         //update the table
         //currentMonthPlans.removeValue(forKey: "")
