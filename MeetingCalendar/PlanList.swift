@@ -63,8 +63,8 @@ class PlanList {
     
     func savePlanList(){
         guard let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let fileUrl = documentDirectoryUrl.appendingPathComponent("Persons.json")
-        
+        let fileUrl = documentDirectoryUrl.appendingPathComponent("PlanData.json")
+
         // Create a write-only stream
         guard let stream = OutputStream(toFileAtPath: fileUrl.path, append: false) else { return }
         stream.open()
@@ -82,23 +82,6 @@ class PlanList {
         }
     }
     
-    
-    func addNewToRaw(Date: String, //input as yyyy/MM/dd
-        time: String?,
-        whoCategory: WhoCategory,
-        withWhoString : String?,
-        whatCategory: WhatCategory,
-        doWhat: String?,
-        place : String?)->Bool
-    {
-        if let tempdata = Plan(date:Date, time: time, whoCategory: whoCategory, withWho: withWhoString, whatCategory: whatCategory, doWhat: doWhat, place: place) {
-            completePlanRawArray.append(tempdata)
-            print(completePlanRawArray)
-            return true
-        }else{
-            return false
-        }
-    }
     //level 1 : implement adding plan with addplan.
     // if a new plan is successfully done, return the plan
     // if initializing new plan fails(level 0, returning nil), return nil
