@@ -1,7 +1,11 @@
 [
     {
         "date": "2019/12/31",
+        "year": "2019",
+        "month": "12",
+        "day":"31",
         "time": "23:55",
+        "planID": "1",
         "whoCategory": "가족",
         "withWho": "Parents",
         "whatCategory": "기타",
@@ -10,7 +14,11 @@
     },
     {
         "date": "2020/01/1",
+        "year": "2020",
+        "month": "01",
+        "day":"1",
         "time": "00:00",
+        "planID": "2",
         "whoCategory": "가족",
         "withWho": "Parents",
         "whatCategory": "기타",
@@ -19,7 +27,11 @@
     },
     {
         "date": "2019/12/25",
+        "year": "2019",
+        "month": "12",
+        "day":"25",
         "time": "22:00",
+        "planID": "3",
         "whoCategory": "친구",
         "withWho": "소현이!",
         "whatCategory": "기타",

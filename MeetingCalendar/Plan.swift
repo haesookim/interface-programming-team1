@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum WhoCategory : String, CaseIterable, Decodable{
+enum WhoCategory : String, CaseIterable, Codable{
     case Friend = "친구"
     case SignificantOther = "연인"
     case Family = "가족"
@@ -32,7 +32,7 @@ enum WhoCategory : String, CaseIterable, Decodable{
     }
 }
 
-enum WhatCategory : String, CaseIterable, Decodable{
+enum WhatCategory : String, CaseIterable, Codable{
     case Celebrate = "축하한다"
     case Party = "파티를 한다"
     case Meeting = "회의한다"
@@ -95,7 +95,7 @@ enum WhatCategory : String, CaseIterable, Decodable{
 // TODO : customizing catogories needed...?
 
 
-class Plan{
+class Plan : Comparable, Codable{
     
     //unique identifier
     var planID : String;
@@ -111,9 +111,7 @@ class Plan{
     
     //who
     var whoCategory : WhoCategory
-    var withWho : [String]?
-    var withWhoCount: Int?
-    var withWhoString : String? //for convenience purpose
+    var withWho : String?
     
     //what
     var whatCategory : WhatCategory?
@@ -126,7 +124,7 @@ class Plan{
     init!(date: String, // yyyy/MM/dd format
           time: String?,
           whoCategory: WhoCategory,
-          withWho: [String]?,
+          withWho: String?,
           whatCategory: WhatCategory?,
           doWhat: String?,
           place : String?){
@@ -155,30 +153,12 @@ class Plan{
         
         self.time = time ?? ""
         self.whoCategory = whoCategory
-        self.withWho = withWho ?? [""]
-        self.withWhoCount = withWho?.count ?? 0
+        self.withWho = withWho ?? ""
         self.whatCategory = whatCategory ?? WhatCategory.Undefined
         self.doWhat = doWhat ?? ""
         self.place = place ?? ""
         
         
-        if(withWho!.count > 1){
-                           var str = ""
-                           
-                           //re-generate withWhoString
-                           for e in (withWho)!{
-                               if(str == ""){
-                                   str = e
-                               }else{
-                                   str += ( ", " + e )
-                               }
-                           }
-                           
-                           withWhoString = str
-        }else{
-            withWhoString = withWho![0]
-            
-        }
         
     }
     
@@ -193,9 +173,7 @@ class Plan{
         
         self.time = time ?? ""
         self.whoCategory = whoCategory
-        //self.withWho = withWho ?? [""]
-        self.withWhoStringToArray(withWhoString ?? "")
-        self.withWhoCount = withWho?.count ?? 0
+        self.withWho = withWho ?? ""
         self.whatCategory = whatCategory ?? WhatCategory.Undefined
         self.doWhat = doWhat ?? ""
         self.place = place ?? ""
@@ -204,72 +182,25 @@ class Plan{
     }
     
     
-    func withWhoStringToArray(_ newWithWhoString : String){
-        withWhoString = newWithWhoString
-        let newString = withWhoString?.replacingOccurrences(of: ", ", with: ",")
-        withWho = newString?.components(separatedBy: ",")
-        withWhoCount = withWho?.count
-      
-        
-    }
+    //Database
     
-    func withWhoArrayToString(_ newWithWhoArray : [String]){
-        withWho = newWithWhoArray
-        withWhoCount = withWho?.count
-        if(withWho!.count > 1){
-                                  var str = ""
-                                  
-                                  //re-generate withWhoString
-                                  for e in (withWho)!{
-                                      if(str == ""){
-                                          str = e
-                                      }else{
-                                          str += ( ", " + e )
-                                      }
-                                  }
-                                  
-                                  withWhoString = str
-               }else{
-                   withWhoString = withWho![0]
-        }
-        
-    }
-    
-    func printforDebug(){
-        print("date : \(date)\n time : \(time)\n whoCat : \(whoCategory.rawValue)\n withWhoString : \(withWhoString)\n whatCategory : \(whatCategory?.rawValue)\n doWhat : \(doWhat)\n where : \(place)")
-        
-    }
-
-}
-
-// For database entry
-
-struct PlanData: Decodable, Comparable{
     enum DecodingError: Error {
         case missingFile
     }
+    
+    func save(directory: FileManager.SearchPathDirectory) throws {
+        let kindDirectoryURL = URL(fileURLWithPath: "", relativeTo: FileManager.default.urls(for: directory, in: .userDomainMask)[0])
+        //print(kindDirectoryURL)
 
-    let date: String
-    let time: String?
-    let whoCategory: WhoCategory //TODO: Check if this is the right value to recieve
-    let withWho: String?
-    let whatCategory: WhatCategory?
-    let doWhat: String?
-    let place: String?
-
-//    func save(directory: FileManager.SearchPathDirectory) throws {
-//        let kindDirectoryURL = URL(fileURLWithPath: "", relativeTo: FileManager.default.urls(for: directory, in: .userDomainMask)[0])
-//        print(kindDirectoryURL)
-//
-//        try? FileManager.default.createDirectory(at: kindDirectoryURL, withIntermediateDirectories: true)
-//    }
+        try? FileManager.default.createDirectory(at: kindDirectoryURL, withIntermediateDirectories: true)
+    }
     
     // Comparable functions for sorting
-    static func ==(lhs: PlanData, rhs: PlanData) -> Bool {
+    static func ==(lhs: Plan, rhs: Plan) -> Bool {
         return lhs.date == rhs.date && lhs.time == rhs.time
     }
 
-    static func <(lhs: PlanData, rhs: PlanData) -> Bool {
+    static func <(lhs: Plan, rhs: Plan) -> Bool {
         let lhsDate = lhs.date
         let rhsDate = rhs.date
 
@@ -289,17 +220,18 @@ struct PlanData: Decodable, Comparable{
             return lhsTime < rhsTime
         }
     }
+
 }
 
-extension Array where Element == PlanData {
+extension Array where Element == Plan {
     init(fileName: String) throws {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
-            throw PlanData.DecodingError.missingFile
-        }
-    
-        let data = try Data(contentsOf: url)
+        
+        guard let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { throw Plan.DecodingError.missingFile }
+        let fileUrl = documentDirectoryUrl.appendingPathComponent("NewPlanData.json")
+        
+        let data = try Data(contentsOf: fileUrl)
         let decoder = JSONDecoder()
-        self = try decoder.decode([PlanData].self, from: data)
+        self = try decoder.decode([Plan].self, from: data)
     }
 }
 

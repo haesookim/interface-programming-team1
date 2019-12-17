@@ -69,7 +69,7 @@ class SelectionViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         
-        selectedPlan = Plan(date: "2019/12/25", time: "", whoCategory: WhoCategory.Other, withWho: [""], whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
+        selectedPlan = Plan(date: "2019/12/25", time: "", whoCategory: WhoCategory.Other, withWho: "", whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
         
         selectedIndexPath = IndexPath(row: 1, section: 1)
         
@@ -148,7 +148,7 @@ class SelectionViewController: UIViewController {
         whoCatTF.text = selectedPlan.whoCategory.rawValue
         whatCatTF.text = selectedPlan.whatCategory?.rawValue
         
-        withWhoTF.text = selectedPlan.withWhoString
+        withWhoTF.text = selectedPlan.withWho
         doWhatTF.text = selectedPlan.doWhat
         whereTF.text = selectedPlan.place
         
@@ -192,7 +192,7 @@ class SelectionViewController: UIViewController {
         //apply changes made in input to the selectedPlan
         
         //those that are applied from textfield texts
-        selectedPlan.withWhoStringToArray(withWhoTF.text!)
+        selectedPlan.withWho = withWhoTF.text
         selectedPlan.doWhat = doWhatTF.text
         selectedPlan.place = whereTF.text
         

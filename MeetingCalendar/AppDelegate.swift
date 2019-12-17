@@ -15,17 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        do{
-            let directories: [FileManager.SearchPathDirectory] = [.documentDirectory, .applicationSupportDirectory, .cachesDirectory]
-         
-             for plan in try [PlanData](fileName: "PlanData") {
-                 for directory in directories {
-                     try plan.save(directory: directory)
-                 }
-             }
-         } catch {
-             print(error)
-         }
     
         return true
     }
