@@ -115,7 +115,7 @@ class InputViewController: UIViewController {
         //try addNewPlan
         //if successful, clear the input data in the storyboard
         //if fails( level 1, returning nil) send error message and leave the data in the storyboard for further process
-        if let newPlan = PlanList.shared.createNewPlan(Date: fullDateString,
+        if let newPlan = PlanList.shared.createNewPlan(planID: UUID().uuidString ,Date: fullDateString,
                                                        time: timePickerTF.text,
                                                        whoCategory: selectedWhoCat,
                                                        withWho: withWhoTF.text,

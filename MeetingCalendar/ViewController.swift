@@ -178,16 +178,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             let header = cell.viewWithTag(10) as? UILabel
             header?.text = sortedDatesofMonth[indexPath.section]
             
-            print("generate header cell")
-            
             return cell
             
         } else { //these cells will be used for showing the actual PlanItems
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlanItem", for: indexPath)
             
             let item = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ] //is a Plan object
-            
-            print("generate plan cell")
             
             //tag 1 : time(label)
             if let timeLabel = cell.viewWithTag(1) as? UILabel{
@@ -243,7 +239,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
             //data to be sent
             indexPathforEditing = indexPath
-            
             planforEditing = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ]
             
             monthStringforEditing = currentMonthString
@@ -307,12 +302,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 extension ViewController : editPlanDelegate{
     
     func deletePlan(plan : Plan){
-        print(plan.planID)
         self.dismiss(animated:true){
         
             PlanList.shared.deletePlanFromCPRA(targetPlan: plan)
             self.applyMonthChange()
-            //self.tableView.deleteRows(at: [indexPath], with: .none)
+            self.tableView.reloadData()
             print("deleting done?")
         }
     }

@@ -213,7 +213,6 @@ class SelectionViewController: UIViewController {
     
     
     @IBAction func deletePlan(_ sender: Any) {
-        print(selectedPlan.planID)
         //PlanList.shared.deletePlanFromCPRA(targetPlan: selectedPlan)
          editDelegate?.deletePlan(plan : selectedPlan)
         

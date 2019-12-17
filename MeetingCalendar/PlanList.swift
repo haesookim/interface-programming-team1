@@ -59,7 +59,7 @@ class PlanList {
         
         let arrayToLoop = completePlanRawArray.sorted()
         for plan in arrayToLoop{
-            guard let data = createNewPlan(Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWho: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place) else { return }
+            guard let data = createNewPlan(planID: plan.planID, Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWho: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place) else { return }
             addToCPL(item: data)
         }
     }
@@ -67,7 +67,8 @@ class PlanList {
     //level 1 : implement adding plan with addplan.
     // if a new plan is successfully done, return the plan
     // if initializing new plan fails(level 0, returning nil), return nil
-    func createNewPlan(Date: String, //input as yyyy/MM/dd
+    func createNewPlan(planID: String,
+                       Date: String, //input as yyyy/MM/dd
         time: String?,
         whoCategory: WhoCategory,
         withWho : String?,
@@ -75,7 +76,6 @@ class PlanList {
         doWhat: String?,
         place : String?) -> Plan?{
 
-        let planID = UUID().uuidString
         //init new Item
         //if let, in case of wrong input
         if let item = Plan(
@@ -165,12 +165,10 @@ class PlanList {
     func deletePlanFromCPRA(targetPlan : Plan){
         
         for i in 0..<completePlanRawArray.count{
-            
             if(completePlanRawArray[i].planID == targetPlan.planID){
-                
                 completePlanRawArray.remove(at: i)
+                break;
             }
-            
         }
         
         savePlanList()
@@ -205,7 +203,7 @@ class PlanList {
         let dayKey = targetPlan.day
         
         
-        var planArray = completePlanList[yearMonthKey]?[dayKey]
+        let planArray = completePlanList[yearMonthKey]?[dayKey]
         //planArray?.remove(at: index) // remove item at specified index value
         completePlanList[yearMonthKey]?[dayKey] = planArray
         
