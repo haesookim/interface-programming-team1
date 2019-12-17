@@ -76,7 +76,7 @@ class InputViewController: UIViewController {
         
         timePicker = UIDatePicker()
         clearToolbar.sizeToFit()
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(clearTimeData))
         clearToolbar.setItems([cancelButton], animated: true)
         timePicker!.datePickerMode = .time
         timePicker!.minuteInterval = 5
@@ -196,6 +196,12 @@ extension InputViewController : UITextFieldDelegate {
     @objc func tapAction(){
         
         view.endEditing(true)
+    }
+    
+    @objc func clearTimeData(){
+        timePickerTF.text = ""
+        view.endEditing(true)
+        
     }
     
     

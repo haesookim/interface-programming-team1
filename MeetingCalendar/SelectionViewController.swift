@@ -53,6 +53,7 @@ class SelectionViewController: UIViewController {
     
     var datePicker : UIDatePicker?
     var timePicker : UIDatePicker?
+    let clearToolbar = UIToolbar()
     
     var whoCatPicker : UIPickerView?
     var whatCatPicker : UIPickerView?
@@ -104,11 +105,15 @@ class SelectionViewController: UIViewController {
         datePickerTFDummy.tintColor = UIColor.clear
         
         timePicker = UIDatePicker()
+        clearToolbar.sizeToFit()
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(clearTimeData))
+        clearToolbar.setItems([cancelButton], animated: true)
         timePicker!.datePickerMode = .time
         timePicker!.minuteInterval = 5
         timePicker!.addTarget(self, action: #selector(InputViewController.timePickerInputChanged), for: .valueChanged) //currently set to valueChanged, but need better trigger
         
         timePickerTF.inputView = timePicker
+        timePickerTF.inputAccessoryView = clearToolbar
         timePickerTF.tintColor = UIColor.clear
         
         
@@ -239,6 +244,12 @@ extension SelectionViewController : UITextFieldDelegate {
     @objc func tapAction(){
         
         view.endEditing(true)
+    }
+    
+    @objc func clearTimeData(){
+        timePickerTF.text = ""
+        view.endEditing(true)
+        
     }
     
     
