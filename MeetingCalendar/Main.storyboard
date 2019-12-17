@@ -446,6 +446,9 @@
                                         <state key="normal" image="page2_2trash-1">
                                             <attributedString key="attributedTitle"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deletePlan:" destination="W4t-XU-YlE" eventType="touchUpInside" id="fF3-Kn-gdZ"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="무엇" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-dA-BOu" userLabel="WhatTextField1">
                                         <rect key="frame" x="77" y="174" width="159" height="37"/>

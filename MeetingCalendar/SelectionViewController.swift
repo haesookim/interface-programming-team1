@@ -11,6 +11,7 @@ import UIKit
 
 protocol editPlanDelegate{
     func editPlan(plan : Plan, indexPath : IndexPath, yearMonthKey : String)
+    func deletePlan(plan : Plan)
 }
 
 
@@ -21,7 +22,6 @@ class SelectionViewController: UIViewController {
     var selectedYearMonth : String
     
     var editDelegate : editPlanDelegate?
-    
     
     
     
@@ -69,7 +69,7 @@ class SelectionViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         
-        selectedPlan = Plan(date: "2019/12/25", time: "", whoCategory: WhoCategory.Other, withWho: "", whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
+        selectedPlan = Plan(planID: "100", date: "2019/12/25", time: "", whoCategory: WhoCategory.Other, withWho: "", whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
         
         selectedIndexPath = IndexPath(row: 1, section: 1)
         
@@ -211,6 +211,16 @@ class SelectionViewController: UIViewController {
     //action : close VC and sent data back
     
     
+    
+    @IBAction func deletePlan(_ sender: Any) {
+        print(selectedPlan.planID)
+        //PlanList.shared.deletePlanFromCPRA(targetPlan: selectedPlan)
+         editDelegate?.deletePlan(plan : selectedPlan)
+        
+        //perform segue
+        //dismiss(animated: true, completion: nil)
+        
+    }
 
 }
 

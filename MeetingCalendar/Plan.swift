@@ -121,7 +121,8 @@ class Plan : Comparable, Codable{
     var place : String?
 
     
-    init!(date: String, // yyyy/MM/dd format
+    init!(planID: String,
+          date: String, // yyyy/MM/dd format
           time: String?,
           whoCategory: WhoCategory,
           withWho: String?,
@@ -129,7 +130,6 @@ class Plan : Comparable, Codable{
           doWhat: String?,
           place : String?){
         
-        planID = UUID().uuidString
         
         let dateArray = date.components(separatedBy: "/")
                
@@ -144,6 +144,7 @@ class Plan : Comparable, Codable{
             // We may forego this data validation step by adding a client-side prevention
             // this I agree.
         }
+        self.planID = planID
         
         self.date = date
         

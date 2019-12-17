@@ -133,7 +133,7 @@ class ViewController: UIViewController {
         
         
         indexPathforEditing = IndexPath(row: 1, section: 1)
-        planforEditing = Plan(date: "2019/12/25", time: "", whoCategory: WhoCategory.Other, withWho: "", whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
+        planforEditing = Plan(planID: "100",date: "2019/12/25", time: "", whoCategory: WhoCategory.Other, withWho: "", whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
         monthStringforEditing = "2019/12"
         
         super.init(coder: coder)
@@ -305,6 +305,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 
 
 extension ViewController : editPlanDelegate{
+    
+    func deletePlan(plan : Plan){
+        print(plan.planID)
+        self.dismiss(animated:true){
+        
+            PlanList.shared.deletePlanFromCPRA(targetPlan: plan)
+            self.applyMonthChange()
+            //self.tableView.deleteRows(at: [indexPath], with: .none)
+            print("deleting done?")
+        }
+    }
+    
+    
     
     func editPlan(plan: Plan, indexPath : IndexPath, yearMonthKey : String) {
         self.dismiss(animated: true) {

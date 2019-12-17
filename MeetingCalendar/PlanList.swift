@@ -28,7 +28,8 @@ class PlanList {
         
         // if there is no previous data, generate an example plan in completelist
         
-        completePlanList = ["2019/12" : ["25" : [Plan(date: "2019/12/25",
+        completePlanList = ["2019/12" : ["25" : [Plan(planID:"1",
+                                                      date: "2019/12/25",
                                                       time: "19:00",
                                                       whoCategory: WhoCategory.Family,
                                                       withWho: "Mr.Santa",
@@ -74,16 +75,18 @@ class PlanList {
         doWhat: String?,
         place : String?) -> Plan?{
 
-        
+        let planID = UUID().uuidString
         //init new Item
         //if let, in case of wrong input
-        if let item = Plan(date: Date,
-                           time: time,
-                           whoCategory: whoCategory,
-                           withWho: withWho,
-                           whatCategory: whatCategory,
-                           doWhat: doWhat,
-                           place: place) {
+        if let item = Plan(
+            planID: planID,
+            date: Date,
+            time: time,
+            whoCategory: whoCategory,
+            withWho: withWho,
+            whatCategory: whatCategory,
+            doWhat: doWhat,
+            place: place) {
             
             return item
         } else {
@@ -141,20 +144,41 @@ class PlanList {
         //        let dateFormatter = DateFormatter()
         //        dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        let dateValue = date.components(separatedBy: "/")
-        let yearMonthKey = dateValue[0]+"/"+dateValue[1]
-        let dayKey = dateValue[2]
+//        let dateValue = date.components(separatedBy: "/")
+//        let yearMonthKey = dateValue[0]+"/"+dateValue[1]
+//        let dayKey = dateValue[2]
+//
+//        var planArray = completePlanList[yearMonthKey]![dayKey]
+//        planArray?.remove(at: index) // remove item at specified index value
+//        completePlanList[yearMonthKey]![dayKey] = planArray
+//
+//        if(completePlanList[yearMonthKey]![dayKey]!.count == 0){
+//            completePlanList[yearMonthKey]!.removeValue(forKey: dayKey)
+//            print("empty plan removed")
+//          }
         
-        var planArray = completePlanList[yearMonthKey]![dayKey]
-        planArray?.remove(at: index) // remove item at specified index value
-        completePlanList[yearMonthKey]![dayKey] = planArray
         
-        if(completePlanList[yearMonthKey]![dayKey]!.count == 0){
-            completePlanList[yearMonthKey]!.removeValue(forKey: dayKey)
-            print("empty plan removed")
-        }
         
     }
+    
+    
+    func deletePlanFromCPRA(targetPlan : Plan){
+        
+        for i in 0..<completePlanRawArray.count{
+            
+            if(completePlanRawArray[i].planID == targetPlan.planID){
+                
+                completePlanRawArray.remove(at: i)
+            }
+            
+        }
+        
+        savePlanList()
+        initPlanList()
+        
+    }
+    
+    
     
     func editTargetPlan(targetPlan : Plan, newDate : String){
         //minor changes will have been directly edited already
