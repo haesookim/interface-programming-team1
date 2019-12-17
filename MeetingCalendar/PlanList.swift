@@ -14,6 +14,7 @@ import Foundation
 class PlanList {
     //singleton
     static let shared = PlanList()
+
     
     //Raw data retrieved from database
     var completePlanRawArray : [Plan]
@@ -61,6 +62,9 @@ class PlanList {
         for plan in arrayToLoop{
             guard let data = createNewPlan(planID: plan.planID, Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWho: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place) else { return }
             addToCPL(item: data)
+            
+            LocalNotificationManager.notifManager.notifications.append(
+                Notification(id: UUID().uuidString, title: "일정 알림입니다", datetime: DateComponents(calendar: Calendar.current, year: Int(data.year), month: Int(data.month), day: Int(data.day)!, hour: 2, minute: 44)))
         }
     }
     
