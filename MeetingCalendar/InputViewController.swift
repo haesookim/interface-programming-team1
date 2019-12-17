@@ -127,17 +127,16 @@ class InputViewController: UIViewController {
              
         }else{
             
-            //maybe error message here?
-            let alert = UIAlertController(title: "오류", message: "'날짜'와 '누구와' 항목은 필수입니다", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "오류", message: "'날짜' 및 '누구와' 항목은 필수입니다", preferredStyle: UIAlertController.Style.alert)
             let alertAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
-                    {
-                        (UIAlertAction) -> Void in
-                    }
-                    alert.addAction(alertAction)
-                    present(alert, animated: true)
-                    {
-                        () -> Void in
-                    }
+            {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            {
+                () -> Void in
+            }
         }
         
         
