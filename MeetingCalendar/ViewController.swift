@@ -10,10 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //full plan list
-    //var myPlanList : PlanList
-    //now uses singleton
-    
     //for current month
     var currentMonthString : String //key for the completeDict
     var currentMonthPlans : [ String:[Plan] ] //]dictionary of entries with key string and plan array as value
@@ -109,7 +105,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
     }
     
     
@@ -167,7 +162,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         //}
     }
     
-    
     //function that generates cell in a certain indexpath
     //and applies changes within the cells
     func tableView(_ tableView: UITableView,
@@ -185,7 +179,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
             return cell
             
-        }else{ //these cells will be used for showing the actual PlanItems
+        } else { //these cells will be used for showing the actual PlanItems
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlanItem", for: indexPath)
             
             let item = currentMonthPlans[ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ] //is a Plan object
@@ -223,14 +217,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             if let characterSticker = cell.viewWithTag(4) as? UIImageView{
                 
                 // TODO : Update character stickers according to whoCat
-                //sticker.image = [UIImage imageNamed: @ ""]
-            }
-            
-            //tag 5 : hat sticker(image)
-            if let hatSticker = cell.viewWithTag(5) as? UIImageView{
                 
-                // TODO : Update hat stickers according to whatCat
-                //sticker.image = [UIImage imageNamed: @ ""]
+                let imageName = (item.whatCategory?.value ?? "") + item.whoCategory.value
+                //self.monthIcon.setImage(monthImage, for: .normal)
+                characterSticker.image = UIImage(named: "\(imageName).png")!
+                //characterSticker.image = [UIImage imageNamed: @ ""]
             }
             
             return cell

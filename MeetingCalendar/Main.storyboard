@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="ST3-7u-ktF">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="1" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="page2_line2" translatesAutoresizingMaskIntoConstraints="NO" id="BA3-j9-9va">
@@ -82,7 +82,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Header" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3B-Cs-yov">
-                                                    <rect key="frame" x="7" y="7" width="291.5" height="20"/>
+                                                    <rect key="frame" x="20" y="7" width="291.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="V3B-Cs-yov" secondAttribute="height" multiplier="102:7" id="MaV-VG-0mu"/>
                                                     </constraints>
@@ -96,7 +96,7 @@
                                                 <constraint firstItem="bPB-DT-rEL" firstAttribute="top" secondItem="hH8-5D-sR5" secondAttribute="top" constant="7" id="26e-IQ-YTL"/>
                                                 <constraint firstItem="V3B-Cs-yov" firstAttribute="top" secondItem="hH8-5D-sR5" secondAttribute="top" constant="7" id="jUX-Nf-u5w"/>
                                                 <constraint firstItem="bPB-DT-rEL" firstAttribute="leading" secondItem="hH8-5D-sR5" secondAttribute="leading" constant="5" id="r9C-eW-qDR"/>
-                                                <constraint firstItem="V3B-Cs-yov" firstAttribute="leading" secondItem="hH8-5D-sR5" secondAttribute="leading" constant="7" id="xS6-J7-tn0"/>
+                                                <constraint firstItem="V3B-Cs-yov" firstAttribute="leading" secondItem="hH8-5D-sR5" secondAttribute="leading" constant="20" id="xS6-J7-tn0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -120,16 +120,12 @@
                                                     <rect key="frame" x="1" y="6" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ly9-pO-nTz" userLabel="characterSticker">
-                                                    <rect key="frame" x="279" y="18" width="75" height="75"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ly9-pO-nTz" userLabel="characterSticker">
+                                                    <rect key="frame" x="-71" y="18" width="75" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="75" id="IaG-7G-3ZW"/>
                                                         <constraint firstAttribute="width" constant="75" id="LJW-kx-SdH"/>
                                                     </constraints>
-                                                </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hSD-SD-K94" userLabel="hatSticker">
-                                                    <rect key="frame" x="302" y="27" width="29" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meeting with" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JV0-na-215">
                                                     <rect key="frame" x="49" y="32" width="222" height="26"/>
@@ -151,6 +147,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="ly9-pO-nTz" secondAttribute="bottom" constant="6" id="CXo-64-agR"/>
                                                 <constraint firstAttribute="trailing" secondItem="AYP-B9-7rk" secondAttribute="trailing" id="EcI-Iy-KFA"/>
                                                 <constraint firstAttribute="bottom" secondItem="AYP-B9-7rk" secondAttribute="bottom" constant="-2" id="Ihg-vW-cI4"/>
+                                                <constraint firstItem="ly9-pO-nTz" firstAttribute="trailing" secondItem="H8Y-DT-3uy" secondAttribute="trailingMargin" constant="20" id="lVf-py-mi2"/>
                                                 <constraint firstItem="ly9-pO-nTz" firstAttribute="top" secondItem="H8Y-DT-3uy" secondAttribute="topMargin" constant="7" id="tI7-wW-KBn"/>
                                                 <constraint firstItem="AYP-B9-7rk" firstAttribute="top" secondItem="H8Y-DT-3uy" secondAttribute="top" id="znP-nv-dNy"/>
                                             </constraints>
@@ -200,7 +197,7 @@
                                 </connections>
                             </tableView>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="page2_tab" translatesAutoresizingMaskIntoConstraints="NO" id="IK6-Qf-RbZ">
-                                <rect key="frame" x="-189" y="780" width="793" height="128"/>
+                                <rect key="frame" x="-125" y="809" width="643" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -229,7 +226,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="2pK-Bq-XRL">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="1" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUY-UC-j3V" userLabel="InputHolderView">
@@ -336,7 +333,7 @@
                                 <state key="normal" image="calendar"/>
                             </button>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="page1_tab" translatesAutoresizingMaskIntoConstraints="NO" id="OGI-4O-n6K">
-                                <rect key="frame" x="-189" y="778" width="793" height="128"/>
+                                <rect key="frame" x="-146" y="804" width="707" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>

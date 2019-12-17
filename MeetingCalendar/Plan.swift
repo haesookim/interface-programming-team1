@@ -17,13 +17,26 @@ enum WhoCategory : String, CaseIterable, Decodable{
     case Religion = "종교"
     case Other = "기타"
     case Undefined = "" // Initial state
+    
+    var value:String {
+        switch self{
+            case .Friend : return "1"
+            case .SignificantOther : return "2"
+            case .Family : return "3"
+            case .Work : return "4"
+            case .Club : return "5"
+            case .Religion : return "6"
+            case .Other : return "7"
+            case .Undefined : return ""
+        }
+    }
 }
 
 enum WhatCategory : String, CaseIterable, Decodable{
     case Celebrate = "축하한다"
     case Party = "파티를 한다"
     case Meeting = "회의한다"
-    case Reluctanct = "안 보고 싶다"
+    case Reluctant = "안 보고 싶다"
     case Music = "음악을 한다"
     case Date = "데이트를 한다"
     case Important = "중요한 날이다"
@@ -45,6 +58,36 @@ enum WhatCategory : String, CaseIterable, Decodable{
     case Hospital = "병원을 간다"
     case Other = "기타"
     case Undefined = "" //Initial state
+    
+    var value:String {
+        switch self{
+            case .Celebrate : return "celebrate"
+            case .Party : return "party"
+            case .Meeting : return "meeting"
+            case .Reluctant : return "reluctant"
+            case .Music : return "music"
+            case .Date : return "date"
+            case .Important : return "important"
+            case .Rest : return "rest"
+            case .Anniversary : return "anniv"
+            case .Food : return "food"
+            case .Movie : return "movie"
+            case .Cafe : return "cafe"
+            case .Exercise : return "exercise"
+            case .Create : return "create"
+            case .Drink : return "drink"
+            case .Study : return "study"
+            case .Pray : return "pray"
+            case .Service : return "service"
+            case .Game : return "game"
+            case .Concert : return "concert"
+            case .Shopping : return "shopping"
+            case .Travel : return "travel"
+            case .Hospital : return "hospital"
+            case .Other : return ""
+            case .Undefined : return ""
+        }
+    }
 
 }
 
