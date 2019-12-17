@@ -20,10 +20,32 @@ enum WhoCategory : String, CaseIterable, Decodable{
 }
 
 enum WhatCategory : String, CaseIterable, Decodable{
-    case Work = "일"
+    case Celebrate = "축하한다"
+    case Party = "파티를 한다"
+    case Meeting = "회의한다"
+    case Reluctanct = "안 보고 싶다"
+    case Music = "음악을 한다"
+    case Date = "데이트를 한다"
+    case Important = "중요한 날이다"
+    case Rest = "쉰다"
+    case Anniversary = "기념일이다"
+    case Food = "맛있는 걸 먹는다"
+    case Movie = "영화를 본다"
+    case Cafe = "카페를 간다"
+    case Exercise = "운동한다"
+    case Create = "창작한다"
+    case Drink = "술을 마신다"
+    case Study = "공부한다"
+    case Pray = "기도한다"
+    case Service = "봉사한다"
+    case Game = "게임한다"
+    case Concert = "공연을 본다"
+    case Shopping = "쇼핑한다"
+    case Travel = "여행간다"
+    case Hospital = "병원을 간다"
     case Other = "기타"
     case Undefined = "" //Initial state
-    
+
 }
 
 // TODO : input type of Dates should be confirmed
