@@ -76,7 +76,11 @@ class ViewController: UIViewController {
     func applyMonthChange(){
         
         //re-calculate currentmonth and extract currentMonthPlans
-        currentMonthString = String(yearMonthPair[0]) + "/" + String(yearMonthPair[1])
+        if yearMonthPair[1] > 9 {
+            currentMonthString = String(yearMonthPair[0]) + "/" + String(yearMonthPair[1])
+        }else {
+            currentMonthString = String(yearMonthPair[0]) + "/0" + String(yearMonthPair[1])
+        }
         currentMonthPlans.removeAll()
         
         //use if let in case of months with no plans

@@ -85,16 +85,21 @@ class PlanList {
                            place: place) {
             
             let yearMonthKey = item.year+"/"+item.month
+            print(yearMonthKey)
             let dayKey = item.day
             //add it to the completPlanlist
             if(completePlanList[yearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
                 completePlanList[yearMonthKey] = [:]
+                print("new yearMonth key created")
             }
             
             if (completePlanList[yearMonthKey]![dayKey] == nil){
                 completePlanList[yearMonthKey]![dayKey] = [item]
+                print("new day key created")
             } else{
                 completePlanList[yearMonthKey]![dayKey]!.append(item)
+                print("added in existing slot")
+                
             }
             
             return item
