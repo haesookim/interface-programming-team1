@@ -40,9 +40,11 @@ class InputViewController: UIViewController {
     var datePicker : UIDatePicker?
     var timePicker : UIDatePicker?
     let clearToolbar = UIToolbar()
+    let dateToolbar = UIToolbar()
     
     var whoCatPicker : UIPickerView?
     var whatCatPicker : UIPickerView?
+    let confirmToolbar = UIToolbar()
     
     var whoCatArray : [WhoCategory] = []
     var whatCatArray : [WhatCategory] = []
@@ -56,28 +58,33 @@ class InputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         //apply delegates
         configureDelegates()
         configureTapGesture()
         
-        
         //setup date/time pickers
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(clearTimeData))
+        let confirmButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(tapAction))
+        let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        clearToolbar.sizeToFit()
+        dateToolbar.sizeToFit()
+        clearToolbar.setItems([cancelButton,flex, confirmButton], animated: true)
+        dateToolbar.setItems([flex, confirmButton], animated: true)
         
         datePicker = UIDatePicker()
         datePicker!.datePickerMode = .date
         //mmddyy needs to be changed -_-
         datePicker!.locale = .autoupdatingCurrent //when actual release
         datePicker!.addTarget(self, action: #selector(InputViewController.datePickerInputChanged), for: .valueChanged)
+        datePicker!.addTarget(self, action: #selector(InputViewController.datePickerInputChanged), for: .editingDidBegin)
         
+        datePickerTFDummy.inputAccessoryView = dateToolbar
         datePickerTFDummy.inputView = datePicker
         datePickerTFDummy.tintColor = UIColor.clear
         
         timePicker = UIDatePicker()
         clearToolbar.sizeToFit()
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(clearTimeData))
-        clearToolbar.setItems([cancelButton], animated: true)
+        clearToolbar.setItems([cancelButton,flex, confirmButton], animated: true)
         timePicker!.datePickerMode = .time
         timePicker!.minuteInterval = 5
         timePicker!.addTarget(self, action: #selector(InputViewController.timePickerInputChanged), for: .valueChanged) //currently set to valueChanged, but need better trigger
@@ -99,8 +106,6 @@ class InputViewController: UIViewController {
         
         createCategoryPicker()
         
-
-        // Do any additional setup after loading  the view.
     }
     
     
@@ -130,6 +135,7 @@ class InputViewController: UIViewController {
             
             //else
             clearInputData()
+            //performSegue(withIdentifier: "create", sender: nil)
             
         }else{
             
@@ -195,7 +201,6 @@ extension InputViewController : UITextFieldDelegate {
     
     
     @objc func tapAction(){
-        
         view.endEditing(true)
     }
     
@@ -233,6 +238,11 @@ extension InputViewController : UITextFieldDelegate {
     }
     
     func createCategoryPicker(){
+        let confirmButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(tapAction))
+        let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        confirmToolbar.sizeToFit()
+        confirmToolbar.setItems([flex, confirmButton], animated: true)
+        
         let whoCatPicker = UIPickerView()
         let whatCatPicker = UIPickerView()
         
@@ -243,7 +253,9 @@ extension InputViewController : UITextFieldDelegate {
         whatCatPicker.tag = 2
         
         whoCatTF.inputView = whoCatPicker
+        whoCatTF.inputAccessoryView = confirmToolbar
         whatCatTF.inputView = whatCatPicker
+        whatCatTF.inputAccessoryView = confirmToolbar
         
 
         
@@ -269,10 +281,10 @@ extension InputViewController : UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if(pickerView.tag == 1){ //who
             
-            return whoCatArray.count
+            return whoCatArray.count-1
         }else{//what
             
-            return whatCatArray.count
+            return whatCatArray.count-1
         }
     }
     

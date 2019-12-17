@@ -190,6 +190,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 
                 // TODO : Update color stickers according to whoCat
                 //sticker.image = [UIImage imageNamed: @ ""]
+                let imageName = "sticker2_" + String(indexPath.section * indexPath.row % 4+1)
+                colorSticker.image = UIImage(named: "\(imageName).png")!
                 
             }
             

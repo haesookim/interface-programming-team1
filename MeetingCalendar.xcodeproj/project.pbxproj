@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C36DBEA23967F7A00986C2B /* batang.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36DBE923967F7A00986C2B /* batang.otf */; };
+		2C75B6A623A9419900BE60B9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C75B6A523A9419900BE60B9 /* NotificationManager.swift */; };
 		2C916A10237B953900341F5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A0F237B953900341F5D /* AppDelegate.swift */; };
 		2C916A12237B953900341F5D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A11237B953900341F5D /* SceneDelegate.swift */; };
 		2C916A14237B953900341F5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C916A13237B953900341F5D /* ViewController.swift */; };
@@ -42,7 +43,8 @@
 
 /* Begin PBXFileReference section */
 		2C36DBE923967F7A00986C2B /* batang.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = batang.otf; path = ../../../batang.otf; sourceTree = "<group>"; };
-		2C916A0C237B953900341F5D /* MeetingCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C75B6A523A9419900BE60B9 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		2C916A0C237B953900341F5D /* 휴먼다이어리 : HumanDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "휴먼다이어리 : HumanDiary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C916A0F237B953900341F5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C916A11237B953900341F5D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C916A13237B953900341F5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		2C916A0D237B953900341F5D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C916A0C237B953900341F5D /* MeetingCalendar.app */,
+				2C916A0C237B953900341F5D /* 휴먼다이어리 : HumanDiary.app */,
 				2C916A22237B953A00341F5D /* MeetingCalendarTests.xctest */,
 				2C916A2D237B953A00341F5D /* MeetingCalendarUITests.xctest */,
 			);
@@ -116,6 +118,7 @@
 				2C916A0F237B953900341F5D /* AppDelegate.swift */,
 				2C916A11237B953900341F5D /* SceneDelegate.swift */,
 				2C916A13237B953900341F5D /* ViewController.swift */,
+				2C75B6A523A9419900BE60B9 /* NotificationManager.swift */,
 				36706A3B238C23520084BE82 /* Main.storyboard */,
 				3679464D239F842D003EAD3A /* InputViewController.swift */,
 				3680AC1423964B03001EFDD7 /* SelectionViewController.swift */,
@@ -179,7 +182,7 @@
 			);
 			name = MeetingCalendar;
 			productName = MeetingCalendar;
-			productReference = 2C916A0C237B953900341F5D /* MeetingCalendar.app */;
+			productReference = 2C916A0C237B953900341F5D /* 휴먼다이어리 : HumanDiary.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2C916A21237B953A00341F5D /* MeetingCalendarTests */ = {
@@ -302,6 +305,7 @@
 				2C916A42237B9F6800341F5D /* PlanList.swift in Sources */,
 				2C916A10237B953900341F5D /* AppDelegate.swift in Sources */,
 				2C916A12237B953900341F5D /* SceneDelegate.swift in Sources */,
+				2C75B6A623A9419900BE60B9 /* NotificationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,7 +477,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BlueSea.MeetingCalendar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "휴먼다이어리 : HumanDiary";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -490,7 +494,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BlueSea.MeetingCalendar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "휴먼다이어리 : HumanDiary";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -54,6 +54,7 @@ class SelectionViewController: UIViewController {
     var datePicker : UIDatePicker?
     var timePicker : UIDatePicker?
     let clearToolbar = UIToolbar()
+    let confirmToolbar = UIToolbar()
     
     var whoCatPicker : UIPickerView?
     var whatCatPicker : UIPickerView?
@@ -92,7 +93,14 @@ class SelectionViewController: UIViewController {
         configureTapGesture()
         
         //setup date/time pickers
-        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(clearTimeData))
+        let confirmButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(tapAction))
+        let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        clearToolbar.setItems([cancelButton, flex, confirmButton], animated: true)
+        clearToolbar.sizeToFit()
+
+        confirmToolbar.setItems([flex, confirmButton], animated: true)
+        confirmToolbar.sizeToFit()
         
         //TODO: - block copypaste etc
         datePicker = UIDatePicker()
@@ -102,12 +110,11 @@ class SelectionViewController: UIViewController {
         datePicker!.addTarget(self, action: #selector(InputViewController.datePickerInputChanged), for: .valueChanged)
         
         datePickerTFDummy.inputView = datePicker
+        datePickerTFDummy.inputAccessoryView = confirmToolbar
         datePickerTFDummy.tintColor = UIColor.clear
         
         timePicker = UIDatePicker()
-        clearToolbar.sizeToFit()
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(clearTimeData))
-        clearToolbar.setItems([cancelButton], animated: true)
+
         timePicker!.datePickerMode = .time
         timePicker!.minuteInterval = 5
         timePicker!.addTarget(self, action: #selector(InputViewController.timePickerInputChanged), for: .valueChanged) //currently set to valueChanged, but need better trigger
@@ -143,6 +150,27 @@ class SelectionViewController: UIViewController {
         yearTFDummy.text = selectedPlan.year + "년"
         monthTFDummy.text = selectedPlan.month + "월"
         dayTFDummy.text = selectedPlan.day + "일"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd" //Your date format
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+9:00") //Current time zone
+        //according to date format your date string
+        guard let date = dateFormatter.date(from: selectedPlan.date) else {
+            fatalError()
+        }
+        datePicker?.date = date
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm" //Your date format
+        timeFormatter.timeZone = TimeZone(abbreviation: "GMT+9:00") //Current time zone
+        //according to date format your date string
+        if ((selectedPlan.time) != nil && selectedPlan.time != ""){
+            guard let time = timeFormatter.date(from: selectedPlan.time!) else {
+                fatalError()
+            }
+                timePicker?.date=time
+            
+        }
         
         timePickerTF.text = selectedPlan.time
         whoCatTF.text = selectedPlan.whoCategory.rawValue
