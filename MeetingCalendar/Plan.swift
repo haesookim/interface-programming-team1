@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum WhoCategory : String, CaseIterable, Decodable{
+enum WhoCategory : String, CaseIterable, Codable{
     case Friend = "친구"
     case SignificantOther = "연인"
     case Family = "가족"
@@ -32,7 +32,7 @@ enum WhoCategory : String, CaseIterable, Decodable{
     }
 }
 
-enum WhatCategory : String, CaseIterable, Decodable{
+enum WhatCategory : String, CaseIterable, Codable{
     case Celebrate = "축하한다"
     case Party = "파티를 한다"
     case Meeting = "회의한다"
@@ -95,7 +95,7 @@ enum WhatCategory : String, CaseIterable, Decodable{
 // TODO : customizing catogories needed...?
 
 
-class Plan : Comparable, Decodable{
+class Plan : Comparable, Codable{
     
     //unique identifier
     var planID : String;
@@ -182,17 +182,11 @@ class Plan : Comparable, Decodable{
     }
     
     
-    func printforDebug(){
-        print("date : \(date)\n time : \(time)\n whoCat : \(whoCategory.rawValue)\n withWhoString : \(withWho)\n whatCategory : \(whatCategory?.rawValue)\n doWhat : \(doWhat)\n where : \(place)")
-        
-    }
-    
+    //Database
     
     enum DecodingError: Error {
         case missingFile
     }
-    
-    //Database
     
     func save(directory: FileManager.SearchPathDirectory) throws {
         let kindDirectoryURL = URL(fileURLWithPath: "", relativeTo: FileManager.default.urls(for: directory, in: .userDomainMask)[0])
@@ -231,11 +225,11 @@ class Plan : Comparable, Decodable{
 
 extension Array where Element == Plan {
     init(fileName: String) throws {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
-            throw Plan.DecodingError.missingFile
-        }
-    
-        let data = try Data(contentsOf: url)
+        
+        guard let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { throw Plan.DecodingError.missingFile }
+        let fileUrl = documentDirectoryUrl.appendingPathComponent("NewPlanData.json")
+        
+        let data = try Data(contentsOf: fileUrl)
         let decoder = JSONDecoder()
         self = try decoder.decode([Plan].self, from: data)
     }

@@ -56,36 +56,17 @@ class PlanList {
     func initPlanList() {
         completePlanList = [String: [String:[Plan]]]()
         
-        for plan in completePlanRawArray.sorted(){
-            _ = addNewPlan(Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWho: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place)
-        }
-    }
-    
-    func savePlanList(){
-        guard let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let fileUrl = documentDirectoryUrl.appendingPathComponent("PlanData.json")
-
-        // Create a write-only stream
-        guard let stream = OutputStream(toFileAtPath: fileUrl.path, append: false) else { return }
-        stream.open()
-        defer {
-            stream.close()
-        }
-        
-        // Transform array into data and save it into file
-        var error: NSError?
-        JSONSerialization.writeJSONObject(completePlanRawArray, to: stream, options: [], error: &error)
-        
-        // Handle error
-        if let error = error {
-            print(error)
+        let arrayToLoop = completePlanRawArray.sorted()
+        for plan in arrayToLoop{
+            guard let data = createNewPlan(Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWho: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place) else { return }
+            addToCPL(item: data)
         }
     }
     
     //level 1 : implement adding plan with addplan.
     // if a new plan is successfully done, return the plan
     // if initializing new plan fails(level 0, returning nil), return nil
-    func addNewPlan(Date: String, //input as yyyy/MM/dd
+    func createNewPlan(Date: String, //input as yyyy/MM/dd
         time: String?,
         whoCategory: WhoCategory,
         withWho : String?,
@@ -104,26 +85,56 @@ class PlanList {
                            doWhat: doWhat,
                            place: place) {
             
-            let yearMonthKey = item.year+"/"+item.month
-            let dayKey = item.day
-            //add it to the completPlanlist
-            if(completePlanList[yearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
-                completePlanList[yearMonthKey] = [:]
-            }
-            
-            if (completePlanList[yearMonthKey]![dayKey] == nil){
-                completePlanList[yearMonthKey]![dayKey] = [item]
-            } else{
-                completePlanList[yearMonthKey]![dayKey]!.append(item)
-            }
-            
             return item
         } else {
             return nil
         }
     }
     
+    func addToCPL(item:Plan){
+        
+        let yearMonthKey = item.year+"/"+item.month
+        let dayKey = item.day
+        //add it to the completPlanlist
+        if(completePlanList[yearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
+            completePlanList[yearMonthKey] = [:]
+        }
+        
+        if (completePlanList[yearMonthKey]![dayKey] == nil){
+            completePlanList[yearMonthKey]![dayKey] = [item]
+        } else{
+            completePlanList[yearMonthKey]![dayKey]!.append(item)
+        }
+    }
     
+    func addToCPRA(item: Plan){
+        completePlanRawArray.append(item)
+        savePlanList()
+        initPlanList()
+    }
+    
+    func savePlanList(){
+        guard let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let fileUrl = documentDirectoryUrl.appendingPathComponent("NewPlanData.json")
+        print(fileUrl)
+    
+        // Transform array into data and save it into file
+        do {
+            var planEncodeArray : [Any] = []
+            for plan in completePlanRawArray{
+                let jsonObject = try JSONEncoder().encode(plan)
+                let serializedObject = try JSONSerialization.jsonObject(with: jsonObject)
+                planEncodeArray.append(serializedObject)
+            }
+            let data = try JSONSerialization.data(withJSONObject: planEncodeArray, options: [])
+
+            try data.write(to: fileUrl, options: [])
+        } catch {
+            print(error)
+        }
+
+    }
+       
     
     func deletePlan(date: String, index: Int){
         

@@ -115,21 +115,21 @@ class InputViewController: UIViewController {
         //try addNewPlan
         //if successful, clear the input data in the storyboard
         //if fails( level 1, returning nil) send error message and leave the data in the storyboard for further process
-        if PlanList.shared.addNewPlan(Date: fullDateString,
-                                      time: timePickerTF.text,
-                                      whoCategory: selectedWhoCat,
-                                      withWho: withWhoTF.text,
-                                      whatCategory: selectedWhatCat,
-                                      doWhat: doWhatTF.text,
-                                      place: whereTF.text) != nil {
+        if let newPlan = PlanList.shared.createNewPlan(Date: fullDateString,
+                                                       time: timePickerTF.text,
+                                                       whoCategory: selectedWhoCat,
+                                                       withWho: withWhoTF.text,
+                                                       whatCategory: selectedWhatCat,
+                                                       doWhat: doWhatTF.text,
+                                                       place: whereTF.text) {
             
-             //navigate into list view?
-             //not yet
+            //navigate into list view?
+            //not yet
+            PlanList.shared.addToCPRA(item: newPlan)
             
-                 
-             //else
-             clearInputData()
-             
+            //else
+            clearInputData()
+            
         }else{
             
             let alert = UIAlertController(title: "오류", message: "'날짜' 및 '누구와' 항목은 필수입니다", preferredStyle: UIAlertController.Style.alert)

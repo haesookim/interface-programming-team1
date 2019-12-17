@@ -1,0 +1,29 @@
+[
+    {
+        "date": "2019/12/31",
+        "time": "23:55",
+        "whoCategory": "가족",
+        "withWho": "Parents",
+        "whatCategory": "기타",
+        "doWhat": "Ready for Countdown",
+        "place": "Home"
+    },
+    {
+        "date": "2020/1/1",
+        "time": "00:00",
+        "whoCategory": "가족",
+        "withWho": "Parents",
+        "whatCategory": "기타",
+        "doWhat": "NewYears",
+        "place": "Home"
+    },
+    {
+        "date": "2019/12/25",
+        "time": "22:00",
+        "whoCategory": "친구",
+        "withWho": "소현이!",
+        "whatCategory": "파티를 한다",
+        "doWhat": "House Party",
+        "place": "Home"
+    },
+]
