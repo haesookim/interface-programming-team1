@@ -133,7 +133,7 @@ class ViewController: UIViewController {
         
         
         indexPathforEditing = IndexPath(row: 1, section: 1)
-        planforEditing = Plan(date: "2019/12/25", time: "", whoCategory: WhoCategory.Other, withWho: [""], whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
+        planforEditing = Plan(date: "2019/12/25", time: "", whoCategory: WhoCategory.Other, withWho: "", whatCategory: WhatCategory.Undefined, doWhat: "", place: "")
         monthStringforEditing = "2019/12"
         
         super.init(coder: coder)
@@ -204,8 +204,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             
             //tag 3 : specifics(label)
             if let specLabel = cell.viewWithTag(3) as? UILabel{
-                if(item.withWho != [""]){
-                    specLabel.text = item.withWhoString
+                if(item.withWho != ""){
+                    specLabel.text = item.withWho
                     
                 }else{
                     
@@ -324,7 +324,7 @@ extension ViewController : editPlanDelegate{
                                      date: plan.date,
                                      time: plan.time,
                                      whoCategory: plan.whoCategory,
-                                     withWhoString: plan.withWhoString,
+                                     withWhoString: plan.withWho,
                                      whatCategory: plan.whatCategory,
                                      doWhat: plan.doWhat,
                                      place: plan.place)

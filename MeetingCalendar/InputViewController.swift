@@ -118,7 +118,7 @@ class InputViewController: UIViewController {
         if PlanList.shared.addNewPlan(Date: fullDateString,
                                       time: timePickerTF.text,
                                       whoCategory: selectedWhoCat,
-                                      withWhoString: withWhoTF.text,
+                                      withWho: withWhoTF.text,
                                       whatCategory: selectedWhatCat,
                                       doWhat: doWhatTF.text,
                                       place: whereTF.text) != nil {

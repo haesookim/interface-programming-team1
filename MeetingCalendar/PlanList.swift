@@ -16,7 +16,7 @@ class PlanList {
     static let shared = PlanList()
     
     //Raw data retrieved from database
-    var completePlanRawArray : [PlanData]
+    var completePlanRawArray : [Plan]
     
     //the actual complete list of data
     var completePlanList : [String: [String:[Plan]]]
@@ -31,7 +31,7 @@ class PlanList {
         completePlanList = ["2019/12" : ["25" : [Plan(date: "2019/12/25",
                                                       time: "19:00",
                                                       whoCategory: WhoCategory.Family,
-                                                      withWho: ["Mr.Santa"],
+                                                      withWho: "Mr.Santa",
                                                       whatCategory: WhatCategory.Other,
                                                       doWhat: "Christmas!",
                                                       place: "Home")],
@@ -41,7 +41,7 @@ class PlanList {
         
         // Retrieve raw plan data from database
         do{
-            completePlanRawArray = try [PlanData](fileName: "PlanData")
+            completePlanRawArray = try [Plan](fileName: "PlanData")
             if completePlanRawArray.count > 1{
                 //Decode the raw plans to the intended complex dictionary form
                 initPlanList()
@@ -57,7 +57,7 @@ class PlanList {
         completePlanList = [String: [String:[Plan]]]()
         
         for plan in completePlanRawArray.sorted(){
-            _ = addNewPlan(Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWhoString: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place)
+            _ = addNewPlan(Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWho: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place)
         }
     }
     
@@ -91,7 +91,7 @@ class PlanList {
         doWhat: String?,
         place : String?)->Bool
     {
-        if let tempdata = PlanData(date:Date, time: time, whoCategory: whoCategory, withWho: withWhoString, whatCategory: whatCategory, doWhat: doWhat, place: place) {
+        if let tempdata = Plan(date:Date, time: time, whoCategory: whoCategory, withWho: withWhoString, whatCategory: whatCategory, doWhat: doWhat, place: place) {
             completePlanRawArray.append(tempdata)
             print(completePlanRawArray)
             return true
@@ -105,14 +105,11 @@ class PlanList {
     func addNewPlan(Date: String, //input as yyyy/MM/dd
         time: String?,
         whoCategory: WhoCategory,
-        withWhoString : String?,
+        withWho : String?,
         whatCategory: WhatCategory?,
         doWhat: String?,
         place : String?) -> Plan?{
-        
-        //format withWho
-        let newString = withWhoString?.replacingOccurrences(of: ", ", with: ",")
-        let withWho = newString?.components(separatedBy: ",")
+
         
         //init new Item
         //if let, in case of wrong input

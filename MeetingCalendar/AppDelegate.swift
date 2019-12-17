@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do{
             let directories: [FileManager.SearchPathDirectory] = [.documentDirectory, .applicationSupportDirectory, .cachesDirectory]
          
-             for plan in try [PlanData](fileName: "PlanData") {
+             for plan in try [Plan](fileName: "PlanData") {
                  for directory in directories {
                      try plan.save(directory: directory)
                  }
