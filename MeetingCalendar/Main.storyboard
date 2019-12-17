@@ -236,7 +236,7 @@
                                 <rect key="frame" x="18" y="122" width="371" height="552"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="page1" translatesAutoresizingMaskIntoConstraints="NO" id="3nb-Sk-f37" userLabel="BackgroundImage">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="page" translatesAutoresizingMaskIntoConstraints="NO" id="3nb-Sk-f37" userLabel="BackgroundImage">
                                         <rect key="frame" x="0.0" y="-8" width="373" height="558"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -276,14 +276,6 @@
                                         <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o15-2B-gyL" userLabel="ConfirmButton">
-                                        <rect key="frame" x="171" y="484" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="확인"/>
-                                        <connections>
-                                            <action selector="ConfirmInput:" destination="DCf-mt-9QA" eventType="touchUpInside" id="W21-G2-DRH"/>
-                                        </connections>
-                                    </button>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TT:MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1P-iy-fQR" userLabel="TimePickerTF">
                                         <rect key="frame" x="84" y="65" width="128" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -315,11 +307,21 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="일" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v8w-Sc-z8K" userLabel="DummyDayTF">
-                                        <rect key="frame" x="272" y="24" width="68" height="21"/>
+                                        <rect key="frame" x="265" y="24" width="68" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o15-2B-gyL" userLabel="ConfirmButton">
+                                        <rect key="frame" x="306" y="480" width="43" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="OKbutton">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="ConfirmInput:" destination="DCf-mt-9QA" eventType="touchUpInside" id="W21-G2-DRH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -373,6 +375,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="DCf-mt-9QA" kind="relationship" relationship="viewControllers" id="MxQ-Pc-oEN"/>
@@ -398,7 +401,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="238"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textField opaque="NO" tag="6" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="어떤 사람들과? (필수)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xta-Nl-qPI" userLabel="WithTextField2">
+                                    <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="어떤 사람들과? (필수)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xta-Nl-qPI" userLabel="WithTextField2">
                                         <rect key="frame" x="136" y="58" width="171" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="171" id="In3-EL-Rp6"/>
@@ -408,7 +411,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="무엇을 하나요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQS-Rm-BHj" userLabel="WhatTextField2">
-                                        <rect key="frame" x="136" y="106" width="171" height="30"/>
+                                        <rect key="frame" x="136" y="109" width="171" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7iI-nc-3oK"/>
                                             <constraint firstAttribute="width" constant="171" id="iLm-lD-Uoq"/>
@@ -417,7 +420,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="어디서?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oB1-zZ-IWO" userLabel="WhereTextField1">
-                                        <rect key="frame" x="77" y="152" width="230" height="30"/>
+                                        <rect key="frame" x="77" y="155" width="230" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="W0Y-zD-Jny"/>
                                             <constraint firstAttribute="width" constant="230" id="ucg-Jp-Gs8"/>
@@ -442,33 +445,26 @@
                                             <constraint firstAttribute="width" constant="40" id="gsR-c7-cAh"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOM-f1-7w1" userLabel="ConfrimButton">
-                                        <rect key="frame" x="153" y="200" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wb6-sh-iah" userLabel="DeleteButton">
+                                        <rect key="frame" x="312" y="183" width="30" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="confirmEditing:" destination="W4t-XU-YlE" eventType="touchUpInside" id="jvH-3b-Bxn"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wb6-sh-iah" userLabel="DeleteButton">
-                                        <rect key="frame" x="317" y="190" width="28" height="40"/>
                                         <state key="normal" image="page2_2trash-1">
                                             <attributedString key="attributedTitle"/>
                                         </state>
                                     </button>
-                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="무엇" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-dA-BOu" userLabel="WhatTextField1">
+                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="무엇" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-dA-BOu" userLabel="WhatTextField1">
                                         <rect key="frame" x="61" y="100" width="70" height="42"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="49" id="Gam-d7-K7v"/>
-                                            <constraint firstAttribute="height" constant="30" id="p0j-vH-9GV"/>
+                                            <constraint firstAttribute="width" constant="70" id="Gam-d7-K7v"/>
+                                            <constraint firstAttribute="height" constant="42" id="p0j-vH-9GV"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="누구" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKb-Pu-uoh" userLabel="WithTextField1">
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="누구" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKb-Pu-uoh" userLabel="WithTextField1">
                                         <rect key="frame" x="61" y="58" width="69" height="34"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="49" id="W2r-va-idE"/>
+                                            <constraint firstAttribute="width" constant="69" id="W2r-va-idE"/>
                                             <constraint firstAttribute="height" constant="34" id="dQJ-ad-Lqn"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
@@ -480,7 +476,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="일" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ycH-Cz-56k" userLabel="DummyDayTF">
-                                        <rect key="frame" x="190" y="25" width="46" height="21"/>
+                                        <rect key="frame" x="187" y="25" width="46" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="VYh-2e-ZZP"/>
                                             <constraint firstAttribute="height" constant="21" id="cFM-gW-Fyk"/>
@@ -489,7 +485,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="연" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ogj-QJ-NBF" userLabel="DummyYearTF">
-                                        <rect key="frame" x="48" y="25" width="72" height="21"/>
+                                        <rect key="frame" x="45" y="25" width="72" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="72" id="Bgf-Xh-xAg"/>
                                             <constraint firstAttribute="height" constant="21" id="dLb-vh-oKh"/>
@@ -498,7 +494,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="월" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzP-IV-DTV" userLabel="DummyMonthTF">
-                                        <rect key="frame" x="132" y="24" width="47" height="21"/>
+                                        <rect key="frame" x="129" y="24" width="47" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="47" id="Cf1-T9-Kyd"/>
                                             <constraint firstAttribute="height" constant="21" id="s6L-9k-ZEl"/>
@@ -507,7 +503,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TT:MM" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uU5-Jx-0CR" userLabel="TimePickerTF">
-                                        <rect key="frame" x="247" y="25" width="60" height="21"/>
+                                        <rect key="frame" x="244" y="25" width="60" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="4Gk-BP-Y3s"/>
                                             <constraint firstAttribute="height" constant="21" id="qXB-kM-5NF"/>
@@ -515,8 +511,16 @@
                                         <fontDescription key="fontDescription" name="IropkeBatangOTFM" family="Iropke Batang OTF" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C6n-so-sdn" userLabel="DummyDateTF">
-                                        <rect key="frame" x="48" y="14" width="191" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DOM-f1-7w1" userLabel="ConfrimButton">
+                                        <rect key="frame" x="282" y="194" width="25" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="OKbutton"/>
+                                        <connections>
+                                            <action selector="confirmEditing:" destination="W4t-XU-YlE" eventType="touchUpInside" id="jvH-3b-Bxn"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C6n-so-sdn" userLabel="DummyDateTF">
+                                        <rect key="frame" x="45" y="17" width="191" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="ITR-Ee-CXL"/>
                                             <constraint firstAttribute="width" constant="191" id="n6L-YN-YDd"/>
@@ -532,41 +536,39 @@
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Wb6-sh-iah" secondAttribute="bottom" constant="8" id="0pm-rM-Niq"/>
-                                    <constraint firstItem="YKb-Pu-uoh" firstAttribute="top" secondItem="C6n-so-sdn" secondAttribute="bottom" constant="8" id="56n-VD-e2U"/>
+                                    <constraint firstItem="YKb-Pu-uoh" firstAttribute="top" secondItem="C6n-so-sdn" secondAttribute="bottom" constant="7" id="2Ru-nH-KdP"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="17" id="2ph-4z-iaV"/>
                                     <constraint firstItem="FAA-fy-Lj5" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="14" id="7bQ-4e-CdZ"/>
                                     <constraint firstAttribute="trailing" secondItem="D2t-2I-6Yw" secondAttribute="trailing" constant="8" id="8tg-Om-lit"/>
                                     <constraint firstItem="EzP-IV-DTV" firstAttribute="leading" secondItem="ogj-QJ-NBF" secondAttribute="trailing" constant="12" id="8uv-Ie-muH"/>
                                     <constraint firstItem="ogj-QJ-NBF" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="25" id="DlC-Qj-FTF"/>
                                     <constraint firstItem="YKb-Pu-uoh" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="61" id="Ec3-WJ-Aja"/>
-                                    <constraint firstItem="dSg-dA-BOu" firstAttribute="top" secondItem="YKb-Pu-uoh" secondAttribute="bottom" constant="16" id="Gge-jy-0wV"/>
-                                    <constraint firstItem="C6n-so-sdn" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="14" id="I01-TK-G6z"/>
-                                    <constraint firstItem="ogj-QJ-NBF" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="24" id="Kkn-Bd-nJX"/>
-                                    <constraint firstItem="C6n-so-sdn" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="21" id="Pye-QJ-wIV"/>
+                                    <constraint firstItem="xta-Nl-qPI" firstAttribute="top" secondItem="C6n-so-sdn" secondAttribute="bottom" constant="7" id="EdR-S4-nwZ"/>
+                                    <constraint firstItem="dSg-dA-BOu" firstAttribute="top" secondItem="YKb-Pu-uoh" secondAttribute="bottom" constant="8" id="Gge-jy-0wV"/>
+                                    <constraint firstItem="ogj-QJ-NBF" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="21" id="Kkn-Bd-nJX"/>
                                     <constraint firstItem="EzP-IV-DTV" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="24" id="RmN-he-bS8"/>
                                     <constraint firstItem="FAA-fy-Lj5" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="-16" id="UVq-f2-NCM"/>
-                                    <constraint firstItem="xta-Nl-qPI" firstAttribute="top" secondItem="C6n-so-sdn" secondAttribute="bottom" constant="8" id="VIe-mk-nhf"/>
                                     <constraint firstAttribute="width" constant="353" id="XP9-r0-Ytd"/>
-                                    <constraint firstItem="C6n-so-sdn" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="21" id="YiW-aU-hHX"/>
                                     <constraint firstAttribute="trailing" secondItem="xta-Nl-qPI" secondAttribute="trailing" constant="46" id="ZBx-cN-N5w"/>
                                     <constraint firstItem="ycH-Cz-56k" firstAttribute="leading" secondItem="EzP-IV-DTV" secondAttribute="trailing" constant="11" id="aXo-ic-qit"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="17" id="bkz-hu-7Su"/>
                                     <constraint firstAttribute="height" constant="238" id="cEy-Nm-PDE"/>
-                                    <constraint firstItem="C6n-so-sdn" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="14" id="dO7-48-NMQ"/>
                                     <constraint firstItem="ycH-Cz-56k" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="25" id="eEr-1q-aX3"/>
                                     <constraint firstItem="uU5-Jx-0CR" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="25" id="fIZ-eK-Mhx"/>
                                     <constraint firstItem="dSg-dA-BOu" firstAttribute="leading" secondItem="wO1-M8-ckO" secondAttribute="leading" constant="61" id="g3Q-A1-Yco"/>
                                     <constraint firstAttribute="trailing" secondItem="MQS-Rm-BHj" secondAttribute="trailing" constant="46" id="gll-Qz-ad5"/>
-                                    <constraint firstAttribute="trailing" secondItem="Wb6-sh-iah" secondAttribute="trailing" constant="8" id="hPE-4I-BaY"/>
                                     <constraint firstAttribute="trailing" secondItem="xta-Nl-qPI" secondAttribute="trailing" constant="46" id="inZ-40-GDj"/>
                                     <constraint firstItem="D2t-2I-6Yw" firstAttribute="top" secondItem="wO1-M8-ckO" secondAttribute="top" constant="23" id="kbq-HF-Ztf"/>
-                                    <constraint firstItem="MQS-Rm-BHj" firstAttribute="top" secondItem="xta-Nl-qPI" secondAttribute="bottom" constant="16" id="kl0-MS-Fre"/>
+                                    <constraint firstItem="MQS-Rm-BHj" firstAttribute="top" secondItem="xta-Nl-qPI" secondAttribute="bottom" constant="17" id="kl0-MS-Fre"/>
                                     <constraint firstItem="oB1-zZ-IWO" firstAttribute="top" secondItem="MQS-Rm-BHj" secondAttribute="bottom" constant="16" id="q83-hK-vES"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="21" id="tG9-F0-E5Z"/>
                                     <constraint firstAttribute="trailing" secondItem="oB1-zZ-IWO" secondAttribute="trailing" constant="46" id="v60-1w-9jf"/>
-                                    <constraint firstItem="D2t-2I-6Yw" firstAttribute="leading" secondItem="uU5-Jx-0CR" secondAttribute="trailing" constant="2" id="xcH-3y-26o"/>
+                                    <constraint firstItem="C6n-so-sdn" firstAttribute="leading" secondItem="FAA-fy-Lj5" secondAttribute="trailing" constant="21" id="vig-y1-fva"/>
+                                    <constraint firstItem="D2t-2I-6Yw" firstAttribute="leading" secondItem="uU5-Jx-0CR" secondAttribute="trailing" constant="5" id="xcH-3y-26o"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yob-Mv-yrH" userLabel="CloseButton">
-                                <rect key="frame" x="343" y="227" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yob-Mv-yrH" userLabel="CloseButton">
+                                <rect key="frame" x="343" y="231" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="W0t-6g-kem"/>
                                     <constraint firstAttribute="width" constant="40" id="eJZ-fs-2sX"/>
@@ -584,8 +586,8 @@
                         <constraints>
                             <constraint firstItem="wO1-M8-ckO" firstAttribute="centerX" secondItem="8Ex-Oe-6rD" secondAttribute="centerX" id="3YN-WE-Kh0"/>
                             <constraint firstItem="Pfl-kk-XQY" firstAttribute="trailing" secondItem="Yob-Mv-yrH" secondAttribute="trailing" constant="31" id="ALT-2P-QG9"/>
-                            <constraint firstItem="Yob-Mv-yrH" firstAttribute="top" secondItem="Pfl-kk-XQY" secondAttribute="top" constant="176" id="Pe6-qN-xyW"/>
-                            <constraint firstItem="wO1-M8-ckO" firstAttribute="top" secondItem="Yob-Mv-yrH" secondAttribute="bottom" constant="8" id="tYx-qR-e5Z"/>
+                            <constraint firstItem="Yob-Mv-yrH" firstAttribute="top" secondItem="Pfl-kk-XQY" secondAttribute="top" constant="187" id="Pe6-qN-xyW"/>
+                            <constraint firstItem="wO1-M8-ckO" firstAttribute="top" secondItem="Yob-Mv-yrH" secondAttribute="bottom" constant="-3" id="tYx-qR-e5Z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pfl-kk-XQY"/>
                     </view>
@@ -608,11 +610,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="OKbutton" width="83.666664123535156" height="79.666664123535156"/>
         <image name="background" width="125.33333587646484" height="271"/>
         <image name="calendar" width="35.333332061767578" height="35.666667938232422"/>
         <image name="font_nov" width="68" height="22.333333969116211"/>
         <image name="logo" width="155.66667175292969" height="51.666667938232422"/>
-        <image name="page1" width="187.33332824707031" height="279.66665649414062"/>
+        <image name="page" width="340.33334350585938" height="507.66665649414062"/>
         <image name="page1_tab" width="192" height="27.666666030883789"/>
         <image name="page2_2" width="353.66665649414062" height="238.66667175292969"/>
         <image name="page2_2_x" width="21" height="21"/>

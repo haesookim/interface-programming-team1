@@ -8,10 +8,6 @@
 
 import UIKit
 
-enum Month : Int{
-    case jan = 1, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec
-}
-
 class ViewController: UIViewController {
     
     //full plan list
@@ -90,14 +86,12 @@ class ViewController: UIViewController {
             }
         } else {print("No plans in current month!")}
         
-        print(yearMonthPair[1])
-        
         //sortedDatesofMonth = Array(currentMonthPlans.keys).sorted(by : <)
         
         //debug purposes
         //print("current year/month = " + "\(currentMonthString)")
         
-        // TODO : update the month icon according to change made
+        // update the month icon according to change made
         let imageName = "font_" + MonthArray[yearMonthPair[1]-1]
         let monthImage = UIImage(named: "\(imageName).png")!
         self.monthIcon.setImage(monthImage, for: .normal)
