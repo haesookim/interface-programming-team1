@@ -51,13 +51,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sticker1" translatesAutoresizingMaskIntoConstraints="NO" id="bPB-DT-rEL">
-                                                    <rect key="frame" x="5" y="7" width="98" height="22.5"/>
+                                                    <rect key="frame" x="5" y="7" width="192" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="bPB-DT-rEL" secondAttribute="height" multiplier="48:11" id="DHD-ZU-ODx"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Header" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3B-Cs-yov">
-                                                    <rect key="frame" x="20" y="7" width="328" height="22.5"/>
+                                                    <rect key="frame" x="20" y="7" width="291.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="V3B-Cs-yov" secondAttribute="height" multiplier="102:7" id="MaV-VG-0mu"/>
                                                     </constraints>

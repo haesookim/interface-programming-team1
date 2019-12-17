@@ -97,7 +97,8 @@ enum WhatCategory : String, CaseIterable, Decodable{
 
 class Plan{
     
-    //PLAN HOLDS ONLY THE REFINED DATA - ALL THE REFINING PROCESS WILL BE DONE IN PLANLIST
+    //unique identifier
+    var planID : String;
     
     
     //time
@@ -128,7 +129,9 @@ class Plan{
           withWho: [String]?,
           whatCategory: WhatCategory?,
           doWhat: String?,
-          place : String?        ){
+          place : String?){
+        
+        planID = UUID().uuidString
         
         let dateArray = date.components(separatedBy: "/")
                
@@ -250,15 +253,16 @@ struct PlanData: Decodable, Comparable{
     let time: String?
     let whoCategory: WhoCategory //TODO: Check if this is the right value to recieve
     let withWho: String?
-    let whatCategory: WhatCategory
+    let whatCategory: WhatCategory?
     let doWhat: String?
     let place: String?
 
-    func save(directory: FileManager.SearchPathDirectory) throws {
-        let kindDirectoryURL = URL(fileURLWithPath: "", relativeTo: FileManager.default.urls(for: directory, in: .userDomainMask)[0])
-
-        try? FileManager.default.createDirectory(at: kindDirectoryURL, withIntermediateDirectories: true)
-    }
+//    func save(directory: FileManager.SearchPathDirectory) throws {
+//        let kindDirectoryURL = URL(fileURLWithPath: "", relativeTo: FileManager.default.urls(for: directory, in: .userDomainMask)[0])
+//        print(kindDirectoryURL)
+//
+//        try? FileManager.default.createDirectory(at: kindDirectoryURL, withIntermediateDirectories: true)
+//    }
     
     // Comparable functions for sorting
     static func ==(lhs: PlanData, rhs: PlanData) -> Bool {

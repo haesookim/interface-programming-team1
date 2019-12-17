@@ -43,22 +43,62 @@ class PlanList {
         do{
             completePlanRawArray = try [PlanData](fileName: "PlanData")
             if completePlanRawArray.count > 1{
-                completePlanList = [String: [String:[Plan]]]()
+                //Decode the raw plans to the intended complex dictionary form
+                initPlanList()
             }
         }catch{
             completePlanRawArray = []
-        }
-        
-        //Decode the raw plans to the intended complex dictionary form
-        for plan in completePlanRawArray{
-            _ = addNewPlan(Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWhoString: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place)
         }
   
         //var targetPlan = completePlanList["2019/12"]["25"][0]
     }
 
+    func initPlanList() {
+        completePlanList = [String: [String:[Plan]]]()
+        
+        for plan in completePlanRawArray.sorted(){
+            _ = addNewPlan(Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWhoString: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place)
+        }
+    }
+    
+    func savePlanList(){
+        guard let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let fileUrl = documentDirectoryUrl.appendingPathComponent("Persons.json")
+        
+        // Create a write-only stream
+        guard let stream = OutputStream(toFileAtPath: fileUrl.path, append: false) else { return }
+        stream.open()
+        defer {
+            stream.close()
+        }
+        
+        // Transform array into data and save it into file
+        var error: NSError?
+        JSONSerialization.writeJSONObject(completePlanRawArray, to: stream, options: [], error: &error)
+        
+        // Handle error
+        if let error = error {
+            print(error)
+        }
+    }
     
     
+    func addNewToRaw(Date: String, //input as yyyy/MM/dd
+        time: String?,
+        whoCategory: WhoCategory,
+        withWhoString : String?,
+        whatCategory: WhatCategory,
+        doWhat: String?,
+        place : String?)->Bool
+    {
+        if let tempdata = PlanData(date:Date, time: time, whoCategory: whoCategory, withWho: withWhoString, whatCategory: whatCategory, doWhat: doWhat, place: place) {
+            completePlanRawArray.append(tempdata)
+            print(completePlanRawArray)
+            return true
+        }else{
+            return false
+        }
+    }
     //level 1 : implement adding plan with addplan.
     // if a new plan is successfully done, return the plan
     // if initializing new plan fails(level 0, returning nil), return nil
@@ -85,21 +125,16 @@ class PlanList {
                            place: place) {
             
             let yearMonthKey = item.year+"/"+item.month
-            print(yearMonthKey)
             let dayKey = item.day
             //add it to the completPlanlist
             if(completePlanList[yearMonthKey] == nil){ //create a new yearMonthKey entry if it doesn't exist
                 completePlanList[yearMonthKey] = [:]
-                print("new yearMonth key created")
             }
             
             if (completePlanList[yearMonthKey]![dayKey] == nil){
                 completePlanList[yearMonthKey]![dayKey] = [item]
-                print("new day key created")
             } else{
                 completePlanList[yearMonthKey]![dayKey]!.append(item)
-                print("added in existing slot")
-                
             }
             
             return item
