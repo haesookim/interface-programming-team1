@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol editPlanDelegate{
-    func editPlan(plan : Plan, indexPath : IndexPath, yearMonthKey : String)
+    func editPlan(plan : Plan)
     func deletePlan(plan : Plan)
 }
 
@@ -179,7 +179,7 @@ class SelectionViewController: UIViewController {
         applyChanges()
         
         //use the protocol delegate
-        editDelegate?.editPlan(plan : selectedPlan, indexPath: selectedIndexPath, yearMonthKey: selectedYearMonth)
+        editDelegate?.editPlan(plan : selectedPlan)
         
         
         //perform segue - done in delegate

@@ -85,12 +85,7 @@ class ViewController: UIViewController {
             for (key, value) in monthList{
                 currentMonthPlans[key] = value
             }
-        } else {print("No plans in current month!")}
-        
-        //sortedDatesofMonth = Array(currentMonthPlans.keys).sorted(by : <)
-        
-        //debug purposes
-        //print("current year/month = " + "\(currentMonthString)")
+        }
         
         // update the month icon according to change made
         let imageName = "font_" + MonthArray[yearMonthPair[1]-1]
@@ -223,6 +218,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 //characterSticker.image = [UIImage imageNamed: @ ""]
             }
             
+            if let activityLabel = cell.viewWithTag(5) as? UILabel{
+                
+                if(item.doWhat != ""){
+                    activityLabel.text = item.doWhat
+                    
+                } else if (item.whatCategory != WhatCategory.Undefined || item.whatCategory != nil){
+                    
+                    //when there is no entry for withWho, apply whoCategory
+                    activityLabel.text = item.whatCategory?.rawValue
+                }
+            }
+            
+            
             return cell
         }
         
@@ -244,10 +252,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             monthStringforEditing = currentMonthString
             
             
-            //ALT : using target plan
-            //PlanList.shared.targetPlan = PlanList.shared.completePlanList[currentMonthString]![ sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1]
-            
-            
             //perform Segue
             performSegue(withIdentifier: "EnterEditing" , sender: self)
             
@@ -264,38 +268,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     //function that does the actual data transfer
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let editVC = segue.destination as! SelectionViewController
-        print("transfer!")
         editVC.editDelegate = self
         editVC.selectedPlan = planforEditing
         editVC.selectedIndexPath = indexPathforEditing
         editVC.selectedYearMonth = monthStringforEditing
     }
-    
-    
-    
-    
-    
-    //function that removes a cell from the table and the list (the swipe-delete)
-    //will this be needed? not for now
-//    func tableView(_ tableView: UITableView,
-//                   commit editingStyle: UITableViewCell.EditingStyle,
-//                   forRowAt indexPath: IndexPath) {
-//
-//        //remove from the todos list
-//        //planList.planList.remove(at: indexPath.row)
-//
-//        //tableView.reloadData()
-//
-//        //remove from the table, by referencein the indexPath
-//        let indexPaths = [indexPath]
-//        tableView.deleteRows(at: indexPaths, with: .automatic)
-//    }
-    
-    
-
-
-
-    
 }
 
 
@@ -307,45 +284,23 @@ extension ViewController : editPlanDelegate{
             PlanList.shared.deletePlanFromCPRA(targetPlan: plan)
             self.applyMonthChange()
             self.tableView.reloadData()
-            print("deleting done?")
         }
     }
     
     
     
-    func editPlan(plan: Plan, indexPath : IndexPath, yearMonthKey : String) {
+    func editPlan(plan: Plan) {
         self.dismiss(animated: true) {
+
+            //add
+            let newTempPlan = PlanList.shared.createNewPlan(planID: plan.planID, Date: plan.date, time: plan.time, whoCategory: plan.whoCategory, withWho: plan.withWho, whatCategory: plan.whatCategory, doWhat: plan.doWhat, place: plan.place)
             
+            PlanList.shared.deletePlanFromCPRA(targetPlan: plan)
+            PlanList.shared.addToCPRA(item: newTempPlan!)
             
-            //IMPORTANT : the data should be stored in original myPlanList, not temporary currentMonthPlans
-            //self.currentMonthPlans[ self.sortedDatesofMonth[indexPath.section] ]![indexPath.row - 1 ]  = plan
-            
-            //Assumption : we are only able to edit the plans that are on current month
-            // --> sounds legit
-            //PlanList.shared.completePlanList[self.currentMonthString]?[ self.sortedDatesofMonth[indexPath.section] ]?[indexPath.row - 1 ] = plan
-            
-            //try manually add new and delete old
-            
-            PlanList.shared.editPlan(originalIndexPath: indexPath,
-                                     yearMonthKey: yearMonthKey,
-                                     date: plan.date,
-                                     time: plan.time,
-                                     whoCategory: plan.whoCategory,
-                                     withWhoString: plan.withWho,
-                                     whatCategory: plan.whatCategory,
-                                     doWhat: plan.doWhat,
-                                     place: plan.place)
             self.applyMonthChange()
-            self.tableView.deleteRows(at: [indexPath], with: .none)
-            print("deleting done?")
-            
-            //self.tableView.deleteRows(at: [indexPath], with: .none)
-            
-            
-            
-            //how to update the data
-            //self.tableView.reloadData()
-            
+            self.tableView.reloadData()
+       
         }
     }
 }

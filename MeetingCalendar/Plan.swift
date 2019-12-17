@@ -33,6 +33,7 @@ enum WhoCategory : String, CaseIterable, Codable{
 }
 
 enum WhatCategory : String, CaseIterable, Codable{
+    case Family = "가족과 함께한다"
     case Celebrate = "축하한다"
     case Party = "파티를 한다"
     case Meeting = "회의한다"
@@ -52,7 +53,6 @@ enum WhatCategory : String, CaseIterable, Codable{
     case Pray = "기도한다"
     case Service = "봉사한다"
     case Game = "게임한다"
-    case Concert = "공연을 본다"
     case Shopping = "쇼핑한다"
     case Travel = "여행간다"
     case Hospital = "병원을 간다"
@@ -61,26 +61,26 @@ enum WhatCategory : String, CaseIterable, Codable{
     
     var value:String {
         switch self{
+            case .Family: return "family"
             case .Celebrate : return "celebrate"
             case .Party : return "party"
             case .Meeting : return "meeting"
             case .Reluctant : return "reluctant"
             case .Music : return "music"
-            case .Date : return "date"
-            case .Important : return "important"
+            case .Date : return "love"
+            case .Important : return "star"
             case .Rest : return "rest"
             case .Anniversary : return "anniv"
             case .Food : return "food"
             case .Movie : return "movie"
             case .Cafe : return "cafe"
             case .Exercise : return "exercise"
-            case .Create : return "create"
+            case .Create : return "art"
             case .Drink : return "drink"
             case .Study : return "study"
             case .Pray : return "pray"
             case .Service : return "service"
             case .Game : return "game"
-            case .Concert : return "concert"
             case .Shopping : return "shopping"
             case .Travel : return "travel"
             case .Hospital : return "hospital"
