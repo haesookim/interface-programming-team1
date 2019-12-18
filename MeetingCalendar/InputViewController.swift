@@ -135,7 +135,6 @@ class InputViewController: UIViewController {
             
             //else
             clearInputData()
-            //performSegue(withIdentifier: "create", sender: nil)
             
         }else{
             

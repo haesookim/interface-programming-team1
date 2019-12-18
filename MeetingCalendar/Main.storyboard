@@ -15,7 +15,7 @@
         <!--ListView-->
         <scene sceneID="0fd-Pa-ofA">
             <objects>
-                <viewController id="iZ5-qM-0hh" userLabel="ListView" customClass="ViewController" customModule="MeetingCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListView" id="iZ5-qM-0hh" userLabel="ListView" customClass="ViewController" customModule="휴먼다이어리___HumanDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MzQ-l1-0PP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,7 +235,7 @@
         <!--InputView-->
         <scene sceneID="cod-WF-cQx">
             <objects>
-                <viewController id="DCf-mt-9QA" userLabel="InputView" customClass="InputViewController" customModule="MeetingCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DCf-mt-9QA" userLabel="InputView" customClass="InputViewController" customModule="휴먼다이어리___HumanDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qfe-zL-fM7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -401,7 +401,7 @@
         <!--SelectionView-->
         <scene sceneID="XJF-Wj-Fsa">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="W4t-XU-YlE" userLabel="SelectionView" customClass="SelectionViewController" customModule="MeetingCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="W4t-XU-YlE" userLabel="SelectionView" customClass="SelectionViewController" customModule="휴먼다이어리___HumanDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ex-Oe-6rD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -9,6 +9,9 @@ import UserNotifications
 
 class LocalNotificationManager
 {
+    //singleton
+    static let notifManager = LocalNotificationManager()
+    
     var notifications = [Notification]()
     
     func listScheduledNotifications()
